@@ -60,6 +60,18 @@ numberofplayerslevel:
 	return *lista_pointer;
 }
 
-//void players_stats(struct players) {
+//void print_label_players(struct players** players_list,struct players** head_players) {
+//	if (*players_list) {
+//		if ((*players_list)->pNext != *head_players) {
+//			if ((*players_list)->points > (*players_list)->pNext->points) {
+//				print_label_players(&(*players_list)->pNext, head_players);
+//
+//			}
+//		}
+//	}
+//}
+//
+//void players_stats(struct players**players_list) {
+//
 //
 //}
