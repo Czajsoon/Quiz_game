@@ -93,6 +93,19 @@ int count_players(struct players** lista_pointer) {
 	return number_of_players(lista_pointer, lista_pointer, counter);
 }
 
-//struct players* player_with_points(struct players) {
-//
-//}
+struct players* pointer_player_with_points(struct players** lista_pointer, struct players** head,int points) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			if ((*lista_pointer)->points == points) return *lista_pointer;
+			else *lista_pointer = pointer_player_with_points(&(*lista_pointer)->pNext, head, points);
+		}
+		else { 
+			if ((*lista_pointer)->points == points)
+				return *lista_pointer;
+		}
+	}
+}
+
+struct players* player_with_points(struct players** lista_pointer, int points) {
+	return pointer_player_with_points(lista_pointer, lista_pointer, points);
+}

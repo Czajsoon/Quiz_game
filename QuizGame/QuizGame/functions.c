@@ -19,14 +19,14 @@ int is_numbers(char string[]) {
 }
 
 
-int string_to_int(int(*number)(char string[]),char thisString[]) {
+int string_to_int(int(*number)(char string[]), char thisString[]) {
 	char* endptr;
 	int number1 = strtol(thisString, &endptr, Base);
 	if (number(thisString)) return number1;
 	else return -18000;
 }
 
-struct player* new_players(struct players** lista_pointer) {
+struct players* new_players(struct players** lista_pointer) {
 	char number_of_players[80];
 	int flag = 0;
 numberofplayerslevel:
@@ -37,7 +37,7 @@ numberofplayerslevel:
 		if (players > 0) {
 			for (int i = 0;i < players;i++) {
 				char name[40];
-				printf("Wprowadz nazwê gracza %d: ",i+1);
+				printf("Wprowadz nazwê gracza %d: ", i + 1);
 				scanf("%s", &name);
 				create_and_add_list_players(lista_pointer, name, lista_pointer);
 				printf("Lista graczy:\n");
@@ -60,38 +60,27 @@ numberofplayerslevel:
 	return *lista_pointer;
 }
 
-int* array_points_players(struct players** players_list, struct players** head_players, int index, int array[],int size) {
-	if (*players_list) {
-		if ((*players_list)->pNext != *head_players) {
-			array[index] = (*players_list)->points;
-			index++;
-			array_points_players(&(*players_list)->pNext, head_players, index, array, size);
-		}
-		else {
-			array[index] = (*players_list)->points;
-			return array;
-		}
+void players_stats(struct players** players_list) {
+	int amount_of_elements = count_players(players_list), index = 0, index1 = 0;
+	int* array = NULL;
+	struct players* players = (*players_list);
+	array = (int*)calloc(amount_of_elements, sizeof(int));
+	for (int i = 0;i < amount_of_elements;i++) {
+		array[i] = players->points;
+		players = players->pNext;
 	}
-}
-
-void print_label_players(struct players** players_list,struct players** head_players,int index) {
-	int amount_of_elements = count_players(players_list);
-	int* array = calloc(amount_of_elements, sizeof(int));
-	array = array_points_players(players_list, players_list, index, array, amount_of_elements);
-	for(int i=0;i<amount_of_elements-1;i++)
+	for (int i = 0;i < amount_of_elements - 1;i++)
 		for (int j = 0; j < amount_of_elements; j++) {
-			if (array[j] > array[j + 1]) {
+			if (array[j] < array[j + 1]) {
 				int temp = array[j];
 				array[j] = array[j + 1];
 				array[j + 1] = temp;
 			}
 		}
-	for (int i = amount_of_elements; i > 0; i--) {
-		printf("%d %s\n", (*players_list)->points, (*players_list)->Name);
+	printf(" ________________________________________\n");
+	for (int i = 0;i < amount_of_elements;i++) {
+		struct players* playerWithPoints = player_with_points(players_list, array[i]);
+		printf("|%3d.|NAME: %13s| Points: %6d|\n",i+1, playerWithPoints->Name, playerWithPoints->points);
 	}
-	free(*array);
-}
-
-void players_stats(struct players**players_list) {
-	print_label_players(players_list, players_list,0);
+	free(array);
 }
