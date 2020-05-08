@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
@@ -30,38 +30,53 @@ struct players* new_players(struct players** lista_pointer) {
 	char number_of_players[80];
 	int flag = 0;
 numberofplayerslevel:
-	printf("Podaj ilu chcesz mieæ graczy: ");
+	printf("\t\t\t\t__________________________________\n");
+	printf("\t\t\t\t -> Podaj ilu chcesz mieÄ‡ graczy: ");
 	scanf("%9s", &number_of_players);
+	system("cls");
+	int amountOfPlayers = count_players(lista_pointer);
 	int players = string_to_int(is_numbers, number_of_players);
 	if (players != -18000) {
-		if (players > 0) {
-			for (int i = 0;i < players;i++) {
-				char name[40];
-				printf("Wprowadz nazwê gracza %d: ", i + 1);
-				scanf("%s", &name);
-				create_and_add_list_players(lista_pointer, name, lista_pointer);
-				printf("Lista graczy:\n");
-				print_players(*lista_pointer, *lista_pointer);
+		if (players > 0 ) {
+			if (*lista_pointer == NULL) {
+				for (int i = 0;i < players;i++) {
+					char name[40];
+					printf("\t\t\t\tWprowadz nazwÄ™ gracza %d: ", 1 + i);
+					scanf("%s", &name);
+					system("cls");
+					create_and_add_list_players(lista_pointer, name, lista_pointer);
+					print_players(*lista_pointer, *lista_pointer, 0);
+				}
+			}
+			else {
+				for (int i = 0;i < players;i++) {
+					char name[40];
+					print_players(*lista_pointer, *lista_pointer, 0);
+					printf("\t\t\t\tWprowadz nazwÄ™ gracza %d: ", amountOfPlayers + 1 + i);
+					scanf("%s", &name);
+					system("cls");
+					create_and_add_list_players(lista_pointer, name, lista_pointer);
+				}
 			}
 		}
 		else if (players == 0) {
-			printf("Nie mo¿e byæ %d graczy\n", players);
+			printf("Nie moÅ¼e byÄ‡ %d graczy\n", players);
 			goto numberofplayerslevel;
 		}
 		else {
-			printf("Nie mo¿e byæ ujemna liczba graczy\n");
+			printf("Nie moÅ¼e byÄ‡ ujemna liczba graczy\n");
 			goto  numberofplayerslevel;
 		}
 	}
 	else {
-		printf("Wprowadzi³eœ z³e dane\n");
+		printf("WprowadziÅ‚eÅ› zÅ‚e dane\n");
 		goto numberofplayerslevel;
 	}
 	return *lista_pointer;
 }
 
 void players_stats(struct players** players_list) {
-	int amount_of_elements = count_players(players_list), index = 0, index1 = 0;
+	int amount_of_elements = count_players(players_list);
 	struct players* players = (*players_list);
 	struct players* playersArray = calloc(amount_of_elements, sizeof(struct players));
 	for (int i = 0;i < amount_of_elements;i++) {
@@ -77,12 +92,13 @@ void players_stats(struct players** players_list) {
 			}
 		}
 	}
-	printf(" ___________________________________________________\n");
+	printf("\t\t\t __________________________________________________________\n");
 	for (int i = 0;i < amount_of_elements;i++) {
-		if(i==0)printf("|Miejsce: %3d st|NAME: %13s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
-		else if(i==1) printf("|Miejsce: %3d nd|NAME: %13s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
-		else if(i==2) printf("|Miejsce: %3d rd|NAME: %13s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
-		else printf("|Miejsce: %5d.|NAME: %13s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
+		if(i==0)printf("\t\t\t|Miejsce: %3d st|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
+		else if(i==1) printf("\t\t\t|Miejsce: %3d nd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
+		else if(i==2) printf("\t\t\t|Miejsce: %3d rd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
+		else printf("\t\t\t|Miejsce: %5d.|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
 	}
+	printf("\t\t\t ----------------------------------------------------------\n");
 	free(playersArray);
 }

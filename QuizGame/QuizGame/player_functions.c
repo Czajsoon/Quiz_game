@@ -38,13 +38,20 @@ void create_and_add_list_players(struct players** lista_pointer, char name[], st
 		*lista_pointer = create_list_players(lista_pointer, name);
 }
 
-void print_players(struct players* lista_pointer, struct players* head) {
+void print_players(struct players* lista_pointer, struct players* head, int index) {
 	if (lista_pointer) {
 		if (lista_pointer->pNext != head) {
-			printf("%d. %s\n", lista_pointer->numberPlayer, lista_pointer->Name);
-			print_players(lista_pointer->pNext, head);
+			if (index == 0) printf("\t\t\t\t _____________________________________________\n");
+			index++;
+			printf("\t\t\t\t|NUMER GRACZA %3d. |NAME %19s |\n", lista_pointer->numberPlayer, lista_pointer->Name);
+			print_players(lista_pointer->pNext, head,index);
 		}
-		else printf("%d. %s\n", lista_pointer->numberPlayer, lista_pointer->Name);
+		else {
+			if (index == 0) printf("\t\t\t\t _____________________________________________\n");
+			index++;
+			printf("\t\t\t\t|NUMER GRACZA %3d. |NAME %19s |\n", lista_pointer->numberPlayer, lista_pointer->Name);
+			printf("\t\t\t\t --------------------------------------------\n");
+		}
 	}
 }
 

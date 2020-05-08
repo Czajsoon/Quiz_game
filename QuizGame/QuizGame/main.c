@@ -9,23 +9,25 @@
 #include "functions.h"
 
 int main() {
+	setlocale(LC_CTYPE, "UTF-8");
 	setlocale(LC_ALL, "pl_PL");
 	char option[128];
 	struct players* playersList = NULL;
 mainhome:
-	printf(" ___________________________\n"
-		"|                           |\n"
-		"|         Quiz Game         |\n"
-		"|___________________________|\n"
-		"> Wpisz S aby rozpocz¹æ grê\n"
-		"> Wpisz A aby dodaæ graczy\n"
-		"> Wpisz T aby zobaczyæ statystyki graczy\n"
-		"> Wpisz Q aby wyjœæ z gry\n"
-		"Wybierz opcjê: ");
+	printf("\t\t\t\t ____________________________________________\n"
+		   "\t\t\t\t|                                            | \n"
+		   "\t\t\t\t|                  Quiz Game                 |\n"
+		   "\t\t\t\t|____________________________________________|\n"
+		   "\t\t\t\t| > Wpisz S aby rozpocz¹æ grê                |\n"
+		   "\t\t\t\t| > Wpisz A aby dodaæ graczy                 |\n"
+		   "\t\t\t\t| > Wpisz T aby zobaczyæ statystyki graczy   |\n"
+		   "\t\t\t\t| > Wpisz Q aby wyjœæ z gry                  |\n"
+		   "\t\t\t\t --------------------------------------------\n"
+		   "\t\t\t\t  Wybierz opcjê: ");
 	scanf("%s", &option);
 	if (strlen(&option) != 1) {
 		system("cls");
-		printf("nie ma takiej opcji :(\nWybierz inna istenij¹c¹ :)\n");
+		printf("\t\t\t\tNie ma takiej opcji :(\nWybierz inna istenij¹c¹ :)\n");
 		goto mainhome;
 	}
 	else {
@@ -39,24 +41,38 @@ mainhome:
 		}
 		else if (toupper(option[0]) == 'T') {
 			if (playersList != NULL) {
+				char optionStats[128];
 				system("cls");
 				players_stats(&playersList);
-				goto mainhome;
+				puts("");
+				printf("\t\t\t\t ____________________________________________\n");
+				printf("\t\t\t\t|> Wpisz Z aby zmienic dowolny nick          |\n");
+				printf("\t\t\t\t|> Wpisz D aby usun¹æ dowolnego gracza       |\n");
+				printf("\t\t\t\t|> Wpisz coœ dowolnego aby kontynuowaæ       |\n");
+				printf("\t\t\t\t --------------------------------------------\n");
+				printf("\t\t\t\t   Wpisz opcjê: ");
+				scanf("%s", &optionStats);
+				system("cls");
+				if(strlen(optionStats)!= 1) goto mainhome;
+				else{
+
+				}
+
 			}
 			else {
 				system("cls");
-				printf("Lista graczy jest pusta najpierw dodaj graczy!\n");
+				printf("\t\t\t\tLista graczy jest pusta najpierw dodaj graczy!\n");
 				goto mainhome;
 			}
 		}
 		else if (toupper(option[0]) == 'Q') {
 			system("cls");
-			printf("Dziêkujemy z grê!");
+			printf("\t\t\t\tDziêkujemy z grê!");
 			return 0;
 		}
 		else {
 			system("cls");
-			printf("nie ma takiej opcji :(\n wybierz inna :)\n");
+			printf("\t\t\t\tNie ma takiej opcji :(\n\t\t\t\twybierz inna :)\n");
 			goto mainhome;
 		}
 	}
