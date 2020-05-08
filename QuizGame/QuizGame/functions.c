@@ -69,7 +69,7 @@ numberofplayerslevel:
 		}
 	}
 	else {
-		printf("Wprowadziłeś złe dane\n");
+		printf("Wprowadziłeś niepoprawne dane\n");
 		goto numberofplayerslevel;
 	}
 	return *lista_pointer;
@@ -101,4 +101,33 @@ void players_stats(struct players** players_list) {
 	}
 	printf("\t\t\t ----------------------------------------------------------\n");
 	free(playersArray);
+}
+
+void changeNickname(struct players** players_list) {
+	char optionChangeNickname[128];
+nicknamechange:
+	print_players(*players_list,*players_list, 0);
+	printf("\t\t\t\t -> Wpisz 0 aby nie zmieniać nicku\n");
+	printf("\t\t\t\t    Wpisz numer gracza do zmiany nazwy: ");
+	scanf("%s", &optionChangeNickname);
+	int playerNumber = string_to_int(is_numbers, optionChangeNickname);
+	int amountOfPlayers = count_players(players_list);
+	if (playerNumber != -18000) {
+		if (playerNumber <= amountOfPlayers && playerNumber > 0) {
+			char newNickname[40];
+			struct players* player = return_player(players_list, playerNumber);
+			printf("\t\t\t\tWpisz nowy nickname dla %s: ", player->Name);
+			scanf("%s", &newNickname);
+			player = change_nickname(player, newNickname);
+		}
+		else if (playerNumber == 0);
+		else {
+			printf("\t\t\t\tNie ma takiego gracza o takim nicku!\n\t\t\t\tWpisz poprawny numer\n");
+			goto nicknamechange;
+		}
+	}
+	else {
+		printf("\t\t\t\tWprowadziłeś niepoprawne dane\n");
+		goto nicknamechange;
+	}
 }

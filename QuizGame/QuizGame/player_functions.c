@@ -116,3 +116,28 @@ struct players* pointer_player_with_points(struct players** lista_pointer, struc
 struct players* player_with_points(struct players** lista_pointer, int points) {
 	return pointer_player_with_points(lista_pointer, lista_pointer, points);
 }
+
+struct players* find_player_by_number(struct players** lista_pointer, struct players** head,int number) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			if ((*lista_pointer)->numberPlayer == number)
+				return *lista_pointer;
+			else (*lista_pointer) = find_player_by_number(&(*lista_pointer)->pNext, head, number);
+		}
+		else {
+			if ((*lista_pointer)->numberPlayer == number)
+				return *lista_pointer;
+		}
+	}
+}
+
+struct players* return_player(struct players** lista_pointer, int number) {
+	return find_player_by_number(lista_pointer, lista_pointer, number);
+}
+
+struct players* change_nickname(struct players* player,char newNick[]) {
+	for (int i=0;i < 40;i++) {
+		player->Name[i] = newNick[i];
+	}
+	return player;
+}

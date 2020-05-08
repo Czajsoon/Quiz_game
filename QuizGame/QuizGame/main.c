@@ -55,7 +55,14 @@ mainhome:
 				system("cls");
 				if(strlen(optionStats)!= 1) goto mainhome;
 				else{
+					if (toupper(optionStats[0]) == 'Z') {
+						changeNickname(&playersList);
+						goto mainhome;
+					}
+					else if (toupper(option[0]) == 'D') {
 
+					}
+					else goto mainhome;
 				}
 
 			}
@@ -68,6 +75,7 @@ mainhome:
 		else if (toupper(option[0]) == 'Q') {
 			system("cls");
 			printf("\t\t\t\tDziêkujemy z grê!");
+			delete_list_of_players(&playersList, 0);
 			return 0;
 		}
 		else {
