@@ -37,7 +37,7 @@ numberofplayerslevel:
 	int amountOfPlayers = count_players(lista_pointer);
 	int players = string_to_int(is_numbers, number_of_players);
 	if (players != -18000) {
-		if (players > 0 ) {
+		if (players > 0) {
 			if (*lista_pointer == NULL) {
 				for (int i = 0;i < players;i++) {
 					char name[40];
@@ -83,8 +83,8 @@ void players_stats(struct players** players_list) {
 		playersArray[i] = *players;
 		players = players->pNext;
 	}
-	for (int i = 0;i < amount_of_elements-1;i++) {
-		for (int j = 0;j < amount_of_elements-i-1;j++) {
+	for (int i = 0;i < amount_of_elements - 1;i++) {
+		for (int j = 0;j < amount_of_elements - i - 1;j++) {
 			if (playersArray[j].points < playersArray[j + 1].points) {
 				struct players temp = playersArray[j];
 				playersArray[j] = playersArray[j + 1];
@@ -94,9 +94,9 @@ void players_stats(struct players** players_list) {
 	}
 	printf("\t\t\t __________________________________________________________\n");
 	for (int i = 0;i < amount_of_elements;i++) {
-		if(i==0)printf("\t\t\t|Miejsce: %3d st|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
-		else if(i==1) printf("\t\t\t|Miejsce: %3d nd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
-		else if(i==2) printf("\t\t\t|Miejsce: %3d rd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
+		if (i == 0)printf("\t\t\t|Miejsce: %3d st|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
+		else if (i == 1) printf("\t\t\t|Miejsce: %3d nd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
+		else if (i == 2) printf("\t\t\t|Miejsce: %3d rd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
 		else printf("\t\t\t|Miejsce: %5d.|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
 	}
 	printf("\t\t\t ----------------------------------------------------------\n");
@@ -106,7 +106,7 @@ void players_stats(struct players** players_list) {
 void changeNickname(struct players** players_list) {
 	char optionChangeNickname[128];
 nicknamechange:
-	print_players(*players_list,*players_list, 0);
+	print_players(*players_list, *players_list, 0);
 	printf("\t\t\t\t -> Wpisz 0 aby nie zmieniać nicku\n");
 	printf("\t\t\t\t    Wpisz numer gracza do zmiany nazwy: ");
 	scanf("%s", &optionChangeNickname);
@@ -130,4 +130,49 @@ nicknamechange:
 		printf("\t\t\t\tWprowadziłeś niepoprawne dane\n");
 		goto nicknamechange;
 	}
+}
+
+
+
+void resetIdPlayers(struct players** lista_pointer, struct players** head,int startingNumber) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			(*lista_pointer)->numberPlayer = startingNumber;
+			startingNumber++;
+			resetIdPlayers(&(*lista_pointer)->pNext, head, startingNumber);
+		}
+		else {
+			(*lista_pointer)->numberPlayer = startingNumber;
+		}
+	}
+}
+
+
+void deleteOnePlayer(struct players** lista_pointer) {
+	delete_cycle_players(lista_pointer, lista_pointer);
+	char numberOfPlayer[128];
+deleteplayer:
+	print_players(*lista_pointer, *lista_pointer, 0);
+	puts("");
+	printf("\t\t\t\tWprowadz numer gracza który ma zostać usunięty: ");
+	scanf("%s", &numberOfPlayer);
+	int amountOfPlayers = count_players(lista_pointer);
+	int PlayerNumber = string_to_int(is_numbers, numberOfPlayer);
+	if (PlayerNumber != -18000) {
+		if (PlayerNumber <= amountOfPlayers && PlayerNumber > 0) {
+			deleteOnePlayerNode(lista_pointer, PlayerNumber);
+			cycleRegenPlayer(lista_pointer, lista_pointer);
+			resetIdPlayers(lista_pointer, lista_pointer, 1);
+			printf("\t\t\t\tUdało się usunąć wybranego gracza!\n");
+		}
+		else {
+			printf("\t\t\t\tNie istnieje taki gracz o podanym numerze %d!!!\n", PlayerNumber);
+			goto deleteplayer;
+		}
+	}
+	else {
+		printf("\t\t\t\tWpisałeś niepoprawne dane!\n\t\t\t\tWpisz je jeszcze raz!\n");
+		goto deleteplayer;
+	}
+
 }

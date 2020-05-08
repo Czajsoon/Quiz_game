@@ -27,7 +27,7 @@ mainhome:
 	scanf("%s", &option);
 	if (strlen(&option) != 1) {
 		system("cls");
-		printf("\t\t\t\tNie ma takiej opcji :(\nWybierz inna istenij¹c¹ :)\n");
+		printf("\t\t\t\tNie ma takiej opcji :(\n\t\t\t\tWybierz inna istenij¹c¹ :)\n");
 		goto mainhome;
 	}
 	else {
@@ -48,6 +48,8 @@ mainhome:
 				printf("\t\t\t\t ____________________________________________\n");
 				printf("\t\t\t\t|> Wpisz Z aby zmienic dowolny nick          |\n");
 				printf("\t\t\t\t|> Wpisz D aby usun¹æ dowolnego gracza       |\n");
+				printf("\t\t\t\t|> Wpisz A aby usun¹æ wszystkich graczy      |\n");
+				printf("\t\t\t\t|> Wpisz R aby zresetowaæ punkty             |\n");
 				printf("\t\t\t\t|> Wpisz coœ dowolnego aby kontynuowaæ       |\n");
 				printf("\t\t\t\t --------------------------------------------\n");
 				printf("\t\t\t\t   Wpisz opcjê: ");
@@ -59,8 +61,13 @@ mainhome:
 						changeNickname(&playersList);
 						goto mainhome;
 					}
-					else if (toupper(option[0]) == 'D') {
-
+					else if (toupper(optionStats[0]) == 'D') {
+						deleteOnePlayer(&playersList);
+						goto mainhome;
+					}
+					else if (toupper(optionStats[0]) == 'A') {
+						delete_list_of_players(&playersList, 0);
+						goto mainhome;
 					}
 					else goto mainhome;
 				}

@@ -141,3 +141,25 @@ struct players* change_nickname(struct players* player,char newNick[]) {
 	}
 	return player;
 }
+
+void deleteOnePlayerNode(struct players** lista_pointer, int number) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->numberPlayer == number) {
+			struct players* next = (*lista_pointer)->pNext;
+			free(*lista_pointer);
+			(*lista_pointer) = next;
+		}
+		else {
+			deleteOnePlayerNode(&(*lista_pointer)->pNext, number);
+		}
+	}
+}
+
+void cycleRegenPlayer(struct players** lista_pointer, struct players** head) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext)
+			cycleRegenPlayer(&(*lista_pointer)->pNext, head);
+		else
+			(*lista_pointer)->pNext = *head;
+	}
+}

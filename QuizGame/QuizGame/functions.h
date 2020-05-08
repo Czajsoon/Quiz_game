@@ -5,4 +5,6 @@ int string_to_int(int(*number)(char string[]), char thisString[]);
 struct player* new_players(struct players** lista_pointer);
 void players_stats(struct players** players_list);
 void changeNickname(struct players** players_list);
+void deleteOnePlayer(struct players** lista_pointer);
+void deleteOnePlayerNode(struct players** lista_pointer, struct players** head, int number);
 #endif // !_FUNCTIONS_H_
