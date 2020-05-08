@@ -75,3 +75,20 @@ void delete_list_of_players(struct players** lista_pointer, int data) {
 		*lista_pointer = NULL;
 	}
 }
+
+int number_of_players(struct players** lista_pointer, struct players** head,int counter) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			return counter + 1 + number_of_players(&(*lista_pointer)->pNext, head, counter);
+		}
+		else {
+			return counter + 1;
+		}
+	}
+	return counter;
+}
+
+int count_players(struct players** lista_pointer) {
+	int counter = 0;
+	return number_of_players(lista_pointer, lista_pointer, counter);
+}
