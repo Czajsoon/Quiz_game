@@ -14,4 +14,5 @@ struct players* return_player(struct players** lista_pointer, int number);
 struct players* change_nickname(struct players* player, char newNick[]);
 void deleteOnePlayerNode(struct players** lista_pointer, int number);
 void cycleRegenPlayer(struct players** lista_pointer, struct players** head);
+void resetIdPlayers(struct players** lista_pointer, struct players** head, int startingNumber);
 #endif // !_PLAYER_FUNCTIONS_H_

@@ -133,21 +133,6 @@ nicknamechange:
 }
 
 
-
-void resetIdPlayers(struct players** lista_pointer, struct players** head,int startingNumber) {
-	if (*lista_pointer) {
-		if ((*lista_pointer)->pNext != *head) {
-			(*lista_pointer)->numberPlayer = startingNumber;
-			startingNumber++;
-			resetIdPlayers(&(*lista_pointer)->pNext, head, startingNumber);
-		}
-		else {
-			(*lista_pointer)->numberPlayer = startingNumber;
-		}
-	}
-}
-
-
 void deleteOnePlayer(struct players** lista_pointer) {
 	delete_cycle_players(lista_pointer, lista_pointer);
 	char numberOfPlayer[128];
@@ -176,3 +161,4 @@ deleteplayer:
 	}
 
 }
+

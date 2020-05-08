@@ -163,3 +163,26 @@ void cycleRegenPlayer(struct players** lista_pointer, struct players** head) {
 			(*lista_pointer)->pNext = *head;
 	}
 }
+
+void resetIdPlayers(struct players** lista_pointer, struct players** head, int startingNumber) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			(*lista_pointer)->numberPlayer = startingNumber;
+			startingNumber++;
+			resetIdPlayers(&(*lista_pointer)->pNext, head, startingNumber);
+		}
+		else {
+			(*lista_pointer)->numberPlayer = startingNumber;
+		}
+	}
+}
+
+void resetPoints(struct players** lista_pointer,struct players** head) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			(*lista_pointer)->points = 0;
+			resetPoints(&(*lista_pointer)->pNext, head);
+		}
+		else (*lista_pointer)->points = 0;
+	}
+}

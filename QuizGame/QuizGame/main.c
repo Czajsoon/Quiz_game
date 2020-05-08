@@ -32,7 +32,7 @@ mainhome:
 	}
 	else {
 		if (toupper(option[0]) == 'S') {
-			printf("chuju z³oty");
+			
 		}
 		else if (toupper(option[0]) == 'A') {
 			system("cls");
@@ -67,6 +67,10 @@ mainhome:
 					}
 					else if (toupper(optionStats[0]) == 'A') {
 						delete_list_of_players(&playersList, 0);
+						goto mainhome;
+					}
+					else if (toupper(optionStats[0]) == 'R') {
+						resetPoints(&playersList, &playersList);
 						goto mainhome;
 					}
 					else goto mainhome;
