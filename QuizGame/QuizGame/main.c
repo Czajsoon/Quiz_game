@@ -40,7 +40,9 @@ mainhome:
 		else if (toupper(option[0]) == 'T') {
 			if (playersList != NULL) {
 				system("cls");
-				printf("liczba graczy w grze: %d", count_players(&playersList));
+				playersList->points = 3;
+				playersList->pNext->points = 5;
+				players_stats(&playersList);
 				goto mainhome;
 			}
 			else {

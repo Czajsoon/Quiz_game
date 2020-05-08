@@ -92,3 +92,7 @@ int count_players(struct players** lista_pointer) {
 	int counter = 0;
 	return number_of_players(lista_pointer, lista_pointer, counter);
 }
+
+//struct players* player_with_points(struct players) {
+//
+//}

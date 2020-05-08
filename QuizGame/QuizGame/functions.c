@@ -60,18 +60,38 @@ numberofplayerslevel:
 	return *lista_pointer;
 }
 
-//void print_label_players(struct players** players_list,struct players** head_players) {
-//	if (*players_list) {
-//		if ((*players_list)->pNext != *head_players) {
-//			if ((*players_list)->points > (*players_list)->pNext->points) {
-//				print_label_players(&(*players_list)->pNext, head_players);
-//
-//			}
-//		}
-//	}
-//}
-//
-//void players_stats(struct players**players_list) {
-//
-//
-//}
+int* array_points_players(struct players** players_list, struct players** head_players, int index, int array[],int size) {
+	if (*players_list) {
+		if ((*players_list)->pNext != *head_players) {
+			array[index] = (*players_list)->points;
+			index++;
+			array_points_players(&(*players_list)->pNext, head_players, index, array, size);
+		}
+		else {
+			array[index] = (*players_list)->points;
+			return array;
+		}
+	}
+}
+
+void print_label_players(struct players** players_list,struct players** head_players,int index) {
+	int amount_of_elements = count_players(players_list);
+	int* array = calloc(amount_of_elements, sizeof(int));
+	array = array_points_players(players_list, players_list, index, array, amount_of_elements);
+	for(int i=0;i<amount_of_elements-1;i++)
+		for (int j = 0; j < amount_of_elements; j++) {
+			if (array[j] > array[j + 1]) {
+				int temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	for (int i = amount_of_elements; i > 0; i--) {
+		printf("%d %s\n", (*players_list)->points, (*players_list)->Name);
+	}
+	free(*array);
+}
+
+void players_stats(struct players**players_list) {
+	print_label_players(players_list, players_list,0);
+}
