@@ -40,8 +40,6 @@ mainhome:
 		else if (toupper(option[0]) == 'T') {
 			if (playersList != NULL) {
 				system("cls");
-				playersList->points = 3;
-				playersList->pNext->points = 5;
 				players_stats(&playersList);
 				goto mainhome;
 			}
