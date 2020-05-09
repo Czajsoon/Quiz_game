@@ -9,7 +9,11 @@
 #include <string.h>
 #include "player_structure.h"
 #include "player_functions.h"
+#include "category_structure.h"
+#include "category_functions.h"
+#include "reading_files.h"
 #define Base 10
+
 
 int is_numbers(char string[]) {
 	char* endptr;
@@ -160,5 +164,25 @@ deleteplayer:
 		goto deleteplayer;
 	}
 
+}
+
+void standardModeGame(struct players** players_list) {
+	srand(time(NULL));
+	int amountOfPlayers = count_players(players_list);
+	char option[256];
+	struct categories* categoriesList = NULL;
+	adding_categories_to_list(&categoriesList);
+	printf("\t\t\t\t_______________________________________________\n");
+	print_categories(categoriesList, categoriesList);
+	printf("\t\t\t\t-----------------------------------------------\n");
+	printf("\t\t\t\tWybierz kategorię:");
+	/*printf("\t\t\t\tZaczyna gracz o nicku: %s\n", (*players_list)->Name);
+	printf("\t\t\t\tNacisnij entheraby rozpocząć...");
+	getchar();
+	for (int i = 0; i < amountOfPlayers; i++) {
+		for (int j = 0; j < 5; j++) {
+			printf("\t\t\t\t")
+		}
+	}*/
 }
 

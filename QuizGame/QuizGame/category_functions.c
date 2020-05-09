@@ -38,11 +38,11 @@ void create_and_add_category(struct categories** lista_pointer, char* data, stru
 void print_categories(struct categories* lista_pointer, struct categories* head) {
 	if (lista_pointer) {
 		if (lista_pointer->pNext != head) {
-			printf("[%d] %s\n", lista_pointer->id, lista_pointer->NameCategory);
+			printf("\t\t\t\t| [%d] %-15s |\n", lista_pointer->id, lista_pointer->NameCategory);
 			print_categories(lista_pointer->pNext, head);
 		}
 		else
-			printf("[%d] %s\n", lista_pointer->id, lista_pointer->NameCategory);
+			printf("\t\t\t\t| [%10d] %-15s |\n", lista_pointer->id, lista_pointer->NameCategory);
 	}
 }
 

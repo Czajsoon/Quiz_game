@@ -32,16 +32,42 @@ mainhome:
 	}
 	else {
 		if (toupper(option[0]) == 'S') {
-			char optionMode[128];
-		modeselect:
-			printf("\t\t\t\t ____________________________________________\n");
-			printf("\t\t\t\t | [0] |        ->       Cofnij      <-      |\n");
-			printf("\t\t\t\t | [1] |      ->      Standardowy      <-    |\n");
-			printf("\t\t\t\t --------------------------------------------\n");
-			printf("\t\t\t\t  Wybierz opcjê : ");
-			scanf("%s", &optionMode);
-			int numberMode = string_to_int(is_numbers, optionMode);
-
+			if (playersList) {
+				system("cls");
+				char optionMode[128];
+			    modeselect:
+				printf("\t\t\t\t ____________________________________________\n");
+				printf("\t\t\t\t | [0] |        ->       Cofnij      <-      |\n");
+				printf("\t\t\t\t | [1] |      ->      Standardowy      <-    |\n");
+				printf("\t\t\t\t --------------------------------------------\n");
+				printf("\t\t\t\t  Wybierz opcjê : ");
+				scanf("%s", &optionMode);
+				int numberMode = string_to_int(is_numbers, optionMode);
+				if (numberMode != -18000) {
+					if (numberMode == 1) {
+						standardModeGame(&playersList);
+						goto mainhome;
+					}
+					else {
+						system("cls");
+						printf("\t\t\t\tNie ma takiego trybu gry\n\t\t\t\tWybierz inny\n");
+						goto modeselect;
+					}
+				}
+				else {
+					system("cls");
+					printf("\t\t\t\tWpisa³eœ nieprawid³owe dane!\n");
+					puts("");
+					goto modeselect;
+				}
+			}
+			else {
+				system("cls");
+				puts("");
+				printf("\t\t\t\tNajpierw nale¿y dodaæ gracza!\n\t\t\t\tWróæ tutaj jak dodasz gracza :)\n");
+				puts("");
+				goto mainhome;
+			}
 		}
 		else if (toupper(option[0]) == 'A') {
 			system("cls");
