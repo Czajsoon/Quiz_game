@@ -32,7 +32,16 @@ mainhome:
 	}
 	else {
 		if (toupper(option[0]) == 'S') {
-			
+			char optionMode[128];
+		modeselect:
+			printf("\t\t\t\t ____________________________________________\n");
+			printf("\t\t\t\t | [0] |        ->       Cofnij      <-      |\n");
+			printf("\t\t\t\t | [1] |      ->      Standardowy      <-    |\n");
+			printf("\t\t\t\t --------------------------------------------\n");
+			printf("\t\t\t\t  Wybierz opcjê : ");
+			scanf("%s", &optionMode);
+			int numberMode = string_to_int(is_numbers, optionMode);
+
 		}
 		else if (toupper(option[0]) == 'A') {
 			system("cls");
