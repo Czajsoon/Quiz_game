@@ -168,7 +168,7 @@ deleteplayer:
 
 }
 
-void standardModeGame(struct players** players_list) {
+int standardModeGame(struct players** players_list) {
 	srand(time(NULL));
 	int amountOfPlayers = count_players(players_list);
 	char option[256];
@@ -220,9 +220,10 @@ categoryselect:
 				player++;
 				*players_list = (*players_list)->pNext;
 			}
-			goto categoryselect;
+			return 1;
 		}
 		if (optionNumber == 0) {
+			return 0;
 		}
 		else {
 			printf("\t\t\t\tNie istnieje taka kategoria\n");

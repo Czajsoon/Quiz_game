@@ -12,6 +12,7 @@ int main() {
 	setlocale(LC_CTYPE, "UTF-8");
 	setlocale(LC_ALL, "pl_PL");
 	char option[128];
+	int flagOrientation = 0;
 	struct players* playersList = NULL;
 mainhome:
 	printf("\t\t\t\t ____________________________________________\n"
@@ -46,8 +47,11 @@ mainhome:
 				int numberMode = string_to_int(is_numbers, optionMode);
 				if (numberMode != -18000) {
 					if (numberMode == 1) {
-						standardModeGame(&playersList);
-						goto mainhome;
+						int aftergame = standardModeGame(&playersList);
+						if(aftergame==0)
+							goto mainhome;
+						else
+							goto mainhome;
 					}
 					else {
 						system("cls");
