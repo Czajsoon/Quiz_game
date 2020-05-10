@@ -1,3 +1,9 @@
+﻿kolory hiszpanskiej flagi to?
+[A] pomaranczowy i zolty
+[B] zolty, bialy i czerwony
+[C] czerwony i zolty
+[D] zolty, bialy i pomaranczowy
+C
 Z iloma krajami graniczy Hiszpania?
 [A] 2
 [B] 4

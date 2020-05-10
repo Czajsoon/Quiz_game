@@ -108,3 +108,23 @@ struct questions* question(struct questions** lista_pointer, struct questions** 
 struct questions* node_question_head(struct questions** lista_pointer,int number) {
 	return question(lista_pointer,lista_pointer,number);
 }
+
+void delete_cycle_questions(struct questions** lista_pointer, struct questions** head) {
+	if ((*lista_pointer)->pNext != *head) {
+		delete_cycle_questions(&(*lista_pointer)->pNext, head);
+	}
+	else
+		(*lista_pointer)->pNext = NULL;
+}
+
+void delete_list_of_questions(struct questions** lista_pointer, int data) {
+	if (*lista_pointer) {
+		if (data == 0) {
+			delete_cycle_questions(lista_pointer, lista_pointer);
+			data++;
+		}
+		delete_list_of_questions(&(*lista_pointer)->pNext, data);
+		free(*lista_pointer);
+		*lista_pointer = NULL;
+	}
+}

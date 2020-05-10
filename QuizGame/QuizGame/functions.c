@@ -220,6 +220,8 @@ categoryselect:
 				player++;
 				*players_list = (*players_list)->pNext;
 			}
+			delete_list_of_questions(&questionsList, 0);
+			delete_list_of_category(&categoriesList, 0);
 			return 1;
 		}
 		if (optionNumber == 0) {
@@ -234,4 +236,8 @@ categoryselect:
 		printf("\t\t\t\tWpisałeś niepoprawne dane!");
 		goto categoryselect;
 	}
+}
+
+void addNewCategoryByPlayer() {
+
 }

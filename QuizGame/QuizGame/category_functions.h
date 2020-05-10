@@ -8,4 +8,6 @@ char* return_name_category(struct categories** lista_pointer, int id);
 char* name_category(struct categories** lista_pointer, int id);
 int number_of_categories(struct categories** lista_pointer, struct categories** head, int counter);
 int count_categories(struct categories** lista_pointer);
+void delete_cycle_category(struct categories** lista_pointer, struct categories** head);
+void delete_list_of_category(struct categories** lista_pointer, int data);
 #endif // !_CATEGORIES_FUNCTIONS_H_

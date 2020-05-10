@@ -91,3 +91,23 @@ int count_categories(struct categories** lista_pointer) {
 	int counter = 0;
 	return number_of_categories(lista_pointer, lista_pointer, counter);
 }
+
+void delete_cycle_category(struct categories** lista_pointer, struct categories** head) {
+	if ((*lista_pointer)->pNext != *head) {
+		delete_cycle_category(&(*lista_pointer)->pNext, head);
+	}
+	else
+		(*lista_pointer)->pNext = NULL;
+}
+
+void delete_list_of_category(struct categories** lista_pointer, int data) {
+	if (*lista_pointer) {
+		if (data == 0) {
+			delete_cycle_category(lista_pointer, lista_pointer);
+			data++;
+		}
+		delete_list_of_category(&(*lista_pointer)->pNext, data);
+		free(*lista_pointer);
+		*lista_pointer = NULL;
+	}
+}
