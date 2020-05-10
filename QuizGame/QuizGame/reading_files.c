@@ -18,17 +18,23 @@ char* delete_new_line_sign(char string[]) {
 	char buffor[256];
 	for (int i = 0; i < lenth + 1; i++) {
 		char c = string[i];
-		if (c == '\0') {
-			buffor[i - 1] = '\0';
+		if (c != '\n') {
+			if (c == '\0') {
+				buffor[i] = '\0';
+				return buffor;
+			}
+			buffor[i] = c;
+		}
+		else {
+			buffor[i] = '\0';
 			return buffor;
 		}
-		else if (c != '\n')
-			buffor[i] = c;
 	}
 }
 
 void adding_categories_to_list(struct categories** lista_pointer) {
 	char buffor[256];
+	char buffor1[256];
 	FILE* plik = fopen("kategorie.txt", "r");
 	if (!plik) {
 		printf("nie uda³o siê otworzyæ pliku!");
@@ -38,7 +44,7 @@ void adding_categories_to_list(struct categories** lista_pointer) {
 			char* buf = delete_new_line_sign(buffor);
 			for (int i = 0; i < 256; i++)
 				buffor[i] = buf[i];
-			create_and_add_category(lista_pointer, buf, lista_pointer);
+			create_and_add_category(lista_pointer, buffor, lista_pointer);
 		}
 		fclose(plik);
 	}
@@ -85,8 +91,9 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 				nowy->D[i] = tab[i];
 		}
 		else if (linenumber == 6) {
+			char* tab = delete_new_line_sign(buffor);
 			for (int i = 0; i < 256; i++)
-				nowy->coorectAnswear[i] = buffor[i];
+				nowy->coorectAnswear[i] = tab[i];
 			create_and_add_question(lista_pointer, nowy);
 			linenumber = 0;
 		}

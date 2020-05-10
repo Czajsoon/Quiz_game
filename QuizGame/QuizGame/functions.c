@@ -11,6 +11,8 @@
 #include "player_functions.h"
 #include "category_structure.h"
 #include "category_functions.h"
+#include "question_structure.h"
+#include "question_functions.h"
 #include "reading_files.h"
 #define Base 10
 
@@ -172,17 +174,64 @@ void standardModeGame(struct players** players_list) {
 	char option[256];
 	struct categories* categoriesList = NULL;
 	adding_categories_to_list(&categoriesList);
-	printf("\t\t\t\t_______________________________________________\n");
+categoryselect:
+	printf("\t\t\t\t _____________________________________________\n");
+	printf("\t\t\t\t| [0] Wyjdz                                   |\n");
 	print_categories(categoriesList, categoriesList);
-	printf("\t\t\t\t-----------------------------------------------\n");
+	printf("\t\t\t\t ---------------------------------------------\n");
 	printf("\t\t\t\tWybierz kategorię:");
-	/*printf("\t\t\t\tZaczyna gracz o nicku: %s\n", (*players_list)->Name);
-	printf("\t\t\t\tNacisnij entheraby rozpocząć...");
-	getchar();
-	for (int i = 0; i < amountOfPlayers; i++) {
-		for (int j = 0; j < 5; j++) {
-			printf("\t\t\t\t")
+	scanf("%s", &option);
+	system("cls");
+	int optionNumber = string_to_int(is_numbers, option);
+	if (optionNumber != -18000) {
+		int amountOFCategories = count_categories(&categoriesList);
+		if (optionNumber > 0 && optionNumber <= amountOFCategories) {
+			struct questions* questionsList = NULL;
+			char* nameCategory = return_name_category(&categoriesList, optionNumber);
+			adding_questions_to_list(&questionsList, nameCategory);
+			int player = 1;
+			while (player != amountOfPlayers + 1) {
+				int amountOfQuestions = count_questions(&questionsList);
+				char* ch;
+				char answear[80];
+				printf("\t\t\t\tKolej gracza o nazwie: %s\n", (*players_list)->Name);
+				scanf("%c", &ch);
+				system("cls");
+				int proces = 1;
+				while (proces != 3) {
+					printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
+					int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;;
+					struct questions* question = node_question_head(&questionsList, randomQuestion);
+					printf("\t\t\t\t%s\n", question->sentense);
+					printf("\t\t\t\t%s\n", question->A);
+					printf("\t\t\t\t%s\n", question->B);
+					printf("\t\t\t\t%s\n", question->C);
+					printf("\t\t\t\t%s\n", question->D);
+					printf("\t\t\t\tOdpowiedz: ");
+					scanf("%s", &answear);
+					system("cls");
+					if (strlen(&answear) == 1) {
+						if ((toupper(answear[0])) == *question->coorectAnswear) {
+							(*players_list)->points = (*players_list)->points + 1;
+						}
+					}
+					proces++;
+				}
+				player++;
+				*players_list = (*players_list)->pNext;
+			}
+			goto categoryselect;
 		}
-	}*/
+		if (optionNumber == 0) {
+		}
+		else {
+			printf("\t\t\t\tNie istnieje taka kategoria\n");
+			goto categoryselect;
+		}
+	}
+	else {
+		printf("\t\t\t\tWpisałeś niepoprawne dane!");
+		goto categoryselect;
+	}
 }
 

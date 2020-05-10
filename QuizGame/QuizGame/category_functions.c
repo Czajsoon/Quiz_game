@@ -38,11 +38,11 @@ void create_and_add_category(struct categories** lista_pointer, char* data, stru
 void print_categories(struct categories* lista_pointer, struct categories* head) {
 	if (lista_pointer) {
 		if (lista_pointer->pNext != head) {
-			printf("\t\t\t\t| [%d] %-15s |\n", lista_pointer->id, lista_pointer->NameCategory);
+			printf("\t\t\t\t| [%d] %-15s                         |\n", lista_pointer->id, lista_pointer->NameCategory);
 			print_categories(lista_pointer->pNext, head);
 		}
 		else
-			printf("\t\t\t\t| [%10d] %-15s |\n", lista_pointer->id, lista_pointer->NameCategory);
+			printf("\t\t\t\t| [%d] %-15s                         |\n", lista_pointer->id, lista_pointer->NameCategory);
 	}
 }
 
@@ -61,36 +61,33 @@ bool find_category(struct categories** lista_pointer, int number, struct categor
 	}
 	return false;
 }
-//
-//char* name_category(struct categories** lista_pointer, int id) {
-//	if (*lista_pointer) {
-//		if ((*lista_pointer)->id == id)
-//			return (*lista_pointer)->NameCategory;
-//		else
-//			name_category(&(*lista_pointer)->pNext, id);
-//	}
-//}
-//
-//char* return_name_category(struct categories** lista_pointer, int id) {
-//	return name_category(lista_pointer, id);
-//}
 
-//void delete_new_line_sign_categories(struct categories** lista_pointer, struct categories** head) {
-//	if (*lista_pointer) {
-//		if ((*lista_pointer)->pNext != *head) {
-//			char* buffor = delete_new_line_sign((*lista_pointer)->NameCategory);
-//			char tab[256];
-//			for (int i = 0; i < 256; i++)
-//				tab[i] = buffor[i];
-//			for (int i = 0; i < 256; i++)
-//				(*lista_pointer)->NameCategory[i] = tab[i];
-//		}
-//		else
-//			return;
-//		delete_new_line_sign_categories(&(*lista_pointer)->pNext, head);
-//	}
-//}
+char* name_category(struct categories** lista_pointer, int id) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->id == id)
+			return (*lista_pointer)->NameCategory;
+		else
+			name_category(&(*lista_pointer)->pNext, id);
+	}
+}
 
-//void delete_new_line_categories(struct categories** lista_pointer) {
-//	delete_new_line_sign_categories(lista_pointer, lista_pointer);
-//}
+char* return_name_category(struct categories** lista_pointer, int id) {
+	return name_category(lista_pointer, id);
+}
+
+int number_of_categories(struct categories** lista_pointer, struct categories** head, int counter) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			return counter + 1 + number_of_categories(&(*lista_pointer)->pNext, head, counter);
+		}
+		else {
+			return counter + 1;
+		}
+	}
+	return counter;
+}
+
+int count_categories(struct categories** lista_pointer) {
+	int counter = 0;
+	return number_of_categories(lista_pointer, lista_pointer, counter);
+}

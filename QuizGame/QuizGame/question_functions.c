@@ -88,3 +88,23 @@ void print_element_question(struct questions** lista_pointer, struct questions**
 void print_Question(struct questions** lista_pointer, int number) {
 	print_element_question(lista_pointer, lista_pointer, number);
 }
+
+struct questions* question(struct questions** lista_pointer, struct questions** head, int number) {
+	if (*lista_pointer) {
+		if ((*lista_pointer)->pNext != *head) {
+			if ((*lista_pointer)->id == number) {
+				return *lista_pointer;
+			}
+			*lista_pointer = question(&(*lista_pointer)->pNext, head, number);
+		}
+		else {
+			if ((*lista_pointer)->id == number) {
+				return *lista_pointer;
+			}
+		}
+	}
+}
+
+struct questions* node_question_head(struct questions** lista_pointer,int number) {
+	return question(lista_pointer,lista_pointer,number);
+}

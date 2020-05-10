@@ -1,12 +1,12 @@
-Który kwiat rośnie zarówno w lesie, jak i w ogrodzie?
+﻿Ktory kwiat rosnie zarowno w lesie, jak i w ogrodzie?
 [A] Konwalia
-[B] Fiołek
+[B] Fiolek
 [C] Zawilec
 [D] Prawdziwek
 C
-Które kwiaty rosną na polanach Tatr, Sudetów i Beskidów?
+Ktore kwiaty rosna na polanach Tatr, Sudetow i Beskidow?
 [A] Stokrotki
 [B] Krokusy
-[C] Fiołki
+[C] Fiolki
 [D] Kaktus
 B

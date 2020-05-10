@@ -42,6 +42,7 @@ mainhome:
 				printf("\t\t\t\t --------------------------------------------\n");
 				printf("\t\t\t\t  Wybierz opcjê : ");
 				scanf("%s", &optionMode);
+				system("cls");
 				int numberMode = string_to_int(is_numbers, optionMode);
 				if (numberMode != -18000) {
 					if (numberMode == 1) {
