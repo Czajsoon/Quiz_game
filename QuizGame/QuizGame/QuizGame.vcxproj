@@ -147,6 +147,7 @@
     <ClCompile Include="reading_files.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="addinNewFiles.h" />
     <ClInclude Include="category_functions.h" />
     <ClInclude Include="category_structure.h" />
     <ClInclude Include="functions.h" />

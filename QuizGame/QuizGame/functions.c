@@ -14,6 +14,7 @@
 #include "question_structure.h"
 #include "question_functions.h"
 #include "reading_files.h"
+#include "addinNewFiles.h"
 #define Base 10
 
 
@@ -45,7 +46,7 @@ numberofplayerslevel:
 	if (players != -18000) {
 		if (players > 0) {
 			if (*lista_pointer == NULL) {
-				for (int i = 0;i < players;i++) {
+				for (int i = 0; i < players; i++) {
 					char name[40];
 					printf("\t\t\t\tWprowadz nazwę gracza %d: ", 1 + i);
 					scanf("%s", &name);
@@ -55,7 +56,7 @@ numberofplayerslevel:
 				}
 			}
 			else {
-				for (int i = 0;i < players;i++) {
+				for (int i = 0; i < players; i++) {
 					char name[40];
 					print_players(*lista_pointer, *lista_pointer, 0);
 					printf("\t\t\t\tWprowadz nazwę gracza %d: ", amountOfPlayers + 1 + i);
@@ -85,12 +86,12 @@ void players_stats(struct players** players_list) {
 	int amount_of_elements = count_players(players_list);
 	struct players* players = (*players_list);
 	struct players* playersArray = calloc(amount_of_elements, sizeof(struct players));
-	for (int i = 0;i < amount_of_elements;i++) {
+	for (int i = 0; i < amount_of_elements; i++) {
 		playersArray[i] = *players;
 		players = players->pNext;
 	}
-	for (int i = 0;i < amount_of_elements - 1;i++) {
-		for (int j = 0;j < amount_of_elements - i - 1;j++) {
+	for (int i = 0; i < amount_of_elements - 1; i++) {
+		for (int j = 0; j < amount_of_elements - i - 1; j++) {
 			if (playersArray[j].points < playersArray[j + 1].points) {
 				struct players temp = playersArray[j];
 				playersArray[j] = playersArray[j + 1];
@@ -99,7 +100,7 @@ void players_stats(struct players** players_list) {
 		}
 	}
 	printf("\t\t\t __________________________________________________________\n");
-	for (int i = 0;i < amount_of_elements;i++) {
+	for (int i = 0; i < amount_of_elements; i++) {
 		if (i == 0)printf("\t\t\t|Miejsce: %3d st|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
 		else if (i == 1) printf("\t\t\t|Miejsce: %3d nd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
 		else if (i == 2) printf("\t\t\t|Miejsce: %3d rd|NAME: %20s| Points: %6d|\n", i + 1, playersArray[i].Name, playersArray[i].points);
@@ -268,7 +269,7 @@ categoryname:
 		flag++;
 	}
 	else {
-		printf("\t\t\t\tUwaga wprowadzaj nazwę kategorii bez znaków polskich!!!");
+		printf("\t\t\t\tUwaga wprowadzaj nazwę kategorii bez znaków polskich!!!\n");
 		printf("\t\t\t\t _____________________________________________\n");
 		print_categories(categoriesList, categoriesList);
 		printf("\t\t\t\t ---------------------------------------------\n");
@@ -279,6 +280,59 @@ categoryname:
 		goto categoryname;
 	}
 	else {
+		newCategoryName[0] = toupper(newCategoryName[0]);
+		create_and_add_category(&categoriesList, newCategoryName, &categoriesList);
+		write_categories(categoriesList);
+		printf("\t\t\t\tDodaj 5 pytań do stworzonej kategorii o nazwie: %s", newCategoryName);
+		struct questions* queList = NULL;
+		char question[256];
+		for (int i = 0; i < 5; i++) {
+			struct questions* newOne = (struct questions*)malloc(sizeof(struct questions));
+			for (int j = 0; j < 5; j++) {
+				if (j == 0) {
+					printf("\t\t\t\tPodaj treść pytania\n");
+					gets_s(question, 256);
+					for(int x=0;x<256;x++)
+						newOne->sentense[i] = question[i];
+				}
+				else if (j == 1) {
+					printf("\t\t\t\tPodaj odpowiedz A:\n");
+					gets_s(question, 256);
+					for (int x = 0; x < 256; x++)
+						newOne->A[i] = question[i];
+				}
+				else if (j == 2) {
+					printf("\t\t\t\tPodaj odpowiedz B:\n");
+					gets_s(question, 256);
+					for (int x = 0; x < 256; x++)
+						newOne->B[i] = question[i];
+				}
+				else if (j == 3) {
+					printf("\t\t\t\tPodaj odpowiedz C:\n");
+					gets_s(question, 256);
+					for (int x = 0; x < 256; x++)
+						newOne->C[i] = question[i];
+				}
+				else if (j == 4) {
+					printf("\t\t\t\tPodaj odpowiedz D:\n");
+					gets_s(question, 256);
+					for (int x = 0; x < 256; x++)
+						newOne->D[i] = question[i];
+				}
+				else {
+					printf("\t\t\t\t%s\n",newOne->sentense);
+					printf("\t\t\t\t%s\n",newOne->A);
+					printf("\t\t\t\t%s\n",newOne->B);
+					printf("\t\t\t\t%s\n",newOne->C);
+					printf("\t\t\t\t%s\n",newOne->D);
+					printf("\t\t\t\tPodaj Prawidłową odpowiedz\n");
+					gets_s(question, 256);
+					for (int x = 0; x < 256; x++)
+						newOne->coorectAnswear[i] = question[i];
+					create_and_add_question(&queList, newOne);
+				}
+			}
+		}
 		printf("taka jescze nie istniała");
 	}
 }
