@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="addingNewFiles.c" />
     <ClCompile Include="category_functions.c" />
     <ClCompile Include="functions.c" />
     <ClCompile Include="main.c" />

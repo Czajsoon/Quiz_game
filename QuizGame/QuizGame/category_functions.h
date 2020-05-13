@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #ifndef _CATEGORIES_FUNCTIONS_H_
 #define _CATEGORIES_FUNCTIONS_H_
 struct categories* create_category_list(struct categories** list_pointer, char* data);

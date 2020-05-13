@@ -192,10 +192,8 @@ categoryselect:
 			int player = 1;
 			while (player != amountOfPlayers + 1) {
 				int amountOfQuestions = count_questions(&questionsList);
-				char* ch;
 				char answear[80];
 				printf("\t\t\t\tKolej gracza o nazwie: %s\n", (*players_list)->Name);
-				scanf("%c", &ch);
 				system("cls");
 				int proces = 1;
 				while (proces != 3) {
@@ -238,6 +236,49 @@ categoryselect:
 	}
 }
 
-void addNewCategoryByPlayer() {
+bool is_category_in_categories(struct categories* lista_pointer, char* newName) {
+	if (lista_pointer) {
+		struct categories* start = lista_pointer;
+		do {
+			if (strcmp(lista_pointer->NameCategory, newName) == 0)
+				return true;
+			lista_pointer = lista_pointer->pNext;
+		} while (lista_pointer != start);
+		if (strcmp(lista_pointer->NameCategory, newName) == 0)
+			return true;
+		else return false;
+	}
+}
 
+void addNewCategoryByPlayer() {
+	srand(time(NULL));
+	struct categories* categoriesList = NULL;
+	adding_categories_to_list(&categoriesList);
+	char newCategoryName[256];
+	int size = 256;
+	int flag = 0;
+categoryname:
+	if (flag == 0) {
+		printf("\t\t\t\tUwaga wprowadzaj nazwę kategorii bez znaków polskich!!!");
+		printf("\t\t\t\t _____________________________________________\n");
+		print_categories(categoriesList, categoriesList);
+		printf("\t\t\t\t ---------------------------------------------\n");
+		gets_s(newCategoryName, size);
+		gets_s(newCategoryName, size);
+		flag++;
+	}
+	else {
+		printf("\t\t\t\tUwaga wprowadzaj nazwę kategorii bez znaków polskich!!!");
+		printf("\t\t\t\t _____________________________________________\n");
+		print_categories(categoriesList, categoriesList);
+		printf("\t\t\t\t ---------------------------------------------\n");
+		gets_s(newCategoryName, size);
+	}
+	if (is_category_in_categories(categoriesList, newCategoryName)) {
+		printf("\t\t\t\tTaka nazwa kategorii już istnieje podaj inną\n");
+		goto categoryname;
+	}
+	else {
+		printf("taka jescze nie istniała");
+	}
 }

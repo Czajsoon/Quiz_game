@@ -7,6 +7,8 @@
 #include "player_structure.h"
 #include "player_functions.h"
 #include "functions.h"
+#include "category_functions.h"
+#include "reading_files.h"
 
 int main() {
 	setlocale(LC_CTYPE, "UTF-8");
@@ -254,7 +256,7 @@ mainhome1:
 
 			}
 			else if (toupper(option[0]) == 'C') {
-
+				addNewCategoryByPlayer();
 			}
 			else if (toupper(option[0]) == 'Q') {
 				system("cls");
