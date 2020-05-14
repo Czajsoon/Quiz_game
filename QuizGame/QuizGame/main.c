@@ -253,10 +253,12 @@ mainhome1:
 				}
 			}
 			else if (toupper(option[0]) == 'D') {
-
+				add_new_question();
+				goto mainhome1;
 			}
 			else if (toupper(option[0]) == 'C') {
 				addNewCategoryByPlayer();
+				goto mainhome1;
 			}
 			else if (toupper(option[0]) == 'Q') {
 				system("cls");

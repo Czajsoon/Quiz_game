@@ -169,6 +169,12 @@ deleteplayer:
 
 }
 
+//bool if_question_questioned(int size,int tab[],int number) {
+//	for (int i = 0;i < size;i++) {
+//		
+//	}
+//}
+
 int standardModeGame(struct players** players_list) {
 	srand(time(NULL));
 	int amountOfPlayers = count_players(players_list);
@@ -198,21 +204,29 @@ categoryselect:
 				system("cls");
 				int proces = 1;
 				while (proces != 3) {
+					/*int* tab = calloc(amountOfQuestions, sizeof(int));*/
 					printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
 					int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;;
 					struct questions* question = node_question_head(&questionsList, randomQuestion);
 					printf("\t\t\t\t%s\n", question->sentense);
-					printf("\t\t\t\t%s\n", question->A);
-					printf("\t\t\t\t%s\n", question->B);
-					printf("\t\t\t\t%s\n", question->C);
-					printf("\t\t\t\t%s\n", question->D);
+					printf("\t\t\t\t[A] %s\n", question->A);
+					printf("\t\t\t\t[B] %s\n", question->B);
+					printf("\t\t\t\t[C] %s\n", question->C);
+					printf("\t\t\t\t[D] %s\n", question->D);
 					printf("\t\t\t\tOdpowiedz: ");
 					scanf("%s", &answear);
 					system("cls");
 					if (strlen(&answear) == 1) {
 						if ((toupper(answear[0])) == *question->coorectAnswear) {
 							(*players_list)->points = (*players_list)->points + 1;
+							printf("\t\t\t\tPoprawna odpowiedz!!!\n\t\t\t\tDo twojego konta dodano punkt za poprawną odpowiedz\n");
 						}
+						else {
+							printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
+						}
+					}
+					else {
+						printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
 					}
 					proces++;
 				}
@@ -259,21 +273,20 @@ void addNewCategoryByPlayer() {
 	int size = 256;
 	int flag = 0;
 categoryname:
+	printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+	printf("\t\t\t\t _____________________________________________\n");
+	print_categories(categoriesList, categoriesList);
+	printf("\t\t\t\t ---------------------------------------------\n");
+	printf("\t\t\t\tPodaj nazwę nowej kategorii: ");
 	if (flag == 0) {
-		printf("\t\t\t\tUwaga wprowadzaj nazwę kategorii bez znaków polskich!!!");
-		printf("\t\t\t\t _____________________________________________\n");
-		print_categories(categoriesList, categoriesList);
-		printf("\t\t\t\t ---------------------------------------------\n");
 		gets_s(newCategoryName, size);
 		gets_s(newCategoryName, size);
 		flag++;
+		system("cls");
 	}
 	else {
-		printf("\t\t\t\tUwaga wprowadzaj nazwę kategorii bez znaków polskich!!!\n");
-		printf("\t\t\t\t _____________________________________________\n");
-		print_categories(categoriesList, categoriesList);
-		printf("\t\t\t\t ---------------------------------------------\n");
 		gets_s(newCategoryName, size);
+		system("cls");
 	}
 	if (is_category_in_categories(categoriesList, newCategoryName)) {
 		printf("\t\t\t\tTaka nazwa kategorii już istnieje podaj inną\n");
@@ -283,56 +296,237 @@ categoryname:
 		newCategoryName[0] = toupper(newCategoryName[0]);
 		create_and_add_category(&categoriesList, newCategoryName, &categoriesList);
 		write_categories(categoriesList);
-		printf("\t\t\t\tDodaj 5 pytań do stworzonej kategorii o nazwie: %s", newCategoryName);
+		printf("\t\t\t\tDodaj 5 pytań do stworzonej kategorii o nazwie: %s\n", newCategoryName);
 		struct questions* queList = NULL;
+		struct questions* newOne = NULL;
 		char question[256];
 		for (int i = 0; i < 5; i++) {
 			struct questions* newOne = (struct questions*)malloc(sizeof(struct questions));
-			for (int j = 0; j < 5; j++) {
+			for (int j = 0; j < 6; j++) {
 				if (j == 0) {
-					printf("\t\t\t\tPodaj treść pytania\n");
+					printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+					printf("\t\t\t\tPodaj treść pytania [%d]: ", i + 1);
 					gets_s(question, 256);
-					for(int x=0;x<256;x++)
-						newOne->sentense[i] = question[i];
+					question[0] = toupper(question[0]);
+					for (int x = 0;x < 256;x++)
+						newOne->sentense[x] = question[x];
+					system("cls");
 				}
 				else if (j == 1) {
-					printf("\t\t\t\tPodaj odpowiedz A:\n");
+					printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+					printf("\t\t\t\t%s\n", newOne->sentense);
+					printf("\t\t\t\tPodaj odpowiedz A\n");
+					printf("\t\t\t\t[A] ");
 					gets_s(question, 256);
+					question[0] = toupper(question[0]);
 					for (int x = 0; x < 256; x++)
-						newOne->A[i] = question[i];
+						newOne->A[x] = question[x];
+					system("cls");
 				}
 				else if (j == 2) {
-					printf("\t\t\t\tPodaj odpowiedz B:\n");
+					printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+					printf("\t\t\t\t%s\n", newOne->sentense);
+					printf("\t\t\t\tPoprzednie wprowadzone odpowiedzi\n");
+					printf("\t\t\t\t[A] %s\n", newOne->A);
+					printf("\t\t\t\tPodaj odpowiedz B\n");
+					printf("\t\t\t\t[B] ");
 					gets_s(question, 256);
+					question[0] = toupper(question[0]);
 					for (int x = 0; x < 256; x++)
-						newOne->B[i] = question[i];
+						newOne->B[x] = question[x];
+					system("cls");
 				}
 				else if (j == 3) {
-					printf("\t\t\t\tPodaj odpowiedz C:\n");
+					printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+					printf("\t\t\t\t%s\n", newOne->sentense);
+					printf("\t\t\t\tPoprzednie wprowadzone odpowiedzi\n");
+					printf("\t\t\t\t[A] %s\n", newOne->A);
+					printf("\t\t\t\t[B] %s\n", newOne->B);
+					printf("\t\t\t\tPodaj odpowiedz C\n");
+					printf("\t\t\t\t[C] ");
 					gets_s(question, 256);
+					question[0] = toupper(question[0]);
 					for (int x = 0; x < 256; x++)
-						newOne->C[i] = question[i];
+						newOne->C[x] = question[x];
+					system("cls");
 				}
 				else if (j == 4) {
-					printf("\t\t\t\tPodaj odpowiedz D:\n");
+					printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+					printf("\t\t\t\t%s\n", newOne->sentense);
+					printf("\t\t\t\tPoprzednie wprowadzone odpowiedzi\n");
+					printf("\t\t\t\t[A] %s\n", newOne->A);
+					printf("\t\t\t\t[B] %s\n", newOne->B);
+					printf("\t\t\t\t[C] %s\n", newOne->C);
+					printf("\t\t\t\tPodaj odpowiedz D\n");
+					printf("\t\t\t\t[D] ");
 					gets_s(question, 256);
+					question[0] = toupper(question[0]);
 					for (int x = 0; x < 256; x++)
-						newOne->D[i] = question[i];
+						newOne->D[x] = question[x];
+					system("cls");
 				}
 				else {
-					printf("\t\t\t\t%s\n",newOne->sentense);
-					printf("\t\t\t\t%s\n",newOne->A);
-					printf("\t\t\t\t%s\n",newOne->B);
-					printf("\t\t\t\t%s\n",newOne->C);
-					printf("\t\t\t\t%s\n",newOne->D);
-					printf("\t\t\t\tPodaj Prawidłową odpowiedz\n");
+					printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+					printf("\t\t\t\t%s\n", newOne->sentense);
+					printf("\t\t\t\t[A] %s\n", newOne->A);
+					printf("\t\t\t\t[B] %s\n", newOne->B);
+					printf("\t\t\t\t[C] %s\n", newOne->C);
+					printf("\t\t\t\t[D] %s\n", newOne->D);
+					printf("\t\t\t\t(Np. A lub B lub C lub D)\n");
+					printf("\t\t\t\tPodaj prawidłową odpowiedz: ");
 					gets_s(question, 256);
+					question[0] = toupper(question[0]);
 					for (int x = 0; x < 256; x++)
-						newOne->coorectAnswear[i] = question[i];
+						newOne->coorectAnswear[x] = question[x];
 					create_and_add_question(&queList, newOne);
+					system("cls");
 				}
 			}
 		}
-		printf("taka jescze nie istniała");
+		printf("\t\t\t\tGratulacje!!! Udało ci sie stworzyć nową kategorie!!!\n");
+		write_new_questions(newCategoryName, queList);
+		delete_list_of_category(&categoriesList, 0);
+		delete_list_of_questions(&queList, 0);
+	}
+}
+
+void add_new_question() {
+	struct categories* listaKategorii = NULL;
+	char category[256];
+	adding_categories_to_list(&listaKategorii);
+	int size = 256;
+	int flag = 0;
+addque:
+	printf("\t\t\t\tJeśli nie ma twojej kategorii wpisz 0\n");
+	printf("\t\t\t\t _____________________________________________\n");
+	print_categories(listaKategorii, listaKategorii);
+	printf("\t\t\t\t ---------------------------------------------\n");
+	printf("\t\t\t\tWybierz numer z jakiej kategorii chcesz dodać pytanie: ");
+	if (flag == 0) {
+		gets_s(category, size);
+		gets_s(category, size);
+		flag++;
+		system("cls");
+	}
+	else {
+		gets_s(category, size);
+		system("cls");
+	}
+	int categoryNumber = string_to_int(is_numbers, category);
+	if (categoryNumber == -18000) {
+		printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
+		goto addque;
+	}
+	else {
+		if (categoryNumber > 0 && categoryNumber <= count_categories(&listaKategorii)) {
+			char* categoryName = return_name_category(&listaKategorii, categoryNumber);
+		howManyQue:
+			printf("\t\t\t\tPodaj ile pytań chcesz dodać: ");
+			char numberOfQue[256];
+			gets_s(numberOfQue, size);
+			system("cls");
+			int number = string_to_int(is_numbers, numberOfQue);
+			if (number != -18000) {
+				struct questions* queList = NULL;
+				adding_questions_to_list(&queList, categoryName);
+				int questinNumber = count_questions(&queList);
+				char buffor[256];
+				for (int i = 0;i < number;i++) {
+					struct questions* newOne = (struct questions*)malloc(sizeof(struct questions));
+					for (int j = 0;j < 6;j++) {
+						if (j == 0) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\tPodaj treść pytania [%d]: ", questinNumber+1+i);
+							gets_s(buffor, 256);
+							buffor[0] = toupper(buffor[0]);
+							for (int x = 0;x < 256;x++)
+								newOne->sentense[x] = buffor[x];
+							system("cls");
+						}
+						else if (j == 1) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tPodaj odpowiedz A\n");
+							printf("\t\t\t\t[A] ");
+							gets_s(buffor, 256);
+							buffor[0] = toupper(buffor[0]);
+							for (int x = 0; x < 256; x++)
+								newOne->A[x] = buffor[x];
+							system("cls");
+						}
+						else if (j == 2) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tPoprzednie wprowadzone odpowiedzi\n");
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\tPodaj odpowiedz B\n");
+							printf("\t\t\t\t[B] ");
+							gets_s(buffor, 256);
+							buffor[0] = toupper(buffor[0]);
+							for (int x = 0; x < 256; x++)
+								newOne->B[x] = buffor[x];
+							system("cls");
+						}
+						else if (j == 3) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tPoprzednie wprowadzone odpowiedzi\n");
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\t[B] %s\n", newOne->B);
+							printf("\t\t\t\tPodaj odpowiedz C\n");
+							printf("\t\t\t\t[C] ");
+							gets_s(buffor, 256);
+							buffor[0] = toupper(buffor[0]);
+							for (int x = 0; x < 256; x++)
+								newOne->C[x] = buffor[x];
+							system("cls");
+						}
+						else if (j == 4) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tPoprzednie wprowadzone odpowiedzi\n");
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\t[B] %s\n", newOne->B);
+							printf("\t\t\t\t[C] %s\n", newOne->C);
+							printf("\t\t\t\tPodaj odpowiedz D\n");
+							printf("\t\t\t\t[D] ");
+							gets_s(buffor, 256);
+							buffor[0] = toupper(buffor[0]);
+							for (int x = 0; x < 256; x++)
+								newOne->D[x] = buffor[x];
+							system("cls");
+						}
+						else {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\t[B] %s\n", newOne->B);
+							printf("\t\t\t\t[C] %s\n", newOne->C);
+							printf("\t\t\t\t[D] %s\n", newOne->D);
+							printf("\t\t\t\t(Np. A lub B lub C lub D)\n");
+							printf("\t\t\t\tPodaj prawidłową odpowiedz: ");
+							gets_s(buffor, 256);
+							buffor[0] = toupper(buffor[0]);
+							for (int x = 0; x < 256; x++)
+								newOne->coorectAnswear[x] = buffor[x];
+							create_and_add_question(&queList, newOne);
+						}
+					}
+				}
+				printf("\t\t\t\tGratulacje!!! Udało ci sie dodać %d pytań\n\t\t\t\tdo kategorii o nazwie %s!!!\n",number, categoryName);
+				write_new_questions(categoryName, queList);
+				delete_list_of_category(&listaKategorii, 0);
+				delete_list_of_questions(&queList, 0);
+			}
+			else {
+				printf("\t\t\t\tPodałeś nieprawidłowa dane\n");
+				goto howManyQue;
+			}
+		}
+		else if (categoryNumber == 0);
+		else {
+			printf("\t\t\t\tNie ma takiej kategorii!!!\n");
+			goto addque;
+		}
 	}
 }

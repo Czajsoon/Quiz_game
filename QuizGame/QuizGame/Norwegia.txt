@@ -1,0 +1,42 @@
+Jakie miasto jest stolica norwegii?
+[A] Oslo
+[B] Trofors
+[C] Bergen
+[D] Moss
+A
+Czy Norwegia nalezy do Unii Europejskiej?
+[A] Nie
+[B] Tak
+[C] --
+[D] --
+A
+Z jakim panstwem graniczy Norwegia? 
+[A] Rosja
+[B] Dania
+[C] Polska
+[D] Ukraina
+A
+Jaka jest srednia temperatura w styczniu w Norwegii?
+[A] -4 stopnie
+[B] 0 stopni
+[C] 1 stopien
+[D] -5 stopni
+A
+Jaka jest najdluzsza rzeka w Norwegii?
+[A] Tana
+[B] Glomma
+[C] Orkla
+[D] --
+B
+Czy w Norwegii poluje sie na wieloryby?
+[A] Tak
+[B] Nie
+[C] --
+[D] --
+A
+Ilu polakow (okolo) zamieszkuje Norwegie?
+[A] 60 000
+[B] 30 000
+[C] 70 000
+[D] 90 000
+C

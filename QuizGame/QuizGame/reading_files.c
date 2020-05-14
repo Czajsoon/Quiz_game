@@ -12,8 +12,7 @@
 #include "question_structure.h"
 #include "question_functions.h"
 
-
-char* delete_new_line_sign(char string[]) {
+char* delete_new_line_sign(char* string) {
 	int lenth = strlen(string);
 	char buffor[256];
 	for (int i = 0; i < lenth + 1; i++) {
@@ -30,6 +29,30 @@ char* delete_new_line_sign(char string[]) {
 			return buffor;
 		}
 	}
+}
+
+char* delete_index_in_question(char* this_string) {
+	int lenth = strlen(this_string);
+	int flag = 0;
+	int index1 = 0;
+	int index = 0;
+	char buffor[256];
+	for (int i = 0;i < lenth+1;i++) {
+		char c = this_string[i];
+		if (flag == 0) {
+			if (isspace(c))
+				flag++;
+			index++;
+		}
+	}
+	for (int i = 0;i < lenth+1;i++) {
+		if (i >= index) {
+			buffor[index1] = this_string[index];
+			index++;
+			index1++;
+		}
+	}
+	return buffor;
 }
 
 void adding_categories_to_list(struct categories** lista_pointer) {
@@ -51,8 +74,6 @@ void adding_categories_to_list(struct categories** lista_pointer) {
 }
 
 void adding_questions_to_list(struct questions** lista_pointer, char* name) {
-	//setlocale(lc_all, "pl_pl.utf-8");
-	//setlocale(lc_ctype, "pl_pl.utf-8");
 	char buffor[256];
 	int linenumber = 0;
 	char filename[100];
@@ -60,7 +81,6 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 	struct questions* nowy = NULL;
 	strcpy(filename, name);
 	strcat(filename, ".txt");
-	/*sprintf(filename, "%s%s", name, extension);*/
 	FILE* plik = fopen(filename, "r+");
 	while (fgets(buffor, 256, plik) != NULL) {
 		linenumber++;
@@ -71,24 +91,44 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 				nowy->sentense[i] = tab[i];
 		}
 		else if (linenumber == 2) {
-			char* tab = delete_new_line_sign(buffor);
+			char buffor1[256];
+			char* tab = delete_index_in_question(buffor);
+			for (int i = 0;i < 256;i++) {
+				buffor1[i] = tab[i];
+			}
+			char* tab1 = delete_new_line_sign(buffor1);
 			for (int i = 0; i < 256; i++)
-				nowy->A[i] = tab[i];
+				nowy->A[i] = tab1[i];
 		}
 		else if (linenumber == 3) {
-			char* tab = delete_new_line_sign(buffor);
+			char buffor1[256];
+			char* tab = delete_index_in_question(buffor);
+			for (int i = 0;i < 256;i++) {
+				buffor1[i] = tab[i];
+			}
+			char* tab1 = delete_new_line_sign(buffor1);
 			for (int i = 0; i < 256; i++)
-				nowy->B[i] = tab[i];
+				nowy->B[i] = tab1[i];
 		}
 		else if (linenumber == 4) {
-			char* tab = delete_new_line_sign(buffor);
+			char buffor1[256];
+			char* tab = delete_index_in_question(buffor);
+			for (int i = 0;i < 256;i++) {
+				buffor1[i] = tab[i];
+			}
+			char* tab1 = delete_new_line_sign(buffor1);
 			for (int i = 0; i < 256; i++)
-				nowy->C[i] = tab[i];
+				nowy->C[i] = tab1[i];
 		}
 		else if (linenumber == 5) {
-			char* tab = delete_new_line_sign(buffor);
+			char buffor1[256];
+			char* tab = delete_index_in_question(buffor);
+			for (int i = 0;i < 256;i++) {
+				buffor1[i] = tab[i];
+			}
+			char* tab1 = delete_new_line_sign(buffor1);
 			for (int i = 0; i < 256; i++)
-				nowy->D[i] = tab[i];
+				nowy->D[i] = tab1[i];
 		}
 		else if (linenumber == 6) {
 			char* tab = delete_new_line_sign(buffor);

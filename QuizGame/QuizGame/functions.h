@@ -10,4 +10,5 @@ void deleteOnePlayerNode(struct players** lista_pointer, int number);
 void resetPoints(struct players** lista_pointer, struct players** head);
 int standardModeGame(struct players** players_list);
 void addNewCategoryByPlayer();
+void add_new_question();
 #endif // !_FUNCTIONS_H_
