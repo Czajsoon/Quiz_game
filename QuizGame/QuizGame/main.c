@@ -55,6 +55,8 @@ int main() {
 							else
 								goto mainhome1;
 						}
+						else if (numberMode == 0)
+							goto mainhome;
 						else {
 							system("cls");
 							printf("\t\t\t\tNie ma takiego trybu gry\n\t\t\t\tWybierz inny\n");
@@ -177,6 +179,8 @@ mainhome1:
 							else
 								goto mainhome1;
 						}
+						else if (numberMode == 0)
+							goto mainhome1;
 						else {
 							system("cls");
 							printf("\t\t\t\tNie ma takiego trybu gry\n\t\t\t\tWybierz inny\n");

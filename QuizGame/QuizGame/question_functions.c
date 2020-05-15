@@ -90,19 +90,18 @@ void print_Question(struct questions** lista_pointer, int number) {
 }
 
 struct questions* question(struct questions** lista_pointer, struct questions** head, int number) {
+	struct questions* start = *lista_pointer;
 	if (*lista_pointer) {
-		if ((*lista_pointer)->pNext != *head) {
-			if ((*lista_pointer)->id == number) {
+		do {
+			if ((*lista_pointer)->id == number)
 				return *lista_pointer;
-			}
-			*lista_pointer = question(&(*lista_pointer)->pNext, head, number);
-		}
-		else {
-			if ((*lista_pointer)->id == number) {
-				return *lista_pointer;
-			}
-		}
+			*lista_pointer = (*lista_pointer)->pNext;
+		} while (*lista_pointer != start);
+		if ((*lista_pointer)->id == number)
+			return *lista_pointer;
+		else return *lista_pointer;
 	}
+	else return *lista_pointer;
 }
 
 struct questions* node_question_head(struct questions** lista_pointer,int number) {

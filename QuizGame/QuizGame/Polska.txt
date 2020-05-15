@@ -1,0 +1,30 @@
+Kim byla Maria Sklodowska Currie?
+[A] Dwukrotna laureatka nobla
+[B] Chemiczka i dwukrotna laureatka nobla
+[C] Chemiczka
+[D] --
+B
+Ile polska ma wojewodztw?
+[A] 10
+[B] 24
+[C] 16
+[D] 22
+C
+Ile lat Polska byla pod zaborami?
+[A] 135
+[B] 123
+[C] 112
+[D] 100
+B
+Jaki jest najpopularniejszy stroj ludowy?
+[A] Lubeski
+[B] Kujawski
+[C] Krakowski
+[D] --
+C
+Jaka byla pierwsza stolica Polski?
+[A] Gniezno
+[B] Lodz
+[C] Krakow
+[D] Warszawa
+A

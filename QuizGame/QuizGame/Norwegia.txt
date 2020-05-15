@@ -10,33 +10,39 @@ Czy Norwegia nalezy do Unii Europejskiej?
 [C] --
 [D] --
 A
-Z jakim panstwem graniczy Norwegia? 
-[A] Rosja
-[B] Dania
-[C] Polska
-[D] Ukraina
-A
+Z jakimi panstwami graniczy Norwegia?
+[A] Ukraina
+[B] Polska
+[C] Rosja
+[D] Dania
+C
 Jaka jest srednia temperatura w styczniu w Norwegii?
-[A] -4 stopnie
-[B] 0 stopni
-[C] 1 stopien
-[D] -5 stopni
-A
+[A] 0 stopni
+[B] -3 stopnie
+[C] 3 stopnie
+[D] -4 stopnie
+D
 Jaka jest najdluzsza rzeka w Norwegii?
 [A] Tana
 [B] Glomma
 [C] Orkla
 [D] --
 B
-Czy w Norwegii poluje sie na wieloryby?
+Czy w Norwegii poluje sie na wileloryby?
 [A] Tak
 [B] Nie
 [C] --
 [D] --
 A
 Ilu polakow (okolo) zamieszkuje Norwegie?
-[A] 60 000
-[B] 30 000
-[C] 70 000
-[D] 90 000
-C
+[A] 30 000
+[B] 70 000
+[C] 90 000
+[D] 60 000
+B
+Co w Norwegii uwazane jest za dziwne? 
+[A] Usmiechanie sie do kogos, kogo sie nie zna
+[B] Chodzenie do sklepow w niedziele
+[C] Pieczenie ciastek na swieta
+[D] Jedzenie mrozonej pizzy
+A

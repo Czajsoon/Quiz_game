@@ -169,11 +169,13 @@ deleteplayer:
 
 }
 
-//bool if_question_questioned(int size,int tab[],int number) {
-//	for (int i = 0;i < size;i++) {
-//		
-//	}
-//}
+bool if_question_questioned(int size,int* tab,int number) {
+	for (int i = 0;i < size;i++) {
+		if (tab[i] == number)
+			return true;
+	}
+	return false;
+}
 
 int standardModeGame(struct players** players_list) {
 	srand(time(NULL));
@@ -203,11 +205,17 @@ categoryselect:
 				printf("\t\t\t\tKolej gracza o nazwie: %s\n", (*players_list)->Name);
 				system("cls");
 				int proces = 1;
-				while (proces != 3) {
-					/*int* tab = calloc(amountOfQuestions, sizeof(int));*/
+				int tab[5];
+				for (int i = 0; i < 5; i++) {
+					tab[i] = 0; 
+				}
+				while (proces != 6) {
 					printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
+				generateRandom:;
 					int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;;
 					struct questions* question = node_question_head(&questionsList, randomQuestion);
+					if (if_question_questioned(5, tab, randomQuestion)) goto generateRandom;
+					else tab[proces - 1] = question->id;
 					printf("\t\t\t\t%s\n", question->sentense);
 					printf("\t\t\t\t[A] %s\n", question->A);
 					printf("\t\t\t\t[B] %s\n", question->B);
