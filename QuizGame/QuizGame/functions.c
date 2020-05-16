@@ -206,13 +206,17 @@ categoryselect:
 				system("cls");
 				int proces = 1;
 				int tab[5];
+				char buffer[256];
 				for (int i = 0; i < 5; i++) {
 					tab[i] = 0; 
 				}
+				printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
+				printf("\t\t\t\tNaciśnij enter aby zacząć...");
+				gets_s(buffer, 256);
+				gets_s(buffer, 256);
 				while (proces != 6) {
-					printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
 				generateRandom:;
-					int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;;
+					int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;
 					struct questions* question = node_question_head(&questionsList, randomQuestion);
 					if (if_question_questioned(5, tab, randomQuestion)) goto generateRandom;
 					else tab[proces - 1] = question->id;
@@ -536,5 +540,41 @@ addque:
 			printf("\t\t\t\tNie ma takiej kategorii!!!\n");
 			goto addque;
 		}
+	}
+}
+
+struct categories* return_category(struct categories* lista_pointer,int number) {
+	struct categories* start = lista_pointer;
+	do {
+		if (lista_pointer->id == number)
+			return lista_pointer;
+	} while (lista_pointer != start);
+	if (lista_pointer->id == number)
+		return lista_pointer;
+	else return NULL;
+}
+
+int random_question_mode(struct palyers** players_list) {
+	srand(time(NULL));
+	struct categories* listaKategorii = NULL;
+	struct questions* listaPytan = NULL;
+	adding_categories_to_list(&listaKategorii);
+	int amountOfCategories = count_categories(&listaKategorii);
+	int randomCategory = (rand() % (amountOfCategories - 1 + 1)) + 1;
+	struct categories* category = return_category(listaKategorii, randomCategory);
+	adding_questions_to_list(&listaPytan, category->NameCategory);
+	int tabCat[5], tabQue[5];
+	for (int i = 0;i < 5;i++) {
+		tabCat[i] = tabQue[i] = 0;
+	}
+RANDQUESTION:;
+	int randomCategory = (rand() % (amountOfCategories - 1 + 1)) + 1;
+	struct categories* category = return_category(listaKategorii, randomCategory);
+	int amountOfQuestions = count_questions(&listaPytan);
+	int randomQuestion = (rand() % (amountOfCategories - 1 + 1)) + 1;
+	struct questions* question = node_question_head(&listaPytan, randomQuestion);
+	int proces = 1;
+	while (proces!=6) {
+
 	}
 }

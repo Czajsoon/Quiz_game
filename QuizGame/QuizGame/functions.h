@@ -11,4 +11,5 @@ void resetPoints(struct players** lista_pointer, struct players** head);
 int standardModeGame(struct players** players_list);
 void addNewCategoryByPlayer();
 void add_new_question();
+int random_question_mode(struct palyers** players_list);
 #endif // !_FUNCTIONS_H_
