@@ -169,8 +169,8 @@ deleteplayer:
 
 }
 
-bool if_question_questioned(int size,int* tab,int number) {
-	for (int i = 0;i < size;i++) {
+bool if_question_questioned(int size, int* tab, int number) {
+	for (int i = 0; i < size; i++) {
 		if (tab[i] == number)
 			return true;
 	}
@@ -208,7 +208,7 @@ categoryselect:
 				int tab[5];
 				char buffer[256];
 				for (int i = 0; i < 5; i++) {
-					tab[i] = 0; 
+					tab[i] = 0;
 				}
 				printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
 				printf("\t\t\t\tNaciśnij enter aby zacząć...");
@@ -320,7 +320,7 @@ categoryname:
 					printf("\t\t\t\tPodaj treść pytania [%d]: ", i + 1);
 					gets_s(question, 256);
 					question[0] = toupper(question[0]);
-					for (int x = 0;x < 256;x++)
+					for (int x = 0; x < 256; x++)
 						newOne->sentense[x] = question[x];
 					system("cls");
 				}
@@ -443,15 +443,15 @@ addque:
 				adding_questions_to_list(&queList, categoryName);
 				int questinNumber = count_questions(&queList);
 				char buffor[256];
-				for (int i = 0;i < number;i++) {
+				for (int i = 0; i < number; i++) {
 					struct questions* newOne = (struct questions*)malloc(sizeof(struct questions));
-					for (int j = 0;j < 6;j++) {
+					for (int j = 0; j < 6; j++) {
 						if (j == 0) {
 							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
-							printf("\t\t\t\tPodaj treść pytania [%d]: ", questinNumber+1+i);
+							printf("\t\t\t\tPodaj treść pytania [%d]: ", questinNumber + 1 + i);
 							gets_s(buffor, 256);
 							buffor[0] = toupper(buffor[0]);
-							for (int x = 0;x < 256;x++)
+							for (int x = 0; x < 256; x++)
 								newOne->sentense[x] = buffor[x];
 							system("cls");
 						}
@@ -525,7 +525,7 @@ addque:
 						}
 					}
 				}
-				printf("\t\t\t\tGratulacje!!! Udało ci sie dodać %d pytań\n\t\t\t\tdo kategorii o nazwie %s!!!\n",number, categoryName);
+				printf("\t\t\t\tGratulacje!!! Udało ci sie dodać %d pytań\n\t\t\t\tdo kategorii o nazwie %s!!!\n", number, categoryName);
 				write_new_questions(categoryName, queList);
 				delete_list_of_category(&listaKategorii, 0);
 				delete_list_of_questions(&queList, 0);
@@ -543,7 +543,7 @@ addque:
 	}
 }
 
-struct categories* return_category(struct categories* lista_pointer,int number) {
+struct categories* return_category(struct categories* lista_pointer, int number) {
 	struct categories* start = lista_pointer;
 	do {
 		if (lista_pointer->id == number)
@@ -554,27 +554,74 @@ struct categories* return_category(struct categories* lista_pointer,int number) 
 	else return NULL;
 }
 
-int random_question_mode(struct palyers** players_list) {
+bool catque_wystapily(int* tabCat, int* tabQue, int size, int numberCat, int numberQue) {
+	for (int i = 0; i < size; i++) {
+		if (tabCat[i] == numberCat && tabQue[i] == numberQue)
+			return true;
+	}
+	return false;
+}
+
+void random_question_mode(struct players** players_list) {
 	srand(time(NULL));
 	struct categories* listaKategorii = NULL;
 	struct questions* listaPytan = NULL;
-	adding_categories_to_list(&listaKategorii);
-	int amountOfCategories = count_categories(&listaKategorii);
-	int randomCategory = (rand() % (amountOfCategories - 1 + 1)) + 1;
-	struct categories* category = return_category(listaKategorii, randomCategory);
-	adding_questions_to_list(&listaPytan, category->NameCategory);
 	int tabCat[5], tabQue[5];
-	for (int i = 0;i < 5;i++) {
-		tabCat[i] = tabQue[i] = 0;
-	}
-RANDQUESTION:;
-	int randomCategory = (rand() % (amountOfCategories - 1 + 1)) + 1;
-	struct categories* category = return_category(listaKategorii, randomCategory);
-	int amountOfQuestions = count_questions(&listaPytan);
-	int randomQuestion = (rand() % (amountOfCategories - 1 + 1)) + 1;
-	struct questions* question = node_question_head(&listaPytan, randomQuestion);
 	int proces = 1;
-	while (proces!=6) {
-
+	int player = 1;
+	char buffor[256];
+	while (player != count_players(players_list)+1) {
+		printf("\t\t\t\tOdpowiad gracz o nicku %s\n", (*players_list)->Name);
+		gets_s(buffor, 256);
+		for (int i = 0; i < 5; i++) {
+			tabCat[i] = tabQue[i] = 0;
+		}
+		while (proces != 2) {
+		RANDQUESTION:;
+			adding_categories_to_list(&listaKategorii);
+			int amountOfCategories = count_categories(&listaKategorii);
+			int randomCategory = (rand() % (amountOfCategories - 1 + 1)) + 1;
+			struct categories* category = return_category(listaKategorii, randomCategory);
+			adding_questions_to_list(&listaPytan, category->NameCategory);
+			int amountOfQuestions = count_questions(&listaPytan);
+			int randomQuestion = (rand() % (amountOfCategories - 1 + 1)) + 1;
+			struct questions* question = node_question_head(&listaPytan, randomQuestion);
+			if (catque_wystapily(tabCat, tabQue, 5, randomCategory, randomQuestion)) {
+				delete_list_of_category(&listaKategorii, 0);
+				delete_list_of_questions(&listaPytan, 0);
+				goto RANDQUESTION;
+			}
+			else {
+				tabCat[proces - 1] = category->id;
+				tabQue[proces - 1] = question->id;
+			}
+			char answear[256];
+			int size_answear = 256;
+			printf("\t\t\t\t%s\n", question->sentense);
+			printf("\t\t\t\t[A] %s\n", question->A);
+			printf("\t\t\t\t[B] %s\n", question->B);
+			printf("\t\t\t\t[C] %s\n", question->C);
+			printf("\t\t\t\t[D] %s\n", question->D);
+			printf("\t\t\t\tOdpowiedz: ");
+			gets_s(answear, size_answear);
+			system("cls");
+			if (strlen(&answear) == 1) {
+				if ((toupper(answear[0])) == *question->coorectAnswear) {
+					(*players_list)->points = (*players_list)->points + 1;
+					printf("\t\t\t\tPoprawna odpowiedz!!!\n\t\t\t\tDo twojego konta dodano punkt za poprawną odpowiedz\n");
+				}
+				else {
+					printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
+				}
+			}
+			else {
+				printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
+			}
+			delete_list_of_category(&listaKategorii, 0);
+			delete_list_of_questions(&listaPytan, 0);
+			proces++;
+			*players_list = (*players_list)->pNext;
+		}
+		player++;
 	}
 }
