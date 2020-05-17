@@ -186,3 +186,13 @@ void resetPoints(struct players** lista_pointer,struct players** head) {
 		else (*lista_pointer)->points = 0;
 	}
 }
+
+bool same_players_name(struct players* lista_pointer, char* Name) {
+	struct players* start = lista_pointer;
+	do {
+		if ((strcmp(lista_pointer->Name, Name)) == 0) return true;
+		lista_pointer = lista_pointer->pNext;
+	} while (lista_pointer != start);
+	if ((strcmp(lista_pointer->Name, Name)) == 0) return true;
+	else return false;
+}

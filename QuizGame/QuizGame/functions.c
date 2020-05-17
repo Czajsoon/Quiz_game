@@ -33,34 +33,61 @@ int string_to_int(int(*number)(char string[]), char thisString[]) {
 	else return -18000;
 }
 
+
+
 struct players* new_players(struct players** lista_pointer) {
-	char number_of_players[80];
-	int flag = 0;
+	char number_of_players[80], name[40];
+	int flag1 = 0, size_name = 40, size_number = 80;
 numberofplayerslevel:
-	printf("\t\t\t\t__________________________________\n");
-	printf("\t\t\t\t -> Podaj ilu chcesz mieć graczy: ");
-	scanf("%9s", &number_of_players);
+	printf("\t\t\t\t______________________________________\n");
+	printf("\t\t\t\t -> Podaj ilu chcesz dodać graczy: ");
+	gets_s(number_of_players, size_number);
 	system("cls");
-	int amountOfPlayers = count_players(lista_pointer);
 	int players = string_to_int(is_numbers, number_of_players);
 	if (players != -18000) {
 		if (players > 0) {
 			if (*lista_pointer == NULL) {
 				for (int i = 0; i < players; i++) {
-					char name[40];
+				playername:;
 					printf("\t\t\t\tWprowadz nazwę gracza %d: ", 1 + i);
-					scanf("%s", &name);
+					gets_s(name, size_name);
+					if (i > 0)
+						if (same_players_name(*lista_pointer, name)) {
+							system("cls");
+							print_players(*lista_pointer, *lista_pointer, 0);
+							printf("\t\t\t\tTaki gracz już istnieje wprowadz inna nazwę\n");
+							goto playername;
+						}
+					if (strlen(name) == 0) {
+						system("cls");
+						if (i > 0) {
+							print_players(*lista_pointer, *lista_pointer, 0);
+						}
+						printf("\t\t\t\tGracz nie może mieć pustej nazwy\n");
+						goto playername;
+					}
 					system("cls");
 					create_and_add_list_players(lista_pointer, name, lista_pointer);
 					print_players(*lista_pointer, *lista_pointer, 0);
 				}
 			}
 			else {
+				int amountOfPlayers = count_players(lista_pointer);
 				for (int i = 0; i < players; i++) {
-					char name[40];
+				playername1:;
 					print_players(*lista_pointer, *lista_pointer, 0);
 					printf("\t\t\t\tWprowadz nazwę gracza %d: ", amountOfPlayers + 1 + i);
-					scanf("%s", &name);
+					gets_s(name, size_name);
+					if (same_players_name(*lista_pointer, name)) {
+						system("cls");
+						printf("\t\t\t\tTaki gracz już istnieje wprowadz inna nazwę\n");
+						goto playername1;
+					}
+					if (strlen(name) == 0) {
+						system("cls");
+						printf("\t\t\t\tGracz nie może mieć pustej nazwy\n");
+						goto playername1;
+					}
 					system("cls");
 					create_and_add_list_players(lista_pointer, name, lista_pointer);
 				}
@@ -114,9 +141,9 @@ void changeNickname(struct players** players_list) {
 	char optionChangeNickname[128];
 nicknamechange:
 	print_players(*players_list, *players_list, 0);
-	printf("\t\t\t\t -> Wpisz 0 aby nie zmieniać nicku\n");
+	printf("\t\t\t\t -> Naciśnij enter aby nie wpisywać nowego nicku\n");
 	printf("\t\t\t\t    Wpisz numer gracza do zmiany nazwy: ");
-	scanf("%s", &optionChangeNickname);
+	gets_s(optionChangeNickname, 128);
 	int playerNumber = string_to_int(is_numbers, optionChangeNickname);
 	int amountOfPlayers = count_players(players_list);
 	if (playerNumber != -18000) {
@@ -124,7 +151,7 @@ nicknamechange:
 			char newNickname[40];
 			struct players* player = return_player(players_list, playerNumber);
 			printf("\t\t\t\tWpisz nowy nickname dla %s: ", player->Name);
-			scanf("%s", &newNickname);
+			gets_s(newNickname, 40);
 			player = change_nickname(player, newNickname);
 		}
 		else if (playerNumber == 0);
@@ -133,6 +160,7 @@ nicknamechange:
 			goto nicknamechange;
 		}
 	}
+	else if (optionChangeNickname[0] == '\n');
 	else {
 		printf("\t\t\t\tWprowadziłeś niepoprawne dane\n");
 		goto nicknamechange;
@@ -147,23 +175,27 @@ deleteplayer:
 	print_players(*lista_pointer, *lista_pointer, 0);
 	puts("");
 	printf("\t\t\t\tWprowadz numer gracza który ma zostać usunięty: ");
-	scanf("%s", &numberOfPlayer);
+	gets_s(numberOfPlayer,128);
 	int amountOfPlayers = count_players(lista_pointer);
 	int PlayerNumber = string_to_int(is_numbers, numberOfPlayer);
+	system("cls");
 	if (PlayerNumber != -18000) {
 		if (PlayerNumber <= amountOfPlayers && PlayerNumber > 0) {
+			system("cls");
 			deleteOnePlayerNode(lista_pointer, PlayerNumber);
 			cycleRegenPlayer(lista_pointer, lista_pointer);
 			resetIdPlayers(lista_pointer, lista_pointer, 1);
 			printf("\t\t\t\tUdało się usunąć wybranego gracza!\n");
 		}
 		else {
+			system("cls");
 			printf("\t\t\t\tNie istnieje taki gracz o podanym numerze %d!!!\n", PlayerNumber);
 			goto deleteplayer;
 		}
 	}
 	else {
-		printf("\t\t\t\tWpisałeś niepoprawne dane!\n\t\t\t\tWpisz je jeszcze raz!\n");
+		system("cls");
+		printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
 		goto deleteplayer;
 	}
 
@@ -180,7 +212,7 @@ bool if_question_questioned(int size, int* tab, int number) {
 int standardModeGame(struct players** players_list) {
 	srand(time(NULL));
 	int amountOfPlayers = count_players(players_list);
-	char option[256];
+	char option1[256];
 	struct categories* categoriesList = NULL;
 	adding_categories_to_list(&categoriesList);
 categoryselect:
@@ -189,9 +221,9 @@ categoryselect:
 	print_categories(categoriesList, categoriesList);
 	printf("\t\t\t\t ---------------------------------------------\n");
 	printf("\t\t\t\tWybierz kategorię:");
-	scanf("%s", &option);
+	gets_s(option1, 256);
 	system("cls");
-	int optionNumber = string_to_int(is_numbers, option);
+	int optionNumber = string_to_int(is_numbers, option1);
 	if (optionNumber != -18000) {
 		int amountOFCategories = count_categories(&categoriesList);
 		if (optionNumber > 0 && optionNumber <= amountOFCategories) {
@@ -204,7 +236,7 @@ categoryselect:
 				char answear[80];
 				printf("\t\t\t\tKolej gracza o nazwie: %s\n", (*players_list)->Name);
 				system("cls");
-				int proces = 1;
+				int proces = 1, size_answear = 80;
 				int tab[5];
 				char buffer[256];
 				for (int i = 0; i < 5; i++) {
@@ -212,7 +244,6 @@ categoryselect:
 				}
 				printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
 				printf("\t\t\t\tNaciśnij enter aby zacząć...");
-				gets_s(buffer, 256);
 				gets_s(buffer, 256);
 				while (proces != 6) {
 				generateRandom:;
@@ -226,7 +257,7 @@ categoryselect:
 					printf("\t\t\t\t[C] %s\n", question->C);
 					printf("\t\t\t\t[D] %s\n", question->D);
 					printf("\t\t\t\tOdpowiedz: ");
-					scanf("%s", &answear);
+					gets_s(answear, size_answear);
 					system("cls");
 					if (strlen(&answear) == 1) {
 						if ((toupper(answear[0])) == *question->coorectAnswear) {
@@ -290,16 +321,8 @@ categoryname:
 	print_categories(categoriesList, categoriesList);
 	printf("\t\t\t\t ---------------------------------------------\n");
 	printf("\t\t\t\tPodaj nazwę nowej kategorii: ");
-	if (flag == 0) {
-		gets_s(newCategoryName, size);
-		gets_s(newCategoryName, size);
-		flag++;
-		system("cls");
-	}
-	else {
-		gets_s(newCategoryName, size);
-		system("cls");
-	}
+	gets_s(newCategoryName, size);
+	system("cls");
 	if (is_category_in_categories(categoriesList, newCategoryName)) {
 		printf("\t\t\t\tTaka nazwa kategorii już istnieje podaj inną\n");
 		goto categoryname;
@@ -414,16 +437,8 @@ addque:
 	print_categories(listaKategorii, listaKategorii);
 	printf("\t\t\t\t ---------------------------------------------\n");
 	printf("\t\t\t\tWybierz numer z jakiej kategorii chcesz dodać pytanie: ");
-	if (flag == 0) {
-		gets_s(category, size);
-		gets_s(category, size);
-		flag++;
-		system("cls");
-	}
-	else {
-		gets_s(category, size);
-		system("cls");
-	}
+	gets_s(category, size);
+	system("cls");
 	int categoryNumber = string_to_int(is_numbers, category);
 	if (categoryNumber == -18000) {
 		printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
@@ -543,17 +558,6 @@ addque:
 	}
 }
 
-struct categories* return_category(struct categories* lista_pointer, int number) {
-	struct categories* start = lista_pointer;
-	do {
-		if (lista_pointer->id == number)
-			return lista_pointer;
-	} while (lista_pointer != start);
-	if (lista_pointer->id == number)
-		return lista_pointer;
-	else return NULL;
-}
-
 bool catque_wystapily(int* tabCat, int* tabQue, int size, int numberCat, int numberQue) {
 	for (int i = 0; i < size; i++) {
 		if (tabCat[i] == numberCat && tabQue[i] == numberQue)
@@ -566,17 +570,17 @@ void random_question_mode(struct players** players_list) {
 	srand(time(NULL));
 	struct categories* listaKategorii = NULL;
 	struct questions* listaPytan = NULL;
-	int tabCat[5], tabQue[5];
-	int proces = 1;
-	int player = 1;
-	char buffor[256];
-	while (player != count_players(players_list)+1) {
-		printf("\t\t\t\tOdpowiad gracz o nicku %s\n", (*players_list)->Name);
-		gets_s(buffor, 256);
+	char buffor[256], answear[256];
+	int player = 1, flag = 0, tabCat[5], tabQue[5], size_answear = 256;;
+	while (player != count_players(players_list) + 1) {
+		printf("\t\t\t\tOdpowiada gracz o nicku %s\n", (*players_list)->Name);
+		printf("\t\t\t\tNacisnij Enter, aby zacząć odpowiadac...");
 		for (int i = 0; i < 5; i++) {
 			tabCat[i] = tabQue[i] = 0;
 		}
-		while (proces != 2) {
+		gets_s(buffor, 256);
+		int proces = 1;
+		while (proces != 6) {
 		RANDQUESTION:;
 			adding_categories_to_list(&listaKategorii);
 			int amountOfCategories = count_categories(&listaKategorii);
@@ -584,7 +588,7 @@ void random_question_mode(struct players** players_list) {
 			struct categories* category = return_category(listaKategorii, randomCategory);
 			adding_questions_to_list(&listaPytan, category->NameCategory);
 			int amountOfQuestions = count_questions(&listaPytan);
-			int randomQuestion = (rand() % (amountOfCategories - 1 + 1)) + 1;
+			int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;
 			struct questions* question = node_question_head(&listaPytan, randomQuestion);
 			if (catque_wystapily(tabCat, tabQue, 5, randomCategory, randomQuestion)) {
 				delete_list_of_category(&listaKategorii, 0);
@@ -595,8 +599,6 @@ void random_question_mode(struct players** players_list) {
 				tabCat[proces - 1] = category->id;
 				tabQue[proces - 1] = question->id;
 			}
-			char answear[256];
-			int size_answear = 256;
 			printf("\t\t\t\t%s\n", question->sentense);
 			printf("\t\t\t\t[A] %s\n", question->A);
 			printf("\t\t\t\t[B] %s\n", question->B);
@@ -610,18 +612,14 @@ void random_question_mode(struct players** players_list) {
 					(*players_list)->points = (*players_list)->points + 1;
 					printf("\t\t\t\tPoprawna odpowiedz!!!\n\t\t\t\tDo twojego konta dodano punkt za poprawną odpowiedz\n");
 				}
-				else {
-					printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
-				}
+				else printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
 			}
-			else {
-				printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
-			}
+			else printf("\t\t\t\tNiepoprawna odpowiedz!!!\n");
 			delete_list_of_category(&listaKategorii, 0);
 			delete_list_of_questions(&listaPytan, 0);
 			proces++;
-			*players_list = (*players_list)->pNext;
 		}
+		*players_list = (*players_list)->pNext;
 		player++;
 	}
 }

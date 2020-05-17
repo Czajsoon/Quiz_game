@@ -111,3 +111,15 @@ void delete_list_of_category(struct categories** lista_pointer, int data) {
 		*lista_pointer = NULL;
 	}
 }
+
+struct categories* return_category(struct categories* lista_pointer, int number) {
+	struct categories* start = lista_pointer;
+	do {
+		if (lista_pointer->id == number)
+			return lista_pointer;
+		lista_pointer = lista_pointer->pNext;
+	} while (lista_pointer != start);
+	if (lista_pointer->id == number)
+		return lista_pointer;
+	else return NULL;
+}
