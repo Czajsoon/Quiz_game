@@ -43,6 +43,8 @@ int main() {
 					printf("\t\t\t\t | [0] |        ->       Cofnij      <-      |\n");
 					printf("\t\t\t\t | [1] |      ->      Standardowy      <-    |\n");
 					printf("\t\t\t\t | [2] |      ->   Wszystkie pytania   <-    |\n");
+					printf("\t\t\t\t | [3] |      ->   Standardowy Race   <-     |\n");
+					printf("\t\t\t\t | [4] | -> Tryb wyœcigu wszystkich pytañ <- |\n");
 					printf("\t\t\t\t --------------------------------------------\n");
 					printf("\t\t\t\t  Wybierz opcjê : ");
 					gets_s(optionMode, 128);
@@ -51,13 +53,29 @@ int main() {
 					if (numberMode != -18000) {
 						if (numberMode == 1) {
 							int aftergame = standardModeGame(&playersList);
-							if (aftergame == 0)
+							if (aftergame == 0) {
+								system("cls");
 								goto mainhome;
+							}
 							else
+								system("cls");
 								goto mainhome1;
 						}
 						else if (numberMode == 2) {
 							random_question_mode(&playersList);
+							system("cls");
+							goto mainhome1;
+						}
+						if (numberMode == 3) {
+							int aftergame = standardModeGameRace(&playersList);
+							if (aftergame == 0) {
+								goto mainhome;
+							}
+							else
+								goto mainhome1;
+						}
+						else if (numberMode == 4) {
+							random_question_mode_race(&playersList);
 							goto mainhome1;
 						}
 						else if (numberMode == 0)
@@ -86,6 +104,7 @@ int main() {
 			else if (toupper(option[0]) == 'A') {
 				system("cls");
 				playersList = new_players(&playersList);
+				system("cls");
 				goto mainhome;
 			}
 			else if (toupper(option[0]) == 'T') {
@@ -100,7 +119,6 @@ int main() {
 					printf("\t\t\t\t|> Wpisz Z aby zmienic dowolny nick           |\n");
 					printf("\t\t\t\t|> Wpisz D aby usun¹æ dowolnego gracza        |\n");
 					printf("\t\t\t\t|> Wpisz A aby usun¹æ wszystkich graczy       |\n");
-					printf("\t\t\t\t|> Wpisz R aby zresetowaæ punkty              |\n");
 					printf("\t\t\t\t|> Naciœnij Enter aby przejœæ do menu g³ównego|\n");
 					printf("\t\t\t\t ---------------------------------------------\n");
 					printf("\t\t\t\t   Wpisz opcjê: ");
@@ -118,10 +136,6 @@ int main() {
 						}
 						else if (toupper(optionStats[0]) == 'A') {
 							delete_list_of_players(&playersList, 0);
-							goto mainhome;
-						}
-						else if (toupper(optionStats[0]) == 'R') {
-							resetPoints(&playersList, &playersList);
 							goto mainhome;
 						}
 						else if (optionStats[0] == '\n') goto mainhome;
@@ -165,6 +179,7 @@ mainhome1:
 		"\t\t\t\t --------------------------------------------\n"
 		"\t\t\t\t  Wybierz opcjê: ");
 	gets_s(option, size_option);
+	system("cls");
 	if (strlen(option) != 1) {
 		printf("\t\t\t\tNie ma takiej opcji :(\n\t\t\t\tWybierz inna istenij¹c¹ :)\n");
 		goto mainhome1;
@@ -178,6 +193,8 @@ mainhome1:
 				printf("\t\t\t\t | [0] |        ->       Cofnij      <-      |\n");
 				printf("\t\t\t\t | [1] |      ->      Standardowy      <-    |\n");
 				printf("\t\t\t\t | [2] |      ->   Wszystkie pytania   <-    |\n");
+				printf("\t\t\t\t | [3] |      ->   Standardowy Race   <-     |\n");
+				printf("\t\t\t\t | [4] | -> Tryb wyœcigu wszystkich pytañ <- |\n");
 				printf("\t\t\t\t --------------------------------------------\n");
 				printf("\t\t\t\t  Wybierz opcjê : ");
 				gets_s(optionMode, 128);
@@ -186,13 +203,29 @@ mainhome1:
 				if (numberMode != -18000) {
 					if (numberMode == 1) {
 						int aftergame = standardModeGame(&playersList);
-						if (aftergame == 0)
+						if (aftergame == 0) {
+							system("cls");
 							goto mainhome1;
+						}
 						else
+							system("cls");
 							goto mainhome1;
 					}
 					else if (numberMode == 2) {
 						random_question_mode(&playersList);
+						system("cls");
+						goto mainhome1;
+					}
+					if (numberMode == 3) {
+						int aftergame = standardModeGameRace(&playersList);
+						if (aftergame == 0) {
+							goto mainhome1;
+						}
+						else
+							goto mainhome1;
+					}
+					else if (numberMode == 4) {
+						random_question_mode_race(&playersList);
 						goto mainhome1;
 					}
 					else if (numberMode == 0)
@@ -221,14 +254,15 @@ mainhome1:
 		else if (toupper(option[0]) == 'A') {
 			system("cls");
 			playersList = new_players(&playersList);
+			system("cls");
 			goto mainhome1;
 		}
 		else if (toupper(option[0]) == 'T') {
 			if (playersList != NULL) {
+				system("cls");
 			selectstatsmenu1:;
 				char optionStats[128];
 				int size_stats = 128;
-				system("cls");
 				players_stats(&playersList);
 				puts("");
 				printf("\t\t\t\t _____________________________________________\n");
@@ -236,12 +270,13 @@ mainhome1:
 				printf("\t\t\t\t|> Wpisz D aby usun¹æ dowolnego gracza        |\n");
 				printf("\t\t\t\t|> Wpisz A aby usun¹æ wszystkich graczy       |\n");
 				printf("\t\t\t\t|> Wpisz R aby zresetowaæ punkty              |\n");
+				printf("\t\t\t\t|> Wpisz N aby zresetowaæ punkty dla gracza   |\n");
 				printf("\t\t\t\t|> Naciœnij Enter aby przejœæ do menu g³ównego|\n");
 				printf("\t\t\t\t ---------------------------------------------\n");
 				printf("\t\t\t\t   Wpisz opcjê: ");
 				gets_s(optionStats, size_stats);
 				system("cls");
-				if (strlen(optionStats) != 1) goto mainhome1;
+				if (strlen(optionStats) == 0) goto mainhome1;
 				else {
 					if (toupper(optionStats[0]) == 'Z') {
 						changeNickname(&playersList);
@@ -264,7 +299,11 @@ mainhome1:
 						resetPoints(&playersList, &playersList);
 						goto mainhome1;
 					}
-					else if (optionStats[0] == '\n') goto mainhome;
+					else if (toupper(optionStats[0]) == 'N') {
+						resetPlayerPoints(playersList);
+						goto mainhome1;
+					}
+					else if (strlen(optionStats)==0) goto mainhome1;
 					else {
 						printf("\t\t\t\tNie ma takiej opcji w wyborze\n\t\t\t\tWybierz istniej¹c¹\n");
 						goto selectstatsmenu1;

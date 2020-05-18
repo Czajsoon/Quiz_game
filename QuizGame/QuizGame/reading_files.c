@@ -7,6 +7,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <string.h>
+#include <wchar.h>
 #include "category_structure.h"
 #include "category_functions.h"
 #include "question_structure.h"
@@ -56,15 +57,15 @@ char* delete_index_in_question(char* this_string) {
 }
 
 void adding_categories_to_list(struct categories** lista_pointer) {
-	char buffor[256];
-	char buffor1[256];
+	wchar_t buffor[256];
+	wchar_t buffor1[256];
 	FILE* plik = fopen("kategorie.txt", "r");
 	if (!plik) {
 		printf("nie uda³o siê otworzyæ pliku!");
 	}
 	else {
 		while (fgets(buffor, 256, plik) != NULL) {
-			char* buf = delete_new_line_sign(buffor);
+			wchar_t* buf = delete_new_line_sign(buffor);
 			for (int i = 0; i < 256; i++)
 				buffor[i] = buf[i];
 			create_and_add_category(lista_pointer, buffor, lista_pointer);
@@ -74,7 +75,7 @@ void adding_categories_to_list(struct categories** lista_pointer) {
 }
 
 void adding_questions_to_list(struct questions** lista_pointer, char* name) {
-	char buffor[256];
+	wchar_t buffor[256];
 	int linenumber = 0;
 	char filename[100];
 	char* extension = ".txt";
@@ -86,13 +87,18 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 		linenumber++;
 		if (linenumber == 1) {
 			nowy = (struct questions*)malloc(sizeof(struct questions));
-			char* tab = delete_new_line_sign(buffor);
+			wchar_t* tab = delete_new_line_sign(buffor);
+			wchar_t buffor1[256];
+			for (int i = 0;i < 256;i++) {
+				buffor1[i] = tab[i];
+			}
+			char* tab1 = delete_new_line_sign(buffor1);
 			for (int i = 0; i < 256; i++)
-				nowy->sentense[i] = tab[i];
+				nowy->sentense[i] = tab1[i];
 		}
 		else if (linenumber == 2) {
-			char buffor1[256];
-			char* tab = delete_index_in_question(buffor);
+			wchar_t buffor1[256];
+			wchar_t* tab = delete_index_in_question(buffor);
 			for (int i = 0;i < 256;i++) {
 				buffor1[i] = tab[i];
 			}
@@ -101,8 +107,8 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 				nowy->A[i] = tab1[i];
 		}
 		else if (linenumber == 3) {
-			char buffor1[256];
-			char* tab = delete_index_in_question(buffor);
+			wchar_t buffor1[256];
+			wchar_t* tab = delete_index_in_question(buffor);
 			for (int i = 0;i < 256;i++) {
 				buffor1[i] = tab[i];
 			}
@@ -111,8 +117,8 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 				nowy->B[i] = tab1[i];
 		}
 		else if (linenumber == 4) {
-			char buffor1[256];
-			char* tab = delete_index_in_question(buffor);
+			wchar_t buffor1[256];
+			wchar_t* tab = delete_index_in_question(buffor);
 			for (int i = 0;i < 256;i++) {
 				buffor1[i] = tab[i];
 			}
@@ -121,8 +127,8 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 				nowy->C[i] = tab1[i];
 		}
 		else if (linenumber == 5) {
-			char buffor1[256];
-			char* tab = delete_index_in_question(buffor);
+			wchar_t buffor1[256];
+			wchar_t* tab = delete_index_in_question(buffor);
 			for (int i = 0;i < 256;i++) {
 				buffor1[i] = tab[i];
 			}
@@ -131,7 +137,7 @@ void adding_questions_to_list(struct questions** lista_pointer, char* name) {
 				nowy->D[i] = tab1[i];
 		}
 		else if (linenumber == 6) {
-			char* tab = delete_new_line_sign(buffor);
+			wchar_t* tab = delete_new_line_sign(buffor);
 			for (int i = 0; i < 256; i++)
 				nowy->coorectAnswear[i] = tab[i];
 			create_and_add_question(lista_pointer, nowy);

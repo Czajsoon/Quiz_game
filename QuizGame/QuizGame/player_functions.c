@@ -187,6 +187,17 @@ void resetPoints(struct players** lista_pointer,struct players** head) {
 	}
 }
 
+void resetPointsPlayer(struct players* lista_pointer, int number) {
+	struct players* start = lista_pointer;
+	do{
+		if (lista_pointer->numberPlayer == number)
+			lista_pointer->points = 0;
+		lista_pointer = lista_pointer->pNext;
+	} while (lista_pointer != start);
+	if (lista_pointer->numberPlayer == number)
+		lista_pointer->points = 0;
+}
+
 bool same_players_name(struct players* lista_pointer, char* Name) {
 	struct players* start = lista_pointer;
 	do {

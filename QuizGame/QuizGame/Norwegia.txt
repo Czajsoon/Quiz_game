@@ -1,48 +1,48 @@
-Jakie miasto jest stolica norwegii?
+Jakie miasto jest stolic¹ Norwegii?
 [A] Oslo
 [B] Trofors
 [C] Bergen
 [D] Moss
 A
-Czy Norwegia nalezy do Unii Europejskiej?
+Czy Norwegia nale¿y do Unii Europejskiej?
 [A] Nie
 [B] Tak
 [C] --
 [D] --
 A
-Z jakimi panstwami graniczy Norwegia?
-[A] Ukraina
-[B] Polska
-[C] Rosja
-[D] Dania
+Z jakimi pañstwami graniczy Norwegia?
+[A] Ukrain¹
+[B] Polsk¹
+[C] Rosj¹
+[D] Dani¹
 C
-Jaka jest srednia temperatura w styczniu w Norwegii?
+Jaka jest œrednia temperatura w styczniu w Norwegii?
 [A] 0 stopni
 [B] -3 stopnie
 [C] 3 stopnie
 [D] -4 stopnie
 D
-Jaka jest najdluzsza rzeka w Norwegii?
+Jaka jest najd³u¿sza rzeka w Norwegii?
 [A] Tana
 [B] Glomma
 [C] Orkla
 [D] --
 B
-Czy w Norwegii poluje sie na wileloryby?
+Czy w Norwegii poluje siê na wileloryby?
 [A] Tak
 [B] Nie
 [C] --
 [D] --
 A
-Ilu polakow (okolo) zamieszkuje Norwegie?
+Ilu polaków (okolo) zamieszkuje Norwegie?
 [A] 30 000
 [B] 70 000
 [C] 90 000
 [D] 60 000
 B
-Co w Norwegii uwazane jest za dziwne? 
-[A] Usmiechanie sie do kogos, kogo sie nie zna
-[B] Chodzenie do sklepow w niedziele
-[C] Pieczenie ciastek na swieta
-[D] Jedzenie mrozonej pizzy
+Co w Norwegii uwa¿ane jest za dziwne? 
+[A] Uœmiechanie sie do kogoœ, kogo siê nie zna
+[B] Chodzenie do sklepów w niedziele
+[C] Pieczenie ciastek na œwiêta
+[D] Jedzenie mro¿onej pizzy
 A

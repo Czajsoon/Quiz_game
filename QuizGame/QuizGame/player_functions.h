@@ -17,4 +17,5 @@ void deleteOnePlayerNode(struct players** lista_pointer, int number);
 void cycleRegenPlayer(struct players** lista_pointer, struct players** head);
 void resetIdPlayers(struct players** lista_pointer, struct players** head, int startingNumber);
 bool same_players_name(struct players* lista_pointer, char* Name);
+void resetPointsPlayer(struct players* lista_pointer, int number);
 #endif // !_PLAYER_FUNCTIONS_H_
