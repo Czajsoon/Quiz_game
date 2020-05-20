@@ -39,13 +39,15 @@ int main() {
 			modeselect:
 				if (playersList) {
 					char optionMode[128];
-					printf("\t\t\t\t ____________________________________________\n");
-					printf("\t\t\t\t | [0] |        ->       Cofnij      <-      |\n");
-					printf("\t\t\t\t | [1] |      ->      Standardowy      <-    |\n");
-					printf("\t\t\t\t | [2] |      ->   Wszystkie pytania   <-    |\n");
-					printf("\t\t\t\t | [3] |      ->   Standardowy Race   <-     |\n");
-					printf("\t\t\t\t | [4] | -> Tryb wyœcigu wszystkich pytañ <- |\n");
-					printf("\t\t\t\t --------------------------------------------\n");
+					printf("\t\t\t\t _________________________________________________\n");
+					printf("\t\t\t\t | [0] |             ->       Cofnij      <-      |\n");
+					printf("\t\t\t\t | [1] |           ->      Standardowy      <-    |\n");
+					printf("\t\t\t\t | [2] |           ->   Wszystkie pytania   <-    |\n");
+					printf("\t\t\t\t | [3] |           ->   Standardowy Race   <-     |\n");
+					printf("\t\t\t\t | [4] |          -> Wszystkie Pytania Race <-    |\n");
+					printf("\t\t\t\t | [5] |       -> standard zmienna iloœæ pytañ <- |\n");
+					printf("\t\t\t\t | [6] | ->Wszystkie Pytania zmienna iloœæ pytañ<-|\n");
+					printf("\t\t\t\t -------------------------------------------------\n");
 					printf("\t\t\t\t  Wybierz opcjê : ");
 					gets_s(optionMode, 128);
 					system("cls");

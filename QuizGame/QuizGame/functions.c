@@ -178,8 +178,8 @@ resetPoints:;
 	system("cls");
 	int playerNumber = string_to_int(is_numbers, optionResetPoints);
 	int amountOfPlayers = count_players(&players_list);
-	if (playerNumber != -18000 && playerNumber!=0) {
-		if (playerNumber <= amountOfPlayers && playerNumber > 0) 
+	if (playerNumber != -18000 && playerNumber != 0) {
+		if (playerNumber <= amountOfPlayers && playerNumber > 0)
 			resetPointsPlayer(players_list, playerNumber);
 		else {
 			printf("\t\t\t\tNie ma takiego gracza!\n\t\t\t\tWpisz poprawny numer\n");
@@ -200,7 +200,7 @@ deleteplayer:
 	print_players(*lista_pointer, *lista_pointer, 0);
 	puts("");
 	printf("\t\t\t\tWprowadz numer gracza który ma zostać usunięty: ");
-	gets_s(numberOfPlayer,128);
+	gets_s(numberOfPlayer, 128);
 	int amountOfPlayers = count_players(lista_pointer);
 	int PlayerNumber = string_to_int(is_numbers, numberOfPlayer);
 	system("cls");
@@ -380,6 +380,11 @@ categoryname:
 					printf("\t\t\t\t[A] ");
 					gets_s(question, 256);
 					question[0] = toupper(question[0]);
+					if (strlen(question) == 0) {
+						char buff[] = "--";
+						for (int x = 0; x < 256; x++)
+							question[x] = buff[x];
+					}
 					for (int x = 0; x < 256; x++)
 						newOne->A[x] = question[x];
 					system("cls");
@@ -393,6 +398,11 @@ categoryname:
 					printf("\t\t\t\t[B] ");
 					gets_s(question, 256);
 					question[0] = toupper(question[0]);
+					if (strlen(question) == 0) {
+						char buff[] = "--";
+						for (int x = 0; x < 256; x++)
+							question[x] = buff[x];
+					}
 					for (int x = 0; x < 256; x++)
 						newOne->B[x] = question[x];
 					system("cls");
@@ -407,6 +417,11 @@ categoryname:
 					printf("\t\t\t\t[C] ");
 					gets_s(question, 256);
 					question[0] = toupper(question[0]);
+					if (strlen(question) == 0) {
+						char buff[] = "--";
+						for (int x = 0; x < 256; x++)
+							question[x] = buff[x];
+					}
 					for (int x = 0; x < 256; x++)
 						newOne->C[x] = question[x];
 					system("cls");
@@ -422,6 +437,11 @@ categoryname:
 					printf("\t\t\t\t[D] ");
 					gets_s(question, 256);
 					question[0] = toupper(question[0]);
+					if (strlen(question) == 0) {
+						char buff[] = "--";
+						for (int x = 0; x < 256; x++)
+							question[x] = buff[x];
+					}
 					for (int x = 0; x < 256; x++)
 						newOne->D[x] = question[x];
 					system("cls");
@@ -452,6 +472,8 @@ categoryname:
 }
 
 void add_new_question() {
+	setlocale(LC_CTYPE, "UTF-8");
+	setlocale(LC_ALL, "pl_PL");
 	struct categories* listaKategorii = NULL;
 	char category[256];
 	adding_categories_to_list(&listaKategorii);
@@ -491,9 +513,9 @@ addque:
 							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
 							printf("\t\t\t\tPodaj treść pytania [%d]: ", questinNumber + 1 + i);
 							gets_s(buffor, 256);
-							buffor[0] = toupper(buffor[0]);
 							for (int x = 0; x < 256; x++)
 								newOne->sentense[x] = buffor[x];
+							printf("\t\t\t\t%s", newOne->sentense);
 							system("cls");
 						}
 						else if (j == 1) {
@@ -503,6 +525,11 @@ addque:
 							printf("\t\t\t\t[A] ");
 							gets_s(buffor, 256);
 							buffor[0] = toupper(buffor[0]);
+							if (strlen(buffor) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									buffor[x] = buff[x];
+							}
 							for (int x = 0; x < 256; x++)
 								newOne->A[x] = buffor[x];
 							system("cls");
@@ -516,6 +543,11 @@ addque:
 							printf("\t\t\t\t[B] ");
 							gets_s(buffor, 256);
 							buffor[0] = toupper(buffor[0]);
+							if (strlen(buffor) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									buffor[x] = buff[x];
+							}
 							for (int x = 0; x < 256; x++)
 								newOne->B[x] = buffor[x];
 							system("cls");
@@ -530,6 +562,11 @@ addque:
 							printf("\t\t\t\t[C] ");
 							gets_s(buffor, 256);
 							buffor[0] = toupper(buffor[0]);
+							if (strlen(buffor) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									buffor[x] = buff[x];
+							}
 							for (int x = 0; x < 256; x++)
 								newOne->C[x] = buffor[x];
 							system("cls");
@@ -545,6 +582,11 @@ addque:
 							printf("\t\t\t\t[D] ");
 							gets_s(buffor, 256);
 							buffor[0] = toupper(buffor[0]);
+							if (strlen(buffor) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									buffor[x] = buff[x];
+							}
 							for (int x = 0; x < 256; x++)
 								newOne->D[x] = buffor[x];
 							system("cls");
@@ -724,7 +766,7 @@ void random_question_mode_race(struct players** players_list) {
 	}
 	if (count_players(players_list) >= 3) {
 		double min1 = 1000000, min2 = 1000000, min3 = 1000000;
-		struct players* player1 = NULL, *player2 = NULL, *player3 = NULL;
+		struct players* player1 = NULL, * player2 = NULL, * player3 = NULL;
 		for (int i = 0;i < count_players(players_list);i++) {
 			if (min1 > timeTab[i]) {
 				min3 = min2;
@@ -735,7 +777,7 @@ void random_question_mode_race(struct players** players_list) {
 				min3 = min2;
 				min2 = timeTab[i];
 			}
-				
+
 			else if (min3 > timeTab[i]) {
 				min3 = timeTab[i];
 			}
@@ -748,11 +790,11 @@ void random_question_mode_race(struct players** players_list) {
 			else if (min3 == timeTab[i])
 				player3 = return_player(players_list, i + 1);
 		}
-		printf("\t\t\t\tGracz %s zdobywa 3pkt. za najszybsze rozwiazanie quizu!\n\t\t\t\tZ czasem %f sek.\n",player1->Name,min1);
+		printf("\t\t\t\tGracz %s zdobywa 3pkt. za najszybsze rozwiazanie quizu!\n\t\t\t\tZ czasem %f sek.\n", player1->Name, min1);
 		player1->points = player1->points + 3;
-		printf("\t\t\t\tGracz %s zdobywa 2pkt. drugie miejsce\n\t\t\t\tZ czasem: %f sek.\n",player2->Name,min2);
+		printf("\t\t\t\tGracz %s zdobywa 2pkt. drugie miejsce\n\t\t\t\tZ czasem: %f sek.\n", player2->Name, min2);
 		player2->points = player2->points + 2;
-		printf("\t\t\t\tGracz %s zdobywa 1pkt. trzecie miejsce\n\t\t\t\tZ czasem %f sek.\n",player3->Name,min3);
+		printf("\t\t\t\tGracz %s zdobywa 1pkt. trzecie miejsce\n\t\t\t\tZ czasem %f sek.\n", player3->Name, min3);
 		player3->points = player3->points + 1;
 		(*players_list) = startP;
 		free(timeTab);
