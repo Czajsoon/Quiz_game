@@ -19,4 +19,5 @@ bool if_question_questioned(int size, int* tab, int number);
 void random_question_mode_race(struct players** players_list);
 int standardModeGameRace(struct players** players_list);
 void changeQuestion();
+int standarModeMQue(struct players** players_list);
 #endif // !_FUNCTIONS_H_

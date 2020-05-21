@@ -39,15 +39,15 @@ int main() {
 			modeselect:
 				if (playersList) {
 					char optionMode[128];
-					printf("\t\t\t\t _________________________________________________\n");
-					printf("\t\t\t\t | [0] |           ->       Cofnij      <-        |\n");
-					printf("\t\t\t\t | [1] |         ->      Standardowy      <-      |\n");
-					printf("\t\t\t\t | [2] |         ->   Wszystkie pytania   <-      |\n");
-					printf("\t\t\t\t | [3] |         ->   Standardowy Race   <-       |\n");
-					printf("\t\t\t\t | [4] |        -> Wszystkie Pytania Race <-      |\n");
-					printf("\t\t\t\t | [5] |     -> Standard zmienna iloœæ pytañ <-   |\n");
-					printf("\t\t\t\t | [6] | ->Wszystkie Pytania zmienna iloœæ pytañ<-|\n");
-					printf("\t\t\t\t -------------------------------------------------\n");
+					printf("\t\t\t\t __________________________________________________\n");
+					printf("\t\t\t\t | [0] |           ->       Cofnij      <-         |\n");
+					printf("\t\t\t\t | [1] |         ->      Standardowy      <-       |\n");
+					printf("\t\t\t\t | [2] |         ->   Wszystkie pytania   <-       |\n");
+					printf("\t\t\t\t | [3] |         ->   Standardowy Race   <-        |\n");
+					printf("\t\t\t\t | [4] |        -> Wszystkie Pytania Race <-       |\n");
+					printf("\t\t\t\t | [5] |     -> Standard zmienna iloœæ pytañ <-    |\n");
+					printf("\t\t\t\t | [6] | ->Wszystkie Pytania zmienna iloœæ pytañ<- |\n");
+					printf("\t\t\t\t --------------------------------------------------\n");
 					printf("\t\t\t\t  Wybierz opcjê : ");
 					gets_s(optionMode, 128);
 					system("cls");
@@ -61,7 +61,7 @@ int main() {
 							}
 							else
 								system("cls");
-								goto mainhome1;
+							goto mainhome1;
 						}
 						else if (numberMode == 2) {
 							random_question_mode(&playersList);
@@ -79,6 +79,17 @@ int main() {
 						else if (numberMode == 4) {
 							random_question_mode_race(&playersList);
 							goto mainhome1;
+						}
+						else if (numberMode == 5) {
+							int aftergame = standarModeMQue(&playersList);
+							if (aftergame == 0) {
+								goto mainhome;
+							}
+							else
+								goto mainhome1;
+						}
+						else if (numberMode == 6) {
+
 						}
 						else if (numberMode == 0)
 							goto mainhome;
@@ -198,6 +209,7 @@ mainhome1:
 				printf("\t\t\t\t | [2] |      ->   Wszystkie pytania   <-    |\n");
 				printf("\t\t\t\t | [3] |      ->   Standardowy Race   <-     |\n");
 				printf("\t\t\t\t | [4] | -> Tryb wyœcigu wszystkich pytañ <- |\n");
+				printf("\t\t\t\t | [5] |     -> Standard zmienna iloœæ pytañ <-    |\n");
 				printf("\t\t\t\t --------------------------------------------\n");
 				printf("\t\t\t\t  Wybierz opcjê : ");
 				gets_s(optionMode, 128);
@@ -212,7 +224,7 @@ mainhome1:
 						}
 						else
 							system("cls");
-							goto mainhome1;
+						goto mainhome1;
 					}
 					else if (numberMode == 2) {
 						random_question_mode(&playersList);
@@ -230,6 +242,14 @@ mainhome1:
 					else if (numberMode == 4) {
 						random_question_mode_race(&playersList);
 						goto mainhome1;
+					}
+					else if (numberMode == 5) {
+						int aftergame = standarModeMQue(&playersList);
+						if (aftergame == 0) {
+							goto mainhome1;
+						}
+						else
+							goto mainhome1;
 					}
 					else if (numberMode == 0)
 						goto mainhome1;
@@ -306,7 +326,7 @@ mainhome1:
 						resetPlayerPoints(playersList);
 						goto mainhome1;
 					}
-					else if (strlen(optionStats)==0) goto mainhome1;
+					else if (strlen(optionStats) == 0) goto mainhome1;
 					else {
 						printf("\t\t\t\tNie ma takiej opcji w wyborze\n\t\t\t\tWybierz istniej¹c¹\n");
 						goto selectstatsmenu1;

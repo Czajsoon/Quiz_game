@@ -234,6 +234,129 @@ bool if_question_questioned(int size, int* tab, int number) {
 	return false;
 }
 
+int standarModeMQue(struct players** players_list) {
+	srand(time(NULL));
+	int amountOfPlayers = count_players(players_list);
+	char option1[256];
+	struct categories* categoriesList = NULL;
+	adding_categories_to_list(&categoriesList);
+catmque:;
+	printf("\t\t\t\t _____________________________________________\n");
+	printf("\t\t\t\t| [0] Wyjdz                                   |\n");
+	print_categories(categoriesList, categoriesList);
+	printf("\t\t\t\t ---------------------------------------------\n");
+	printf("\t\t\t\tWybierz kategorię:");
+	gets_s(option1, 256);
+	system("cls");
+	int optionNumber = string_to_int(is_numbers, option1);
+	if (optionNumber != -18000) {
+		int amountOFCategories = count_categories(&categoriesList);
+		if (optionNumber > 0 && optionNumber <= amountOFCategories) {
+			struct questions* questionsList = NULL;
+			char* nameCategory = return_name_category(&categoriesList, optionNumber);
+			adding_questions_to_list(&questionsList, nameCategory);
+			int amountOfQue = count_questions(&questionsList);
+			char numOfQue[256];
+		getNumQue:;
+			printf("\t\t\t\tPodaj liczbę pytań: ");
+			gets_s(numOfQue, 256);
+			int numberOfQuestions = string_to_int(is_numbers, numOfQue);
+			if (numberOfQuestions != -18000) {
+				if (numberOfQuestions > 0 && numberOfQuestions <= amountOfQue) {
+					int player = 1;
+					while (player != amountOfPlayers + 1) {
+						int amountOfQuestions = count_questions(&questionsList);
+						char answear[80];
+						int proces = 1, size_answear = 80;
+						int tab[70];
+						char buffer[256];
+						for (int i = 0; i < 70; i++) {
+							tab[i] = 0;
+						}
+						printf("\t\t\t\tOdpowiada gracz o nazwie: %s\n\n", (*players_list)->Name);
+						printf("\t\t\t\tNaciśnij enter aby zacząć...");
+						gets_s(buffer, 256);
+						system("cls");
+						while (proces != numberOfQuestions + 1) {
+						generateRandom:;
+							int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;
+							struct questions* question = node_question_head(&questionsList, randomQuestion);
+							if (if_question_questioned(5, tab, randomQuestion)) goto generateRandom;
+							else tab[proces - 1] = question->id;
+							if (proces == 1) printf("\n\n");
+							puts("");
+							printf("\t\t\t\t%s\n", question->sentense);
+							printf("\t\t\t\t[A] %s\n", question->A);
+							printf("\t\t\t\t[B] %s\n", question->B);
+							printf("\t\t\t\t[C] %s\n", question->C);
+							printf("\t\t\t\t[D] %s\n", question->D);
+							printf("\t\t\t\tOdpowiedz: ");
+							gets_s(answear, size_answear);
+							system("cls");
+							if (strlen(&answear) == 1) {
+								if ((toupper(answear[0])) == *question->coorectAnswear) {
+									(*players_list)->points = (*players_list)->points + 1;
+									printf("\t\t\t\tPoprawna odpowiedz!!!\n\t\t\t\tDo twojego konta dodano punkt za poprawną odpowiedz\n");
+								}
+								else {
+									printf("\t\t\t\tNiepoprawna odpowiedz!!!\n\n");
+								}
+							}
+							else {
+								printf("\t\t\t\tNiepoprawna odpowiedz!!!\n\n");
+							}
+							proces++;
+						}
+						player++;
+						*players_list = (*players_list)->pNext;
+					}
+					delete_list_of_category(&categoriesList, 0);
+					delete_list_of_questions(&questionsList, 0);
+					system("cls");
+					return 1;
+				}
+				else if (numberOfQuestions > 70) {
+					system("cls");
+					printf("\t\t\t\tPodałęś zbyt duża liczbe maksymalna liczba to 70!\n");
+					goto getNumQue;
+				}
+				else if (numberOfQuestions > amountOfQue) {
+					system("cls");
+					printf("\t\t\t\tPodałeś zbyt dużą liczbę pytań\n");
+					printf("\t\t\t\tLiczba pytań w tej kategorii to: %d\n", amountOfQue);
+					printf("\t\t\t\tDodaj %d pytań do kategorii o nazwie %s\n", numberOfQuestions - amountOfQue, nameCategory);
+					printf("\t\t\t\tLub podaj mniejszą ilośc pytań\n");
+					delete_list_of_questions(&questionsList, 0);
+					goto catmque;
+				}
+				else {
+					system("cls");
+					printf("\t\t\t\tPodano nieprawidłową liczbę pytań\n");
+					delete_list_of_questions(&questionsList, 0);
+					goto catmque;
+				}
+			}
+			else {
+				system("cls");
+				printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
+				goto getNumQue;
+			}
+
+		}
+		else if (optionNumber == 0) return 0;
+		else {
+			system("cls");
+			printf("\t\t\t\tNie ma takiej kategorii\n");
+			goto catmque;
+		}
+	}
+	else {
+		system("cls");
+		printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
+		goto catmque;
+	}
+}
+
 int standardModeGame(struct players** players_list) {
 	srand(time(NULL));
 	int amountOfPlayers = count_players(players_list);
@@ -370,7 +493,7 @@ changeQueCategorySelect:;
 					for (int j = 0; j < 6; j++) {
 						if (j == 0) {
 							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
-							printf("\t\t\t\tpoprzednia treść pytania: %s\n",oldQue->sentense);
+							printf("\t\t\t\tpoprzednia treść pytania: %s\n", oldQue->sentense);
 							puts("");
 							printf("\t\t\t\tPodaj treść pytania : ");
 							gets_s(question, 256);
@@ -495,7 +618,7 @@ changeQueCategorySelect:;
 							system("cls");
 						}
 					}
-					for (int i = 0;i < 256;i++) {
+					for (int i = 0; i < 256; i++) {
 						oldQue->sentense[i] = newOne->sentense[i];
 						oldQue->A[i] = newOne->A[i];
 						oldQue->B[i] = newOne->B[i];
@@ -959,7 +1082,7 @@ void random_question_mode_race(struct players** players_list) {
 	if (count_players(players_list) >= 3) {
 		double min1 = 1000000, min2 = 1000000, min3 = 1000000;
 		struct players* player1 = NULL, * player2 = NULL, * player3 = NULL;
-		for (int i = 0;i < count_players(players_list);i++) {
+		for (int i = 0; i < count_players(players_list); i++) {
 			if (min1 > timeTab[i]) {
 				min3 = min2;
 				min2 = min1;
@@ -974,7 +1097,7 @@ void random_question_mode_race(struct players** players_list) {
 				min3 = timeTab[i];
 			}
 		}
-		for (int i = 0;i < count_players(players_list);i++) {
+		for (int i = 0; i < count_players(players_list); i++) {
 			if (min1 == timeTab[i])
 				player1 = return_player(players_list, i + 1);
 			else if (min2 == timeTab[i])
@@ -1073,7 +1196,7 @@ categoryselect:
 			if (count_players(players_list) >= 3) {
 				double min1 = 1000000, min2 = 1000000, min3 = 1000000;
 				struct players* player1 = NULL, * player2 = NULL, * player3 = NULL;
-				for (int i = 0;i < count_players(players_list);i++) {
+				for (int i = 0; i < count_players(players_list); i++) {
 					if (min1 > timeTab[i]) {
 						min3 = min2;
 						min2 = min1;
@@ -1088,7 +1211,7 @@ categoryselect:
 						min3 = timeTab[i];
 					}
 				}
-				for (int i = 0;i < count_players(players_list);i++) {
+				for (int i = 0; i < count_players(players_list); i++) {
 					if (min1 == timeTab[i])
 						player1 = return_player(players_list, i + 1);
 					else if (min2 == timeTab[i])
