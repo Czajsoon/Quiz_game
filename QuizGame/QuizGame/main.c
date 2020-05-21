@@ -89,7 +89,9 @@ int main() {
 								goto mainhome1;
 						}
 						else if (numberMode == 6) {
-
+							int aftergame = random_question_mode_questions(&playersList);
+							if (aftergame == 0) goto mainhome;
+							else goto mainhome1;
 						}
 						else if (numberMode == 0)
 							goto mainhome;
@@ -203,14 +205,15 @@ mainhome1:
 		modeselect1:
 			if (playersList) {
 				char optionMode[128];
-				printf("\t\t\t\t ____________________________________________\n");
-				printf("\t\t\t\t | [0] |        ->       Cofnij      <-      |\n");
-				printf("\t\t\t\t | [1] |      ->      Standardowy      <-    |\n");
-				printf("\t\t\t\t | [2] |      ->   Wszystkie pytania   <-    |\n");
-				printf("\t\t\t\t | [3] |      ->   Standardowy Race   <-     |\n");
-				printf("\t\t\t\t | [4] | -> Tryb wyœcigu wszystkich pytañ <- |\n");
+				printf("\t\t\t\t __________________________________________________\n");
+				printf("\t\t\t\t | [0] |           ->       Cofnij      <-         |\n");
+				printf("\t\t\t\t | [1] |         ->      Standardowy      <-       |\n");
+				printf("\t\t\t\t | [2] |         ->   Wszystkie pytania   <-       |\n");
+				printf("\t\t\t\t | [3] |         ->   Standardowy Race   <-        |\n");
+				printf("\t\t\t\t | [4] |        -> Wszystkie Pytania Race <-       |\n");
 				printf("\t\t\t\t | [5] |     -> Standard zmienna iloœæ pytañ <-    |\n");
-				printf("\t\t\t\t --------------------------------------------\n");
+				printf("\t\t\t\t | [6] | ->Wszystkie Pytania zmienna iloœæ pytañ<- |\n");
+				printf("\t\t\t\t --------------------------------------------------\n");
 				printf("\t\t\t\t  Wybierz opcjê : ");
 				gets_s(optionMode, 128);
 				system("cls");
@@ -250,6 +253,11 @@ mainhome1:
 						}
 						else
 							goto mainhome1;
+					}
+					else if (numberMode == 6) {
+						int aftergame = random_question_mode_questions(&playersList);
+						if (aftergame == 0) goto mainhome1;
+						else goto mainhome1;
 					}
 					else if (numberMode == 0)
 						goto mainhome1;
@@ -353,7 +361,8 @@ mainhome1:
 		}
 		else if (toupper(option[0]) == 'Q') {
 			system("cls");
-			printf("\t\t\t\tDziêkujemy z grê!");
+			printf("\t\t\t\t\tDziêkujemy z grê!\n");
+			if(playersList) players_stats(&playersList);
 			delete_list_of_players(&playersList, 0);
 			return 0;
 		}

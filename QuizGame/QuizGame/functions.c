@@ -949,6 +949,117 @@ bool catque_wystapily(int* tabCat, int* tabQue, int size, int numberCat, int num
 	return false;
 }
 
+int countAllQuestions() {
+	struct categories* cat = NULL;
+	struct questions* que = NULL;
+	adding_categories_to_list(&cat);
+	int counter = 0;
+	for (int i = 0; i < count_categories(&cat); i++) {
+		char* catName = return_name_category(&cat, i + 1);
+		adding_questions_to_list(&que, catName);
+		counter = counter + count_questions(&que);
+		delete_list_of_questions(&que, 0);
+	}
+	delete_list_of_category(&cat, 0);
+	return counter;
+}
+
+int random_question_mode_questions(struct players** players_list) {
+	srand(time(NULL));
+	int amoutOfQuestions = countAllQuestions();
+	char numQue[256];
+getnumQue:;
+	printf("\t\t\t\tNaciśnij Enter aby cofnąć\n");
+	printf("\t\t\t\tPodaj liczbę pytań: ");
+	gets_s(numQue, 256);
+	int numberQuestions = string_to_int(is_numbers, numQue);
+	if (strlen(numQue) == 0) return 0;
+	if (numberQuestions != -18000) {
+		if (numberQuestions > 0 && numberQuestions <= amoutOfQuestions) {
+			struct categories* listaKategorii = NULL;
+			struct questions* listaPytan = NULL;
+			char buffor[256], answear[256];
+			int player = 1, flag = 0, tabCat[70], tabQue[70], size_answear = 256;;
+			while (player != count_players(players_list) + 1) {
+				printf("\t\t\t\tOdpowiada gracz o nicku %s\n", (*players_list)->Name);
+				printf("\t\t\t\tNacisnij Enter, aby zacząć odpowiadac...");
+				for (int i = 0; i < 70; i++) {
+					tabCat[i] = tabQue[i] = 0;
+				}
+				gets_s(buffor, 256);
+				system("cls");
+				int proces = 1;
+				while (proces != numberQuestions + 1) {
+				RANDQUESTION:;
+					adding_categories_to_list(&listaKategorii);
+					int amountOfCategories = count_categories(&listaKategorii);
+					int randomCategory = (rand() % (amountOfCategories - 1 + 1)) + 1;
+					struct categories* category = return_category(listaKategorii, randomCategory);
+					adding_questions_to_list(&listaPytan, category->NameCategory);
+					int amountOfQuestions = count_questions(&listaPytan);
+					int randomQuestion = (rand() % (amountOfQuestions - 1 + 1)) + 1;
+					struct questions* question = node_question_head(&listaPytan, randomQuestion);
+					if (catque_wystapily(tabCat, tabQue, 5, randomCategory, randomQuestion)) {
+						delete_list_of_category(&listaKategorii, 0);
+						delete_list_of_questions(&listaPytan, 0);
+						goto RANDQUESTION;
+					}
+					else {
+						tabCat[proces - 1] = category->id;
+						tabQue[proces - 1] = question->id;
+					}
+					if (proces == 1) printf("\n\n");
+					puts("");
+					printf("\t\t\t\t%s\n", question->sentense);
+					printf("\t\t\t\t[A] %s\n", question->A);
+					printf("\t\t\t\t[B] %s\n", question->B);
+					printf("\t\t\t\t[C] %s\n", question->C);
+					printf("\t\t\t\t[D] %s\n", question->D);
+					printf("\t\t\t\tOdpowiedz: ");
+					gets_s(answear, size_answear);
+					system("cls");
+					if (strlen(&answear) == 1) {
+						if ((toupper(answear[0])) == *question->coorectAnswear) {
+							(*players_list)->points = (*players_list)->points + 1;
+							printf("\t\t\t\tPoprawna odpowiedz!!!\n\t\t\t\tDo twojego konta dodano punkt za poprawną odpowiedz\n");
+						}
+						else printf("\t\t\t\tNiepoprawna odpowiedz!!!\n\n");
+					}
+					else printf("\t\t\t\tNiepoprawna odpowiedz!!!\n\n");
+					delete_list_of_category(&listaKategorii, 0);
+					delete_list_of_questions(&listaPytan, 0);
+					proces++;
+				}
+				*players_list = (*players_list)->pNext;
+				player++;
+			}
+			return 1;
+		}
+		else if (numberQuestions > 70) {
+			system("cls");
+			printf("\t\t\t\tMaksymalna liczba pytań to 70");
+			goto getnumQue;
+		}
+		else if (numberQuestions > amoutOfQuestions) {
+			system("cls");
+			printf("\t\t\t\tPodałeś za dużo pytań\n");
+			printf("\t\t\t\tliczba pytań w quizach to %d\n", amoutOfQuestions);
+			printf("\t\t\t\tPodałeś o %d za dużo pytań\n", numberQuestions - amoutOfQuestions);
+			goto getnumQue;
+		}
+		else {
+			system("cls");
+			printf("\t\t\t\tPodałeś niepoprawną liczbę");
+			goto getnumQue;
+		}
+	}
+	else {
+		system("cls");
+		printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
+		goto getnumQue;
+	}
+}
+
 void random_question_mode(struct players** players_list) {
 	srand(time(NULL));
 	struct categories* listaKategorii = NULL;

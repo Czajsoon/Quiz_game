@@ -20,4 +20,6 @@ void random_question_mode_race(struct players** players_list);
 int standardModeGameRace(struct players** players_list);
 void changeQuestion();
 int standarModeMQue(struct players** players_list);
+int random_question_mode_questions(struct players** players_list);
+int countAllQuestions();
 #endif // !_FUNCTIONS_H_
