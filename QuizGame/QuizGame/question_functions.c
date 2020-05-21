@@ -104,8 +104,8 @@ struct questions* question(struct questions** lista_pointer, struct questions** 
 	else return *lista_pointer;
 }
 
-struct questions* node_question_head(struct questions** lista_pointer,int number) {
-	return question(lista_pointer,lista_pointer,number);
+struct questions* node_question_head(struct questions** lista_pointer, int number) {
+	return question(lista_pointer, lista_pointer, number);
 }
 
 void delete_cycle_questions(struct questions** lista_pointer, struct questions** head) {
@@ -126,4 +126,107 @@ void delete_list_of_questions(struct questions** lista_pointer, int data) {
 		free(*lista_pointer);
 		*lista_pointer = NULL;
 	}
+}
+
+void printAllQue(struct questions* lista_pointer) {
+	if (lista_pointer) {
+		struct questions* start = lista_pointer;
+		do {
+			printf("\t\t\t\tNumer pytania: %d\n", lista_pointer->id);
+			printf("\t\t\t\tTreœæ pytania: %s\n", lista_pointer->sentense);
+			printf("\t\t\t\tODP A: %s\n", lista_pointer->A);
+			printf("\t\t\t\tODP B: %s\n", lista_pointer->B);
+			printf("\t\t\t\tODP C: %s\n", lista_pointer->C);
+			printf("\t\t\t\tODP D: %s\n", lista_pointer->D);
+			printf("\t\t\t\tPoprawna odpowiedz: %s\n", lista_pointer->coorectAnswear);
+			puts("");
+			lista_pointer = lista_pointer->pNext;
+		} while (lista_pointer != start);
+	}
+}
+
+struct questions* findLastNodeQue(struct questions* lista_pointer) {
+	struct questions* start = lista_pointer;
+	if (lista_pointer) {
+		do {
+			lista_pointer = lista_pointer->pNext;
+		} while (lista_pointer->pNext != start);
+		return lista_pointer;
+	}
+	else return NULL;
+}
+
+void return_cycle_list_que(struct questions** lista_pointer) {
+	if (*lista_pointer) {
+		struct questions* start = *lista_pointer;
+		while ((*lista_pointer)->pNext != NULL) {
+			(*lista_pointer) = (*lista_pointer)->pNext;
+		}
+		(*lista_pointer)->pNext = start;
+	}
+}
+
+struct questions* new_delete_one_que(struct questions** lista_pointer, int data) {
+	if (*lista_pointer) {
+		struct questions* start = (*lista_pointer);
+		do {
+			if ((*lista_pointer)->id == data) {
+				if (*lista_pointer == start) {
+					struct questions* next = (*lista_pointer)->pNext;
+					free(*lista_pointer);
+					*lista_pointer = next;
+					return next;
+				}
+				else {
+					struct questions* next = (*lista_pointer)->pNext;
+					if (next) {
+						free(*lista_pointer);
+						*lista_pointer = next;
+						return start;
+					}
+					else {
+						free(*lista_pointer);
+						*lista_pointer = NULL;
+						return start;
+					}
+				}
+			}
+			(*lista_pointer) = (*lista_pointer)->pNext;
+		} while ((*lista_pointer) != start);
+	}
+	else return NULL;
+}
+
+struct questions* delete_one_question(struct questions** lista_pointer, int number) {
+	if (*lista_pointer) {
+		delete_cycle_questions(lista_pointer, lista_pointer);
+		*lista_pointer = new_delete_one_que(lista_pointer, number);
+		return_cycle_list_que(lista_pointer);
+		return *lista_pointer;
+	}
+}
+
+void restart_id_que(struct questions** lista_pointer) {
+	if (*lista_pointer) {
+		int counter = 0;
+		struct questions* start = (*lista_pointer);
+		do {
+			(*lista_pointer)->id = counter + 1;
+			*lista_pointer = (*lista_pointer)->pNext;
+			counter++;
+		} while (*lista_pointer != start);
+	}
+}
+
+
+struct questions* return_que(struct questions* lista_pointer, int number) {
+	struct questions* start = lista_pointer;
+	do {
+		if (lista_pointer->id == number)
+			return lista_pointer;
+		lista_pointer = lista_pointer->pNext;
+	} while (lista_pointer != start);
+	if (lista_pointer->id == number)
+		return lista_pointer;
+	else return NULL;
 }

@@ -14,4 +14,8 @@ struct questions* question(struct questions** lista_pointer, struct questions** 
 struct questions* node_question_head(struct questions** lista_pointer, int number);
 void delete_cycle_questions(struct questions** lista_pointer, struct questions** head);
 void delete_list_of_questions(struct questions** lista_pointer, int data);
+void printAllQue(struct questions* lista_pointer);
+struct questions* delete_one_question(struct questions** list_pointer, int number);
+void restart_id_que(struct questions** lista_pointer);
+struct questions* return_que(struct questions* lista_pointer, int number);
 #endif // !_QUESTIONS_FUNCTIONS_H_

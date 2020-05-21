@@ -334,6 +334,198 @@ bool is_category_in_categories(struct categories* lista_pointer, char* newName) 
 	}
 }
 
+void changeQuestion() {
+	struct questions* queList = NULL;
+	struct categories* catList = NULL;
+	char category[256];
+	adding_categories_to_list(&catList);
+changeQueCategorySelect:;
+	print_categories(catList, catList);
+	printf("\t\t\t\tWybierz numer kategorii: ");
+	gets_s(category, 256);
+	int numberCategory = string_to_int(is_numbers, category);
+	if (strlen(category) == 0);
+	else if (numberCategory == -18000) {
+		system("cls");
+		printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
+		goto changeQueCategorySelect;
+	}
+	else {
+		int countCategories = count_categories(&catList);
+		if (numberCategory > 0 && numberCategory <= countCategories) {
+			char* categoryName = return_name_category(&catList, numberCategory);
+			adding_questions_to_list(&queList, categoryName);
+			char question[256];
+		wrongQueNubmer:;
+			printAllQue(queList);
+			printf("\t\t\t\tWybierz number pytania: ");
+			gets_s(question, 256);
+			int QueNumber = string_to_int(is_numbers, question);
+			if (QueNumber != -18000) {
+				int countQuestions = count_questions(&queList);
+				if (QueNumber > 0 && QueNumber <= countQuestions) {
+					char question[256];
+					struct questions* newOne = (struct questions*)malloc(sizeof(struct questions));
+					struct questions* oldQue = return_que(queList, QueNumber);
+					for (int j = 0; j < 6; j++) {
+						if (j == 0) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\tpoprzednia treść pytania: %s\n",oldQue->sentense);
+							puts("");
+							printf("\t\t\t\tPodaj treść pytania : ");
+							gets_s(question, 256);
+							question[0] = toupper(question[0]);
+							for (int x = 0; x < 256; x++)
+								newOne->sentense[x] = question[x];
+							system("cls");
+						}
+						else if (j == 1) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\tpoprzednia treść pytania: %s\n", oldQue->sentense);
+							printf("\t\t\t\tpoprzednia odpowiedz A: %s\n", oldQue->A);
+							puts("");
+							printf("\t\t\t\tNowo wprowadzone dane\n");
+							puts("");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tPodaj odpowiedz A\n");
+							printf("\t\t\t\t[A] ");
+							gets_s(question, 256);
+							question[0] = toupper(question[0]);
+							if (strlen(question) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									question[x] = buff[x];
+							}
+							for (int x = 0; x < 256; x++)
+								newOne->A[x] = question[x];
+							system("cls");
+						}
+						else if (j == 2) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\tpoprzednia treść pytania: %s\n", oldQue->sentense);
+							printf("\t\t\t\tpoprzednia odpowiedz A: %s\n", oldQue->A);
+							printf("\t\t\t\tpoprzednia odpowiedz B: %s\n", oldQue->B);
+							puts("");
+							printf("\t\t\t\tNowo wprowadzone dane\n");
+							puts("");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tNowo wprowadzone odpowiedzi\n");
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\tPodaj odpowiedz B\n");
+							printf("\t\t\t\t[B] ");
+							gets_s(question, 256);
+							question[0] = toupper(question[0]);
+							if (strlen(question) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									question[x] = buff[x];
+							}
+							for (int x = 0; x < 256; x++)
+								newOne->B[x] = question[x];
+							system("cls");
+						}
+						else if (j == 3) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\tpoprzednia treść pytania: %s\n", oldQue->sentense);
+							printf("\t\t\t\tpoprzednia odpowiedz A: %s\n", oldQue->A);
+							printf("\t\t\t\tpoprzednia odpowiedz B: %s\n", oldQue->B);
+							printf("\t\t\t\tpoprzednia odpowiedz C: %s\n", oldQue->C);
+							puts("");
+							printf("\t\t\t\tNowo wprowadzone dane\n");
+							puts("");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tNowo wprowadzone odpowiedzi\n");
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\t[B] %s\n", newOne->B);
+							printf("\t\t\t\tPodaj odpowiedz C\n");
+							printf("\t\t\t\t[C] ");
+							gets_s(question, 256);
+							question[0] = toupper(question[0]);
+							if (strlen(question) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									question[x] = buff[x];
+							}
+							for (int x = 0; x < 256; x++)
+								newOne->C[x] = question[x];
+							system("cls");
+						}
+						else if (j == 4) {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\tpoprzednia treść pytania: %s\n", oldQue->sentense);
+							printf("\t\t\t\tpoprzednia odpowiedz A: %s\n", oldQue->A);
+							printf("\t\t\t\tpoprzednia odpowiedz B: %s\n", oldQue->B);
+							printf("\t\t\t\tpoprzednia odpowiedz C: %s\n", oldQue->C);
+							printf("\t\t\t\tpoprzednia odpowiedz D: %s\n", oldQue->D);
+							puts("");
+							printf("\t\t\t\tNowo wprowadzone dane\n");
+							puts("");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\tNowo wprowadzone odpowiedzi\n");
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\t[B] %s\n", newOne->B);
+							printf("\t\t\t\t[C] %s\n", newOne->C);
+							printf("\t\t\t\tPodaj odpowiedz D\n");
+							printf("\t\t\t\t[D] ");
+							gets_s(question, 256);
+							question[0] = toupper(question[0]);
+							if (strlen(question) == 0) {
+								char buff[] = "--";
+								for (int x = 0; x < 256; x++)
+									question[x] = buff[x];
+							}
+							for (int x = 0; x < 256; x++)
+								newOne->D[x] = question[x];
+							system("cls");
+						}
+						else {
+							printf("\t\t\t\tUwaga wprowadzaj dane bez znaków polskich!!!\n");
+							printf("\t\t\t\t%s\n", newOne->sentense);
+							printf("\t\t\t\t[A] %s\n", newOne->A);
+							printf("\t\t\t\t[B] %s\n", newOne->B);
+							printf("\t\t\t\t[C] %s\n", newOne->C);
+							printf("\t\t\t\t[D] %s\n", newOne->D);
+							printf("\t\t\t\t(Np. A lub B lub C lub D)\n");
+							printf("\t\t\t\tPodaj prawidłową odpowiedz: ");
+							gets_s(question, 256);
+							question[0] = toupper(question[0]);
+							for (int x = 0; x < 256; x++)
+								newOne->coorectAnswear[x] = question[x];
+							system("cls");
+						}
+					}
+					for (int i = 0;i < 256;i++) {
+						oldQue->sentense[i] = newOne->sentense[i];
+						oldQue->A[i] = newOne->A[i];
+						oldQue->B[i] = newOne->B[i];
+						oldQue->C[i] = newOne->C[i];
+						oldQue->D[i] = newOne->D[i];
+						oldQue->coorectAnswear[i] = newOne->coorectAnswear[i];
+					}
+					free(newOne);
+					write_new_questions(categoryName, queList);
+				}
+				else {
+					system("cls");
+					printf("\t\t\t\tNie ma takiego pytania!\n");
+					goto wrongQueNubmer;
+				}
+			}
+			else {
+				system("cls");
+				printf("\t\t\t\tWpisałeś niepoprawne dane!\n");
+				goto wrongQueNubmer;
+			}
+		}
+		else {
+			system("cls");
+			printf("\t\t\t\tNie ma takiej kategorii!\n");
+			goto changeQueCategorySelect;
+		}
+	}
+}
+
 void addNewCategoryByPlayer() {
 	srand(time(NULL));
 	struct categories* categoriesList = NULL;
