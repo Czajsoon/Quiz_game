@@ -1,0 +1,30 @@
+Ktore miasto jest stolica Norwegii?
+[A] Kopenhaga 
+[B] Oslo
+[C] Sztokholm
+[D] Bergen
+B
+Ktory z krolow jest obecnym krolem Norwegii?
+[A] Olav V
+[B] Haakon Magnus
+[C] Harald V
+[D] --
+C
+Jaka waluta posluguje sie Norwegia?
+[A] Euro
+[B] Funty
+[C] Korony
+[D] Franki
+C
+Ile mieszkancow ma Norwegia?
+[A] 2.000.000
+[B] 5.000.000
+[C] 10.000.000
+[D] --
+B
+Ktory fjord jest najdluzszy?
+[A] Oslofjorden
+[B] Sognefjorden
+[C] Hardangerfjorden
+[D] --
+B

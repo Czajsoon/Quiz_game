@@ -1,0 +1,115 @@
+\hypertarget{adding_new_files_8c}{}\doxysection{adding\+New\+Files.\+c File Reference}
+\label{adding_new_files_8c}\index{addingNewFiles.c@{addingNewFiles.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$Windows.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}category\+\_\+structure.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}category\+\_\+functions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}question\+\_\+functions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}question\+\_\+structure.\+h\char`\"{}}\newline
+Include dependency graph for adding\+New\+Files.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{adding_new_files_8c_af08ec37a8c99d747fb60fa15bc28678b}{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{adding_new_files_8c_a814221be931f9380f60bee883092867a}{write\+\_\+categories}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$lista\+\_\+pointer)
+\item 
+void \mbox{\hyperlink{adding_new_files_8c_aa2e8a16aa8de0164fdcab95224426d9e}{write\+\_\+new\+\_\+questions}} (char $\ast$category\+Name, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$lista\+\_\+que)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{adding_new_files_8c_af08ec37a8c99d747fb60fa15bc28678b}\label{adding_new_files_8c_af08ec37a8c99d747fb60fa15bc28678b}} 
+\index{addingNewFiles.c@{addingNewFiles.c}!\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}}
+\index{\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}!addingNewFiles.c@{addingNewFiles.c}}
+\doxysubsubsection{\texorpdfstring{\_CRT\_SECURE\_NO\_WARNINGS}{\_CRT\_SECURE\_NO\_WARNINGS}}
+{\footnotesize\ttfamily \#define \+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{adding_new_files_8c_a814221be931f9380f60bee883092867a}\label{adding_new_files_8c_a814221be931f9380f60bee883092867a}} 
+\index{addingNewFiles.c@{addingNewFiles.c}!write\_categories@{write\_categories}}
+\index{write\_categories@{write\_categories}!addingNewFiles.c@{addingNewFiles.c}}
+\doxysubsubsection{\texorpdfstring{write\_categories()}{write\_categories()}}
+{\footnotesize\ttfamily void write\+\_\+categories (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$}]{lista\+\_\+pointer }\end{DoxyParamCaption})}
+
+Ta funkcja zapisuje do pliku nowe kategorie 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaŸnik na listê kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15                                                         \{}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} elements = \mbox{\hyperlink{category__functions_8c_a48b7556eaada65f73699b9d315f94fd6}{count\_categories}}(\&lista\_pointer);}
+\DoxyCodeLine{17     FILE* plik;}
+\DoxyCodeLine{18     plik = fopen(\textcolor{stringliteral}{"kategorie.txt"}, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{19     \textcolor{keyword}{struct }\mbox{\hyperlink{structcategories}{categories}}* start = lista\_pointer;}
+\DoxyCodeLine{20     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < elements; i++) \{}
+\DoxyCodeLine{21         fprintf(plik, \textcolor{stringliteral}{"\%s\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structcategories_aa035ea916002026f47aaf9f04a04896e}{NameCategory}});}
+\DoxyCodeLine{22         lista\_pointer = lista\_pointer-\/>\mbox{\hyperlink{structcategories_a22a0088ca2ccc08a7db2a0462256148c}{pNext}};}
+\DoxyCodeLine{23     \}}
+\DoxyCodeLine{24     fclose(plik);}
+\DoxyCodeLine{25 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{adding_new_files_8c_aa2e8a16aa8de0164fdcab95224426d9e}\label{adding_new_files_8c_aa2e8a16aa8de0164fdcab95224426d9e}} 
+\index{addingNewFiles.c@{addingNewFiles.c}!write\_new\_questions@{write\_new\_questions}}
+\index{write\_new\_questions@{write\_new\_questions}!addingNewFiles.c@{addingNewFiles.c}}
+\doxysubsubsection{\texorpdfstring{write\_new\_questions()}{write\_new\_questions()}}
+{\footnotesize\ttfamily void write\+\_\+new\+\_\+questions (\begin{DoxyParamCaption}\item[{char $\ast$}]{category\+Name,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$}]{lista\+\_\+que }\end{DoxyParamCaption})}
+
+Ta funkcja zapisuje do pliku nowe pytania 
+\begin{DoxyParams}{Parameters}
+{\em category\+Name} & nazwa kategorii \\
+\hline
+{\em lista\+\_\+que} & wskaŸnik na listê pytañ \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27                                                                           \{}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} elements = \mbox{\hyperlink{question__functions_8c_a9750a039284c12828fac0725350c0980}{count\_questions}}(\&lista\_que);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{char} filename[128];}
+\DoxyCodeLine{30     FILE* plik;}
+\DoxyCodeLine{31     strcpy(filename, categoryName);}
+\DoxyCodeLine{32     strcat(filename, \textcolor{stringliteral}{".txt"});}
+\DoxyCodeLine{33     plik = fopen(filename, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{34     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < elements;i++) \{}
+\DoxyCodeLine{35         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0;j < 6;j++) \{}
+\DoxyCodeLine{36             \textcolor{keywordflow}{if} (j == 0) \{}
+\DoxyCodeLine{37                 fprintf(plik, \textcolor{stringliteral}{"\%s\(\backslash\)n"}, lista\_que-\/>\mbox{\hyperlink{structquestions_a83ea84b8111ab940a5a33fb65f1a7323}{sentense}});}
+\DoxyCodeLine{38             \}}
+\DoxyCodeLine{39             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (j == 1) \{}
+\DoxyCodeLine{40                 fprintf(plik, \textcolor{stringliteral}{"[A] \%s\(\backslash\)n"}, lista\_que-\/>\mbox{\hyperlink{structquestions_a7ed7649224c88e7289c250f33c5763eb}{A}});}
+\DoxyCodeLine{41             \}}
+\DoxyCodeLine{42             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (j == 2) \{}
+\DoxyCodeLine{43                 fprintf(plik, \textcolor{stringliteral}{"[B] \%s\(\backslash\)n"}, lista\_que-\/>\mbox{\hyperlink{structquestions_aeecdb1d00bcba8ad5e8062726545227e}{B}});}
+\DoxyCodeLine{44             \}}
+\DoxyCodeLine{45             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (j == 3) \{}
+\DoxyCodeLine{46                 fprintf(plik, \textcolor{stringliteral}{"[C] \%s\(\backslash\)n"}, lista\_que-\/>\mbox{\hyperlink{structquestions_a2dcb6c81bb4bb106eac7e23cb9b2635a}{C}});}
+\DoxyCodeLine{47             \}}
+\DoxyCodeLine{48             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (j == 4) \{}
+\DoxyCodeLine{49                 fprintf(plik, \textcolor{stringliteral}{"[D] \%s\(\backslash\)n"}, lista\_que-\/>\mbox{\hyperlink{structquestions_a0c27d7d2863f6b8908d2f248296ddab2}{D}});}
+\DoxyCodeLine{50             \}}
+\DoxyCodeLine{51             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{52                 fprintf(plik, \textcolor{stringliteral}{"\%s\(\backslash\)n"}, lista\_que-\/>\mbox{\hyperlink{structquestions_a3d793096e62d32f4eec7f70224af9f09}{coorectAnswear}});}
+\DoxyCodeLine{53                 lista\_que = lista\_que-\/>\mbox{\hyperlink{structquestions_aacf222553f48a8f0c73499ebb769ac20}{pNext}};}
+\DoxyCodeLine{54             \}}
+\DoxyCodeLine{55         \}}
+\DoxyCodeLine{56     \}}
+\DoxyCodeLine{57     fclose(plik);}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,880 @@
+\hypertarget{main_8c}{}\doxysection{main.\+c File Reference}
+\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$Windows.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}player\+\_\+structure.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}player\+\_\+functions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}functions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}category\+\_\+functions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}reading\+\_\+files.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_af08ec37a8c99d747fb60fa15bc28678b}{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8c_af08ec37a8c99d747fb60fa15bc28678b}\label{main_8c_af08ec37a8c99d747fb60fa15bc28678b}} 
+\index{main.c@{main.c}!\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}}
+\index{\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{\_CRT\_SECURE\_NO\_WARNINGS}{\_CRT\_SECURE\_NO\_WARNINGS}}
+{\footnotesize\ttfamily \#define \+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{13            \{}
+\DoxyCodeLine{14     setlocale(LC\_CTYPE, \textcolor{stringliteral}{"UTF-\/8"});}
+\DoxyCodeLine{15     setlocale(LC\_ALL, \textcolor{stringliteral}{"pl\_PL"});}
+\DoxyCodeLine{16     \textcolor{keywordtype}{char} option[128];}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} flagOrientation = 0, size\_option = 128;}
+\DoxyCodeLine{18     \textcolor{keyword}{struct }\mbox{\hyperlink{structplayers}{players}}* playersList = NULL;}
+\DoxyCodeLine{19     \textcolor{keywordflow}{if} (flagOrientation == 0) \{}
+\DoxyCodeLine{20     mainhome:}
+\DoxyCodeLine{21         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"}}
+\DoxyCodeLine{22             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                                            | \(\backslash\)n"}}
+\DoxyCodeLine{23             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                  Quiz Game                 |\(\backslash\)n"}}
+\DoxyCodeLine{24             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\(\backslash\)n"}}
+\DoxyCodeLine{25             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz S aby rozpocz¹æ grê                |\(\backslash\)n"}}
+\DoxyCodeLine{26             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz A aby dodaæ graczy                 |\(\backslash\)n"}}
+\DoxyCodeLine{27             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz T aby zobaczyæ statystyki graczy   |\(\backslash\)n"}}
+\DoxyCodeLine{28             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz Q aby wyjœæ z gry                  |\(\backslash\)n"}}
+\DoxyCodeLine{29             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"}}
+\DoxyCodeLine{30             \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê: "});}
+\DoxyCodeLine{31         gets\_s(option, size\_option);}
+\DoxyCodeLine{32         system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{33         \textcolor{keywordflow}{if} (strlen(option) != 1) \{}
+\DoxyCodeLine{34             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inna istenij¹c¹ :)\(\backslash\)n"});}
+\DoxyCodeLine{35             \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{38             \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{39             modeselect:}
+\DoxyCodeLine{40                 \textcolor{keywordflow}{if} (playersList) \{}
+\DoxyCodeLine{41                     \textcolor{keywordtype}{char} optionMode[128];}
+\DoxyCodeLine{42                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"});}
+\DoxyCodeLine{43                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [0] |           -\/>       Cofnij      <-\/         |\(\backslash\)n"});}
+\DoxyCodeLine{44                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [1] |         -\/>      Standardowy      <-\/       |\(\backslash\)n"});}
+\DoxyCodeLine{45                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [2] |         -\/>   Wszystkie pytania   <-\/       |\(\backslash\)n"});}
+\DoxyCodeLine{46                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [3] |         -\/>   Standardowy Race   <-\/        |\(\backslash\)n"});}
+\DoxyCodeLine{47                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [4] |        -\/> Wszystkie Pytania Race <-\/       |\(\backslash\)n"});}
+\DoxyCodeLine{48                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [5] |     -\/> Standard zmienna iloœæ pytañ <-\/    |\(\backslash\)n"});}
+\DoxyCodeLine{49                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [6] | -\/>Wszystkie Pytania zmienna iloœæ pytañ<-\/ |\(\backslash\)n"});}
+\DoxyCodeLine{50                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{51                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê : "});}
+\DoxyCodeLine{52                     gets\_s(optionMode, 128);}
+\DoxyCodeLine{53                     system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{54                     \textcolor{keywordtype}{int} numberMode = \mbox{\hyperlink{functions_8c_ad627c23f6fb1eb68f6d5dfe5c30e183f}{string\_to\_int}}(\mbox{\hyperlink{functions_8c_a1360b4bc51a8e77871301c2478ca276a}{is\_numbers}}, optionMode);}
+\DoxyCodeLine{55                     \textcolor{keywordflow}{if} (numberMode != -\/18000) \{}
+\DoxyCodeLine{56                         \textcolor{keywordflow}{if} (numberMode == 1) \{}
+\DoxyCodeLine{57                             \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_af350360552e2add61ea25f56aaccd997}{standardModeGame}}(\&playersList);}
+\DoxyCodeLine{58                             \textcolor{keywordflow}{if} (aftergame == 0) \{}
+\DoxyCodeLine{59                                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{60                                 \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{61                             \}}
+\DoxyCodeLine{62                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{63                                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{64                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{65                         \}}
+\DoxyCodeLine{66                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 2) \{}
+\DoxyCodeLine{67                             \mbox{\hyperlink{functions_8c_a329c4ad83abb3074e1b91b6f8bdebe09}{random\_question\_mode}}(\&playersList);}
+\DoxyCodeLine{68                             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{69                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{70                         \}}
+\DoxyCodeLine{71                         \textcolor{keywordflow}{if} (numberMode == 3) \{}
+\DoxyCodeLine{72                             \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_af4a720ee2e528774cd509778bc646912}{standardModeGameRace}}(\&playersList);}
+\DoxyCodeLine{73                             \textcolor{keywordflow}{if} (aftergame == 0) \{}
+\DoxyCodeLine{74                                 \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{75                             \}}
+\DoxyCodeLine{76                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{77                                 \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{78                         \}}
+\DoxyCodeLine{79                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 4) \{}
+\DoxyCodeLine{80                             \mbox{\hyperlink{functions_8c_a563203ab196ac9ca878a40e287f6210f}{random\_question\_mode\_race}}(\&playersList);}
+\DoxyCodeLine{81                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{82                         \}}
+\DoxyCodeLine{83                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 5) \{}
+\DoxyCodeLine{84                             \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_a5e4a7e4f035477bf89d3792ce1941c47}{standarModeMQue}}(\&playersList);}
+\DoxyCodeLine{85                             \textcolor{keywordflow}{if} (aftergame == 0) \{}
+\DoxyCodeLine{86                                 \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{87                             \}}
+\DoxyCodeLine{88                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{89                                 \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{90                         \}}
+\DoxyCodeLine{91                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 6) \{}
+\DoxyCodeLine{92                             \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_a5ec615cb01ddd11748b106c6b8e15371}{random\_question\_mode\_questions}}(\&playersList);}
+\DoxyCodeLine{93                             \textcolor{keywordflow}{if} (aftergame == 0) \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{94                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{95                         \}}
+\DoxyCodeLine{96                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 0)}
+\DoxyCodeLine{97                             \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{98                         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{99                             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{100                             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiego trybu gry\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inny\(\backslash\)n"});}
+\DoxyCodeLine{101                             \textcolor{keywordflow}{goto} modeselect;}
+\DoxyCodeLine{102                         \}}
+\DoxyCodeLine{103                     \}}
+\DoxyCodeLine{104                     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{105                         system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{106                         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWpisa³eœ nieprawid³owe dane!\(\backslash\)n"});}
+\DoxyCodeLine{107                         puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{108                         \textcolor{keywordflow}{goto} modeselect;}
+\DoxyCodeLine{109                     \}}
+\DoxyCodeLine{110                 \}}
+\DoxyCodeLine{111                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{112                     system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{113                     puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{114                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNajpierw nale¿y dodaæ gracza!\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWróæ tutaj jak dodasz gracza :)\(\backslash\)n"});}
+\DoxyCodeLine{115                     puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{116                     \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{117                 \}}
+\DoxyCodeLine{118             \}}
+\DoxyCodeLine{119             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'A'}) \{}
+\DoxyCodeLine{120                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{121                 playersList = \mbox{\hyperlink{functions_8c_ad2a41d6193c8de886880692825e76181}{new\_players}}(\&playersList);}
+\DoxyCodeLine{122                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{123                 \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{124             \}}
+\DoxyCodeLine{125             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'T'}) \{}
+\DoxyCodeLine{126                 \textcolor{keywordflow}{if} (playersList != NULL) \{}
+\DoxyCodeLine{127                     \textcolor{keywordtype}{char} optionStats[128];}
+\DoxyCodeLine{128                     \textcolor{keywordtype}{int} size\_stats = 128;}
+\DoxyCodeLine{129                     system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{130                 selectstatsmenu:;}
+\DoxyCodeLine{131                     \mbox{\hyperlink{functions_8c_aafc08f1f5b4f714748095fe1b9384e03}{players\_stats}}(\&playersList);}
+\DoxyCodeLine{132                     puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{133                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"});}
+\DoxyCodeLine{134                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz Z aby zmienic dowolny nick           |\(\backslash\)n"});}
+\DoxyCodeLine{135                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz D aby usun¹æ dowolnego gracza        |\(\backslash\)n"});}
+\DoxyCodeLine{136                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz A aby usun¹æ wszystkich graczy       |\(\backslash\)n"});}
+\DoxyCodeLine{137                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Naciœnij Enter aby przejœæ do menu g³ównego|\(\backslash\)n"});}
+\DoxyCodeLine{138                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{139                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t   Wpisz opcjê: "});}
+\DoxyCodeLine{140                     gets\_s(optionStats, size\_stats);}
+\DoxyCodeLine{141                     system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{142                     \textcolor{keywordflow}{if} (strlen(optionStats) != 1) \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{143                     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{144                         \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'Z'}) \{}
+\DoxyCodeLine{145                             \mbox{\hyperlink{functions_8c_ab9cbebc04e7b873ee0f3eff75030174f}{changeNickname}}(\&playersList);}
+\DoxyCodeLine{146                             \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{147                         \}}
+\DoxyCodeLine{148                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'D'}) \{}
+\DoxyCodeLine{149                             \mbox{\hyperlink{functions_8c_a0d83367b7b2c4ba5d662e29491c6d673}{deleteOnePlayer}}(\&playersList);}
+\DoxyCodeLine{150                             \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{151                         \}}
+\DoxyCodeLine{152                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'A'}) \{}
+\DoxyCodeLine{153                             \mbox{\hyperlink{player__functions_8c_ad6594716c90d2d96d46afedcf7f0a3c2}{delete\_list\_of\_players}}(\&playersList, 0);}
+\DoxyCodeLine{154                             \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{155                         \}}
+\DoxyCodeLine{156                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (optionStats[0] == \textcolor{charliteral}{'\(\backslash\)n'}) \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{157                         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{158                             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji w wyborze\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz istniej¹c¹
+                            goto selectstatsmenu;
+                        \}
+                    \}
+
+                \}
+                else \{
+                    system("cls");
+                    printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tLista graczy jest pusta najpierw dodaj graczy!\(\backslash\)n");
+                    goto mainhome;
+                \}
+            \}
+            else if (toupper(option[0]) == 'Q') \{
+                system("cls");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tDziêkujemy z grê!");
+                delete\_list\_of\_players(\&playersList, 0);
+                return 0;
+            \}
+            else \{
+                system("cls");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n");
+                goto mainhome;
+            \}
+        \}
+    \}
+mainhome1:
+    printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                                            | \(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                  Quiz Game                 |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz S aby rozpocz¹æ grê                |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz A aby dodaæ graczy                 |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz T aby zobaczyæ statystyki graczy   |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz D aby dodaæ pytanie                |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz C aby dodaæ kategoriê              |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz Z aby zmieniæ treœæ pytania        |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz Q aby wyjœæ z gry                  |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê: ");
+    gets\_s(option, size\_option);
+    system("cls");
+    if (strlen(option) != 1) \{
+        printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inna istenij¹c¹ :)\(\backslash\)n");
+        goto mainhome1;
+    \}
+    else \{
+        if (toupper(option[0]) == 'S') \{
+        modeselect1:
+            if (playersList) \{
+                char optionMode[128];
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [0] |           -\/>       Cofnij      <-\/         |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [1] |         -\/>      Standardowy      <-\/       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [2] |         -\/>   Wszystkie pytania   <-\/       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [3] |         -\/>   Standardowy Race   <-\/        |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [4] |        -\/> Wszystkie Pytania Race <-\/       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [5] |     -\/> Standard zmienna iloœæ pytañ <-\/    |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [6] | -\/>Wszystkie Pytania zmienna iloœæ pytañ<-\/ |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê : ");
+                gets\_s(optionMode, 128);
+                system("cls");
+                int numberMode = string\_to\_int(is\_numbers, optionMode);
+                if (numberMode != -\/18000) \{
+                    if (numberMode == 1) \{
+                        int aftergame = standardModeGame(\&playersList);
+                        if (aftergame == 0) \{
+                            system("cls");
+                            goto mainhome1;
+                        \}
+                        else
+                            system("cls");
+                        goto mainhome1;
+                    \}
+                    else if (numberMode == 2) \{
+                        random\_question\_mode(\&playersList);
+                        system("cls");
+                        goto mainhome1;
+                    \}
+                    if (numberMode == 3) \{
+                        int aftergame = standardModeGameRace(\&playersList);
+                        if (aftergame == 0) \{
+                            goto mainhome1;
+                        \}
+                        else
+                            goto mainhome1;
+                    \}
+                    else if (numberMode == 4) \{
+                        random\_question\_mode\_race(\&playersList);
+                        goto mainhome1;
+                    \}
+                    else if (numberMode == 5) \{
+                        int aftergame = standarModeMQue(\&playersList);
+                        if (aftergame == 0) \{
+                            goto mainhome1;
+                        \}
+                        else
+                            goto mainhome1;
+                    \}
+                    else if (numberMode == 6) \{
+                        int aftergame = random\_question\_mode\_questions(\&playersList);
+                        if (aftergame == 0) goto mainhome1;
+                        else goto mainhome1;
+                    \}
+                    else if (numberMode == 0)
+                        goto mainhome1;
+                    else \{
+                        system("cls");
+                        printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiego trybu gry\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inny\(\backslash\)n");
+                        goto modeselect1;
+                    \}
+                \}
+                else \{
+                    system("cls");
+                    printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWpisa³eœ nieprawid³owe dane!\(\backslash\)n");
+                    puts("");
+                    goto modeselect1;
+                \}
+            \}
+            else \{
+                system("cls");
+                puts("");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNajpierw nale¿y dodaæ gracza!\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWróæ tutaj jak dodasz gracza :)\(\backslash\)n");
+                puts("");
+                goto mainhome;
+            \}
+        \}
+        else if (toupper(option[0]) == 'A') \{
+            system("cls");
+            playersList = new\_players(\&playersList);
+            system("cls");
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'T') \{
+            if (playersList != NULL) \{
+                system("cls");
+            selectstatsmenu1:;
+                char optionStats[128];
+                int size\_stats = 128;
+                players\_stats(\&playersList);
+                puts("");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz Z aby zmienic dowolny nick           |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz D aby usun¹æ dowolnego gracza        |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz A aby usun¹æ wszystkich graczy       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz R aby zresetowaæ punkty              |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz N aby zresetowaæ punkty dla gracza   |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Naciœnij Enter aby przejœæ do menu g³ównego|\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t   Wpisz opcjê: ");
+                gets\_s(optionStats, size\_stats);
+                system("cls");
+                if (strlen(optionStats) == 0) goto mainhome1;
+                else \{
+                    if (toupper(optionStats[0]) == 'Z') \{
+                        changeNickname(\&playersList);
+                        goto mainhome1;
+                    \}
+                    else if (toupper(optionStats[0]) == 'D') \{
+                        deleteOnePlayer(\&playersList);
+                        if (playersList) \{
+                            goto mainhome1;
+                        \}
+                        else \{
+                            goto mainhome;
+                        \}
+                    \}
+                    else if (toupper(optionStats[0]) == 'A') \{
+                        delete\_list\_of\_players(\&playersList, 0);
+                        goto mainhome;
+                    \}
+                    else if (toupper(optionStats[0]) == 'R') \{
+                        resetPoints(\&playersList, \&playersList);
+                        goto mainhome1;
+                    \}
+                    else if (toupper(optionStats[0]) == 'N') \{
+                        resetPlayerPoints(playersList);
+                        goto mainhome1;
+                    \}
+                    else if (strlen(optionStats) == 0) goto mainhome1;
+                    else \{
+                        printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji w wyborze\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz istniej¹c¹\(\backslash\)n");
+                        goto selectstatsmenu1;
+                    \}
+                \}
+
+            \}
+            else \{
+                system("cls");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tLista graczy jest pusta najpierw dodaj graczy!\(\backslash\)n");
+                goto mainhome;
+            \}
+        \}
+        else if (toupper(option[0]) == 'D') \{
+            add\_new\_question();
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'C') \{
+            addNewCategoryByPlayer();
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'Z') \{
+            changeQuestion();
+        \}
+        else if (toupper(option[0]) == 'Q') \{
+            system("cls");
+            printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tDziêkujemy z grê!\(\backslash\)n");
+            if(playersList) players\_stats(\&playersList);
+            delete\_list\_of\_players(\&playersList, 0);
+            return 0;
+        \}
+        else \{
+            system("cls");
+            printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n");
+            goto mainhome1;
+        \}
+    \}
+\}
+\(\backslash\)n"});}
+\DoxyCodeLine{159                             \textcolor{keywordflow}{goto} selectstatsmenu;}
+\DoxyCodeLine{160                         \}}
+\DoxyCodeLine{161                     \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163                 \}}
+\DoxyCodeLine{164                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{165                     system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{166                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tLista graczy jest pusta najpierw dodaj graczy!\(\backslash\)n"});}
+\DoxyCodeLine{167                     \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{168                 \}}
+\DoxyCodeLine{169             \}}
+\DoxyCodeLine{170             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'Q'}) \{}
+\DoxyCodeLine{171                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{172                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tDziêkujemy z grê!
+                delete\_list\_of\_players(\&playersList, 0);
+                return 0;
+            \}
+            else \{
+                system("cls");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n");
+                goto mainhome;
+            \}
+        \}
+    \}
+mainhome1:
+    printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                                            | \(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                  Quiz Game                 |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz S aby rozpocz¹æ grê                |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz A aby dodaæ graczy                 |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz T aby zobaczyæ statystyki graczy   |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz D aby dodaæ pytanie                |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz C aby dodaæ kategoriê              |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz Z aby zmieniæ treœæ pytania        |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz Q aby wyjœæ z gry                  |\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"
+        "\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê: ");
+    gets\_s(option, size\_option);
+    system("cls");
+    if (strlen(option) != 1) \{
+        printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inna istenij¹c¹ :)\(\backslash\)n");
+        goto mainhome1;
+    \}
+    else \{
+        if (toupper(option[0]) == 'S') \{
+        modeselect1:
+            if (playersList) \{
+                char optionMode[128];
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [0] |           -\/>       Cofnij      <-\/         |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [1] |         -\/>      Standardowy      <-\/       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [2] |         -\/>   Wszystkie pytania   <-\/       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [3] |         -\/>   Standardowy Race   <-\/        |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [4] |        -\/> Wszystkie Pytania Race <-\/       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [5] |     -\/> Standard zmienna iloœæ pytañ <-\/    |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [6] | -\/>Wszystkie Pytania zmienna iloœæ pytañ<-\/ |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê : ");
+                gets\_s(optionMode, 128);
+                system("cls");
+                int numberMode = string\_to\_int(is\_numbers, optionMode);
+                if (numberMode != -\/18000) \{
+                    if (numberMode == 1) \{
+                        int aftergame = standardModeGame(\&playersList);
+                        if (aftergame == 0) \{
+                            system("cls");
+                            goto mainhome1;
+                        \}
+                        else
+                            system("cls");
+                        goto mainhome1;
+                    \}
+                    else if (numberMode == 2) \{
+                        random\_question\_mode(\&playersList);
+                        system("cls");
+                        goto mainhome1;
+                    \}
+                    if (numberMode == 3) \{
+                        int aftergame = standardModeGameRace(\&playersList);
+                        if (aftergame == 0) \{
+                            goto mainhome1;
+                        \}
+                        else
+                            goto mainhome1;
+                    \}
+                    else if (numberMode == 4) \{
+                        random\_question\_mode\_race(\&playersList);
+                        goto mainhome1;
+                    \}
+                    else if (numberMode == 5) \{
+                        int aftergame = standarModeMQue(\&playersList);
+                        if (aftergame == 0) \{
+                            goto mainhome1;
+                        \}
+                        else
+                            goto mainhome1;
+                    \}
+                    else if (numberMode == 6) \{
+                        int aftergame = random\_question\_mode\_questions(\&playersList);
+                        if (aftergame == 0) goto mainhome1;
+                        else goto mainhome1;
+                    \}
+                    else if (numberMode == 0)
+                        goto mainhome1;
+                    else \{
+                        system("cls");
+                        printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiego trybu gry\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inny\(\backslash\)n");
+                        goto modeselect1;
+                    \}
+                \}
+                else \{
+                    system("cls");
+                    printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWpisa³eœ nieprawid³owe dane!\(\backslash\)n");
+                    puts("");
+                    goto modeselect1;
+                \}
+            \}
+            else \{
+                system("cls");
+                puts("");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNajpierw nale¿y dodaæ gracza!\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWróæ tutaj jak dodasz gracza :)\(\backslash\)n");
+                puts("");
+                goto mainhome;
+            \}
+        \}
+        else if (toupper(option[0]) == 'A') \{
+            system("cls");
+            playersList = new\_players(\&playersList);
+            system("cls");
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'T') \{
+            if (playersList != NULL) \{
+                system("cls");
+            selectstatsmenu1:;
+                char optionStats[128];
+                int size\_stats = 128;
+                players\_stats(\&playersList);
+                puts("");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz Z aby zmienic dowolny nick           |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz D aby usun¹æ dowolnego gracza        |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz A aby usun¹æ wszystkich graczy       |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz R aby zresetowaæ punkty              |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz N aby zresetowaæ punkty dla gracza   |\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Naciœnij Enter aby przejœæ do menu g³ównego|\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t   Wpisz opcjê: ");
+                gets\_s(optionStats, size\_stats);
+                system("cls");
+                if (strlen(optionStats) == 0) goto mainhome1;
+                else \{
+                    if (toupper(optionStats[0]) == 'Z') \{
+                        changeNickname(\&playersList);
+                        goto mainhome1;
+                    \}
+                    else if (toupper(optionStats[0]) == 'D') \{
+                        deleteOnePlayer(\&playersList);
+                        if (playersList) \{
+                            goto mainhome1;
+                        \}
+                        else \{
+                            goto mainhome;
+                        \}
+                    \}
+                    else if (toupper(optionStats[0]) == 'A') \{
+                        delete\_list\_of\_players(\&playersList, 0);
+                        goto mainhome;
+                    \}
+                    else if (toupper(optionStats[0]) == 'R') \{
+                        resetPoints(\&playersList, \&playersList);
+                        goto mainhome1;
+                    \}
+                    else if (toupper(optionStats[0]) == 'N') \{
+                        resetPlayerPoints(playersList);
+                        goto mainhome1;
+                    \}
+                    else if (strlen(optionStats) == 0) goto mainhome1;
+                    else \{
+                        printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji w wyborze\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz istniej¹c¹\(\backslash\)n");
+                        goto selectstatsmenu1;
+                    \}
+                \}
+
+            \}
+            else \{
+                system("cls");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tLista graczy jest pusta najpierw dodaj graczy!\(\backslash\)n");
+                goto mainhome;
+            \}
+        \}
+        else if (toupper(option[0]) == 'D') \{
+            add\_new\_question();
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'C') \{
+            addNewCategoryByPlayer();
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'Z') \{
+            changeQuestion();
+        \}
+        else if (toupper(option[0]) == 'Q') \{
+            system("cls");
+            printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tDziêkujemy z grê!\(\backslash\)n");
+            if(playersList) players\_stats(\&playersList);
+            delete\_list\_of\_players(\&playersList, 0);
+            return 0;
+        \}
+        else \{
+            system("cls");
+            printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n");
+            goto mainhome1;
+        \}
+    \}
+\}
+"});}
+\DoxyCodeLine{173                 \mbox{\hyperlink{player__functions_8c_ad6594716c90d2d96d46afedcf7f0a3c2}{delete\_list\_of\_players}}(\&playersList, 0);}
+\DoxyCodeLine{174                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{175             \}}
+\DoxyCodeLine{176             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{177                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{178                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n"});}
+\DoxyCodeLine{179                 \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{180             \}}
+\DoxyCodeLine{181         \}}
+\DoxyCodeLine{182     \}}
+\DoxyCodeLine{183 mainhome1:}
+\DoxyCodeLine{184     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"}}
+\DoxyCodeLine{185         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                                            | \(\backslash\)n"}}
+\DoxyCodeLine{186         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|                  Quiz Game                 |\(\backslash\)n"}}
+\DoxyCodeLine{187         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\(\backslash\)n"}}
+\DoxyCodeLine{188         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz S aby rozpocz¹æ grê                |\(\backslash\)n"}}
+\DoxyCodeLine{189         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz A aby dodaæ graczy                 |\(\backslash\)n"}}
+\DoxyCodeLine{190         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz T aby zobaczyæ statystyki graczy   |\(\backslash\)n"}}
+\DoxyCodeLine{191         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz D aby dodaæ pytanie                |\(\backslash\)n"}}
+\DoxyCodeLine{192         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz C aby dodaæ kategoriê              |\(\backslash\)n"}}
+\DoxyCodeLine{193         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz Z aby zmieniæ treœæ pytania        |\(\backslash\)n"}}
+\DoxyCodeLine{194         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| > Wpisz Q aby wyjœæ z gry                  |\(\backslash\)n"}}
+\DoxyCodeLine{195         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"}}
+\DoxyCodeLine{196         \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê: "});}
+\DoxyCodeLine{197     gets\_s(option, size\_option);}
+\DoxyCodeLine{198     system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{199     \textcolor{keywordflow}{if} (strlen(option) != 1) \{}
+\DoxyCodeLine{200         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inna istenij¹c¹ :)\(\backslash\)n"});}
+\DoxyCodeLine{201         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{202     \}}
+\DoxyCodeLine{203     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{204         \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'S'}) \{}
+\DoxyCodeLine{205         modeselect1:}
+\DoxyCodeLine{206             \textcolor{keywordflow}{if} (playersList) \{}
+\DoxyCodeLine{207                 \textcolor{keywordtype}{char} optionMode[128];}
+\DoxyCodeLine{208                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"});}
+\DoxyCodeLine{209                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [0] |           -\/>       Cofnij      <-\/         |\(\backslash\)n"});}
+\DoxyCodeLine{210                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [1] |         -\/>      Standardowy      <-\/       |\(\backslash\)n"});}
+\DoxyCodeLine{211                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [2] |         -\/>   Wszystkie pytania   <-\/       |\(\backslash\)n"});}
+\DoxyCodeLine{212                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [3] |         -\/>   Standardowy Race   <-\/        |\(\backslash\)n"});}
+\DoxyCodeLine{213                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [4] |        -\/> Wszystkie Pytania Race <-\/       |\(\backslash\)n"});}
+\DoxyCodeLine{214                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [5] |     -\/> Standard zmienna iloœæ pytañ <-\/    |\(\backslash\)n"});}
+\DoxyCodeLine{215                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t | [6] | -\/>Wszystkie Pytania zmienna iloœæ pytañ<-\/ |\(\backslash\)n"});}
+\DoxyCodeLine{216                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{217                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t  Wybierz opcjê : "});}
+\DoxyCodeLine{218                 gets\_s(optionMode, 128);}
+\DoxyCodeLine{219                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{220                 \textcolor{keywordtype}{int} numberMode = \mbox{\hyperlink{functions_8c_ad627c23f6fb1eb68f6d5dfe5c30e183f}{string\_to\_int}}(\mbox{\hyperlink{functions_8c_a1360b4bc51a8e77871301c2478ca276a}{is\_numbers}}, optionMode);}
+\DoxyCodeLine{221                 \textcolor{keywordflow}{if} (numberMode != -\/18000) \{}
+\DoxyCodeLine{222                     \textcolor{keywordflow}{if} (numberMode == 1) \{}
+\DoxyCodeLine{223                         \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_af350360552e2add61ea25f56aaccd997}{standardModeGame}}(\&playersList);}
+\DoxyCodeLine{224                         \textcolor{keywordflow}{if} (aftergame == 0) \{}
+\DoxyCodeLine{225                             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{226                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{227                         \}}
+\DoxyCodeLine{228                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{229                             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{230                         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{231                     \}}
+\DoxyCodeLine{232                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 2) \{}
+\DoxyCodeLine{233                         \mbox{\hyperlink{functions_8c_a329c4ad83abb3074e1b91b6f8bdebe09}{random\_question\_mode}}(\&playersList);}
+\DoxyCodeLine{234                         system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{235                         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{236                     \}}
+\DoxyCodeLine{237                     \textcolor{keywordflow}{if} (numberMode == 3) \{}
+\DoxyCodeLine{238                         \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_af4a720ee2e528774cd509778bc646912}{standardModeGameRace}}(\&playersList);}
+\DoxyCodeLine{239                         \textcolor{keywordflow}{if} (aftergame == 0) \{}
+\DoxyCodeLine{240                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{241                         \}}
+\DoxyCodeLine{242                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{243                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{244                     \}}
+\DoxyCodeLine{245                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 4) \{}
+\DoxyCodeLine{246                         \mbox{\hyperlink{functions_8c_a563203ab196ac9ca878a40e287f6210f}{random\_question\_mode\_race}}(\&playersList);}
+\DoxyCodeLine{247                         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{248                     \}}
+\DoxyCodeLine{249                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 5) \{}
+\DoxyCodeLine{250                         \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_a5e4a7e4f035477bf89d3792ce1941c47}{standarModeMQue}}(\&playersList);}
+\DoxyCodeLine{251                         \textcolor{keywordflow}{if} (aftergame == 0) \{}
+\DoxyCodeLine{252                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{253                         \}}
+\DoxyCodeLine{254                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{255                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{256                     \}}
+\DoxyCodeLine{257                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 6) \{}
+\DoxyCodeLine{258                         \textcolor{keywordtype}{int} aftergame = \mbox{\hyperlink{functions_8c_a5ec615cb01ddd11748b106c6b8e15371}{random\_question\_mode\_questions}}(\&playersList);}
+\DoxyCodeLine{259                         \textcolor{keywordflow}{if} (aftergame == 0) \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{260                         \textcolor{keywordflow}{else} \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{261                     \}}
+\DoxyCodeLine{262                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (numberMode == 0)}
+\DoxyCodeLine{263                         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{264                     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{265                         system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{266                         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiego trybu gry\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz inny\(\backslash\)n"});}
+\DoxyCodeLine{267                         \textcolor{keywordflow}{goto} modeselect1;}
+\DoxyCodeLine{268                     \}}
+\DoxyCodeLine{269                 \}}
+\DoxyCodeLine{270                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{271                     system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{272                     printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWpisa³eœ nieprawid³owe dane!\(\backslash\)n"});}
+\DoxyCodeLine{273                     puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{274                     \textcolor{keywordflow}{goto} modeselect1;}
+\DoxyCodeLine{275                 \}}
+\DoxyCodeLine{276             \}}
+\DoxyCodeLine{277             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{278                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{279                 puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{280                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNajpierw nale¿y dodaæ gracza!\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWróæ tutaj jak dodasz gracza :)\(\backslash\)n"});}
+\DoxyCodeLine{281                 puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{282                 \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{283             \}}
+\DoxyCodeLine{284         \}}
+\DoxyCodeLine{285         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'A'}) \{}
+\DoxyCodeLine{286             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{287             playersList = \mbox{\hyperlink{functions_8c_ad2a41d6193c8de886880692825e76181}{new\_players}}(\&playersList);}
+\DoxyCodeLine{288             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{289             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{290         \}}
+\DoxyCodeLine{291         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'T'}) \{}
+\DoxyCodeLine{292             \textcolor{keywordflow}{if} (playersList != NULL) \{}
+\DoxyCodeLine{293                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{294             selectstatsmenu1:;}
+\DoxyCodeLine{295                 \textcolor{keywordtype}{char} optionStats[128];}
+\DoxyCodeLine{296                 \textcolor{keywordtype}{int} size\_stats = 128;}
+\DoxyCodeLine{297                 \mbox{\hyperlink{functions_8c_aafc08f1f5b4f714748095fe1b9384e03}{players\_stats}}(\&playersList);}
+\DoxyCodeLine{298                 puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{299                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\(\backslash\)n"});}
+\DoxyCodeLine{300                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz Z aby zmienic dowolny nick           |\(\backslash\)n"});}
+\DoxyCodeLine{301                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz D aby usun¹æ dowolnego gracza        |\(\backslash\)n"});}
+\DoxyCodeLine{302                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz A aby usun¹æ wszystkich graczy       |\(\backslash\)n"});}
+\DoxyCodeLine{303                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz R aby zresetowaæ punkty              |\(\backslash\)n"});}
+\DoxyCodeLine{304                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Wpisz N aby zresetowaæ punkty dla gracza   |\(\backslash\)n"});}
+\DoxyCodeLine{305                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t|> Naciœnij Enter aby przejœæ do menu g³ównego|\(\backslash\)n"});}
+\DoxyCodeLine{306                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"});}
+\DoxyCodeLine{307                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t   Wpisz opcjê: "});}
+\DoxyCodeLine{308                 gets\_s(optionStats, size\_stats);}
+\DoxyCodeLine{309                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{310                 \textcolor{keywordflow}{if} (strlen(optionStats) == 0) \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{311                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{312                     \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'Z'}) \{}
+\DoxyCodeLine{313                         \mbox{\hyperlink{functions_8c_ab9cbebc04e7b873ee0f3eff75030174f}{changeNickname}}(\&playersList);}
+\DoxyCodeLine{314                         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{315                     \}}
+\DoxyCodeLine{316                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'D'}) \{}
+\DoxyCodeLine{317                         \mbox{\hyperlink{functions_8c_a0d83367b7b2c4ba5d662e29491c6d673}{deleteOnePlayer}}(\&playersList);}
+\DoxyCodeLine{318                         \textcolor{keywordflow}{if} (playersList) \{}
+\DoxyCodeLine{319                             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{320                         \}}
+\DoxyCodeLine{321                         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{322                             \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{323                         \}}
+\DoxyCodeLine{324                     \}}
+\DoxyCodeLine{325                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'A'}) \{}
+\DoxyCodeLine{326                         \mbox{\hyperlink{player__functions_8c_ad6594716c90d2d96d46afedcf7f0a3c2}{delete\_list\_of\_players}}(\&playersList, 0);}
+\DoxyCodeLine{327                         \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{328                     \}}
+\DoxyCodeLine{329                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'R'}) \{}
+\DoxyCodeLine{330                         \mbox{\hyperlink{functions_8h_a6284e2a3efaaef8bd8308dea4671ff7c}{resetPoints}}(\&playersList, \&playersList);}
+\DoxyCodeLine{331                         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{332                     \}}
+\DoxyCodeLine{333                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(optionStats[0]) == \textcolor{charliteral}{'N'}) \{}
+\DoxyCodeLine{334                         \mbox{\hyperlink{functions_8c_afadf3729b6dea4a2af25c049730c00a4}{resetPlayerPoints}}(playersList);}
+\DoxyCodeLine{335                         \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{336                     \}}
+\DoxyCodeLine{337                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strlen(optionStats) == 0) \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{338                     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{339                         printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji w wyborze\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWybierz istniej¹c¹
+                        goto selectstatsmenu1;
+                    \}
+                \}
+
+            \}
+            else \{
+                system("cls");
+                printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tLista graczy jest pusta najpierw dodaj graczy!\(\backslash\)n");
+                goto mainhome;
+            \}
+        \}
+        else if (toupper(option[0]) == 'D') \{
+            add\_new\_question();
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'C') \{
+            addNewCategoryByPlayer();
+            goto mainhome1;
+        \}
+        else if (toupper(option[0]) == 'Z') \{
+            changeQuestion();
+        \}
+        else if (toupper(option[0]) == 'Q') \{
+            system("cls");
+            printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tDziêkujemy z grê!\(\backslash\)n");
+            if(playersList) players\_stats(\&playersList);
+            delete\_list\_of\_players(\&playersList, 0);
+            return 0;
+        \}
+        else \{
+            system("cls");
+            printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n");
+            goto mainhome1;
+        \}
+    \}
+\}
+\(\backslash\)n"});}
+\DoxyCodeLine{340                         \textcolor{keywordflow}{goto} selectstatsmenu1;}
+\DoxyCodeLine{341                     \}}
+\DoxyCodeLine{342                 \}}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344             \}}
+\DoxyCodeLine{345             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{346                 system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{347                 printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tLista graczy jest pusta najpierw dodaj graczy!\(\backslash\)n"});}
+\DoxyCodeLine{348                 \textcolor{keywordflow}{goto} mainhome;}
+\DoxyCodeLine{349             \}}
+\DoxyCodeLine{350         \}}
+\DoxyCodeLine{351         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'D'}) \{}
+\DoxyCodeLine{352             \mbox{\hyperlink{functions_8c_a41c3127b864ba355f34522625643b370}{add\_new\_question}}();}
+\DoxyCodeLine{353             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{354         \}}
+\DoxyCodeLine{355         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'C'}) \{}
+\DoxyCodeLine{356             \mbox{\hyperlink{functions_8c_aba724560fd22e18d53c22e9b14233831}{addNewCategoryByPlayer}}();}
+\DoxyCodeLine{357             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{358         \}}
+\DoxyCodeLine{359         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'Z'}) \{}
+\DoxyCodeLine{360             \mbox{\hyperlink{functions_8c_ad7827780406acc6fc62ad962c4100978}{changeQuestion}}();}
+\DoxyCodeLine{361         \}}
+\DoxyCodeLine{362         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (toupper(option[0]) == \textcolor{charliteral}{'Q'}) \{}
+\DoxyCodeLine{363             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{364             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tDziêkujemy z grê!
+            if(playersList) players\_stats(\&playersList);
+            delete\_list\_of\_players(\&playersList, 0);
+            return 0;
+        \}
+        else \{
+            system("cls");
+            printf("\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n");
+            goto mainhome1;
+        \}
+    \}
+\}
+\(\backslash\)n"});}
+\DoxyCodeLine{365             \textcolor{keywordflow}{if}(playersList) \mbox{\hyperlink{functions_8c_aafc08f1f5b4f714748095fe1b9384e03}{players\_stats}}(\&playersList);}
+\DoxyCodeLine{366             \mbox{\hyperlink{player__functions_8c_ad6594716c90d2d96d46afedcf7f0a3c2}{delete\_list\_of\_players}}(\&playersList, 0);}
+\DoxyCodeLine{367             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{368         \}}
+\DoxyCodeLine{369         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{370             system(\textcolor{stringliteral}{"cls"});}
+\DoxyCodeLine{371             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNie ma takiej opcji :(\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)twybierz inna :)\(\backslash\)n"});}
+\DoxyCodeLine{372             \textcolor{keywordflow}{goto} mainhome1;}
+\DoxyCodeLine{373         \}}
+\DoxyCodeLine{374     \}}
+\DoxyCodeLine{375 \}}
+
+\end{DoxyCode}

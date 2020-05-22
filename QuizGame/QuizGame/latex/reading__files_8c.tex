@@ -1,0 +1,227 @@
+\hypertarget{reading__files_8c}{}\doxysection{reading\+\_\+files.\+c File Reference}
+\label{reading__files_8c}\index{reading\_files.c@{reading\_files.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$Windows.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$wchar.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}category\+\_\+structure.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}category\+\_\+functions.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}question\+\_\+structure.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}question\+\_\+functions.\+h\char`\"{}}\newline
+Include dependency graph for reading\+\_\+files.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{reading__files_8c_af08ec37a8c99d747fb60fa15bc28678b}{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{reading__files_8c_a49a730d8f2ecc1c13585b0ec019d7e90}{adding\+\_\+categories\+\_\+to\+\_\+list}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer)
+\item 
+void \mbox{\hyperlink{reading__files_8c_a6e635e44b94a9b4e13da68bec4882306}{adding\+\_\+questions\+\_\+to\+\_\+list}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, char $\ast$name)
+\item 
+char $\ast$ \mbox{\hyperlink{reading__files_8c_add60d03567b1582a35deeb2c42a5843b}{delete\+\_\+index\+\_\+in\+\_\+question}} (char $\ast$this\+\_\+string)
+\item 
+char $\ast$ \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\+\_\+new\+\_\+line\+\_\+sign}} (char $\ast$string)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{reading__files_8c_af08ec37a8c99d747fb60fa15bc28678b}\label{reading__files_8c_af08ec37a8c99d747fb60fa15bc28678b}} 
+\index{reading\_files.c@{reading\_files.c}!\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}}
+\index{\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}!reading\_files.c@{reading\_files.c}}
+\doxysubsubsection{\texorpdfstring{\_CRT\_SECURE\_NO\_WARNINGS}{\_CRT\_SECURE\_NO\_WARNINGS}}
+{\footnotesize\ttfamily \#define \+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{reading__files_8c_a49a730d8f2ecc1c13585b0ec019d7e90}\label{reading__files_8c_a49a730d8f2ecc1c13585b0ec019d7e90}} 
+\index{reading\_files.c@{reading\_files.c}!adding\_categories\_to\_list@{adding\_categories\_to\_list}}
+\index{adding\_categories\_to\_list@{adding\_categories\_to\_list}!reading\_files.c@{reading\_files.c}}
+\doxysubsubsection{\texorpdfstring{adding\_categories\_to\_list()}{adding\_categories\_to\_list()}}
+{\footnotesize\ttfamily void adding\+\_\+categories\+\_\+to\+\_\+list (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer }\end{DoxyParamCaption})}
+
+Ta funkcja czyta z pliku tekstowego nazwy kategorii i dodaje je do listy kategorii 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59                                                                   \{}
+\DoxyCodeLine{60     \textcolor{keywordtype}{char} buffor[256];}
+\DoxyCodeLine{61     \textcolor{keywordtype}{char} buffor1[256];}
+\DoxyCodeLine{62     FILE* plik = fopen(\textcolor{stringliteral}{"kategorie.txt"}, \textcolor{stringliteral}{"r"});}
+\DoxyCodeLine{63     \textcolor{keywordflow}{if} (!plik) \{}
+\DoxyCodeLine{64         printf(\textcolor{stringliteral}{"nie uda³o siê otworzyæ pliku!"});}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{67         \textcolor{keywordflow}{while} (fgets(buffor, 256, plik) != NULL) \{}
+\DoxyCodeLine{68             \textcolor{keywordtype}{char}* buf = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor);}
+\DoxyCodeLine{69             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 256; i++)}
+\DoxyCodeLine{70                 buffor[i] = buf[i];}
+\DoxyCodeLine{71             \mbox{\hyperlink{category__functions_8c_afc8acd3a0b1d067e6754b1c1f75adcd2}{create\_and\_add\_category}}(lista\_pointer, buffor, lista\_pointer);}
+\DoxyCodeLine{72         \}}
+\DoxyCodeLine{73         fclose(plik);}
+\DoxyCodeLine{74     \}}
+\DoxyCodeLine{75 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{reading__files_8c_a6e635e44b94a9b4e13da68bec4882306}\label{reading__files_8c_a6e635e44b94a9b4e13da68bec4882306}} 
+\index{reading\_files.c@{reading\_files.c}!adding\_questions\_to\_list@{adding\_questions\_to\_list}}
+\index{adding\_questions\_to\_list@{adding\_questions\_to\_list}!reading\_files.c@{reading\_files.c}}
+\doxysubsubsection{\texorpdfstring{adding\_questions\_to\_list()}{adding\_questions\_to\_list()}}
+{\footnotesize\ttfamily void adding\+\_\+questions\+\_\+to\+\_\+list (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Ta funkcja czyta z pliku tekstowego tresci pytan i dodaje je do listy pytan 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em name} & nazwa kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77                                                                             \{}
+\DoxyCodeLine{78     \textcolor{keywordtype}{char} buffor[256];}
+\DoxyCodeLine{79     \textcolor{keywordtype}{int} linenumber = 0;}
+\DoxyCodeLine{80     \textcolor{keywordtype}{char} filename[100];}
+\DoxyCodeLine{81     \textcolor{keywordtype}{char}* extension = \textcolor{stringliteral}{".txt"};}
+\DoxyCodeLine{82     \textcolor{keyword}{struct }\mbox{\hyperlink{structquestions}{questions}}* nowy = NULL;}
+\DoxyCodeLine{83     strcpy(filename, name);}
+\DoxyCodeLine{84     strcat(filename, \textcolor{stringliteral}{".txt"});}
+\DoxyCodeLine{85     FILE* plik = fopen(filename, \textcolor{stringliteral}{"r+"});}
+\DoxyCodeLine{86     \textcolor{keywordflow}{while} (fgets(buffor, 256, plik) != NULL) \{}
+\DoxyCodeLine{87         linenumber++;}
+\DoxyCodeLine{88         \textcolor{keywordflow}{if} (linenumber == 1) \{}
+\DoxyCodeLine{89             nowy = (\textcolor{keyword}{struct }\mbox{\hyperlink{structquestions}{questions}}*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structquestions}{questions}}));}
+\DoxyCodeLine{90             \textcolor{keywordtype}{char}* tab = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor);}
+\DoxyCodeLine{91             \textcolor{keywordtype}{char} buffor1[256];}
+\DoxyCodeLine{92             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < 256;i++) \{}
+\DoxyCodeLine{93                 buffor1[i] = tab[i];}
+\DoxyCodeLine{94             \}}
+\DoxyCodeLine{95             \textcolor{keywordtype}{char}* tab1 = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor1);}
+\DoxyCodeLine{96             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 256; i++)}
+\DoxyCodeLine{97                 nowy-\/>\mbox{\hyperlink{structquestions_a83ea84b8111ab940a5a33fb65f1a7323}{sentense}}[i] = tab1[i];}
+\DoxyCodeLine{98         \}}
+\DoxyCodeLine{99         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (linenumber == 2) \{}
+\DoxyCodeLine{100             \textcolor{keywordtype}{char} buffor1[256];}
+\DoxyCodeLine{101             \textcolor{keywordtype}{char}* tab = \mbox{\hyperlink{reading__files_8c_add60d03567b1582a35deeb2c42a5843b}{delete\_index\_in\_question}}(buffor);}
+\DoxyCodeLine{102             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < 256;i++) \{}
+\DoxyCodeLine{103                 buffor1[i] = tab[i];}
+\DoxyCodeLine{104             \}}
+\DoxyCodeLine{105             \textcolor{keywordtype}{char}* tab1 = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor1);}
+\DoxyCodeLine{106             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 256; i++)}
+\DoxyCodeLine{107                 nowy-\/>\mbox{\hyperlink{structquestions_a7ed7649224c88e7289c250f33c5763eb}{A}}[i] = tab1[i];}
+\DoxyCodeLine{108         \}}
+\DoxyCodeLine{109         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (linenumber == 3) \{}
+\DoxyCodeLine{110             \textcolor{keywordtype}{char} buffor1[256];}
+\DoxyCodeLine{111             \textcolor{keywordtype}{char}* tab = \mbox{\hyperlink{reading__files_8c_add60d03567b1582a35deeb2c42a5843b}{delete\_index\_in\_question}}(buffor);}
+\DoxyCodeLine{112             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < 256;i++) \{}
+\DoxyCodeLine{113                 buffor1[i] = tab[i];}
+\DoxyCodeLine{114             \}}
+\DoxyCodeLine{115             \textcolor{keywordtype}{char}* tab1 = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor1);}
+\DoxyCodeLine{116             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 256; i++)}
+\DoxyCodeLine{117                 nowy-\/>\mbox{\hyperlink{structquestions_aeecdb1d00bcba8ad5e8062726545227e}{B}}[i] = tab1[i];}
+\DoxyCodeLine{118         \}}
+\DoxyCodeLine{119         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (linenumber == 4) \{}
+\DoxyCodeLine{120             \textcolor{keywordtype}{char} buffor1[256];}
+\DoxyCodeLine{121             \textcolor{keywordtype}{char}* tab = \mbox{\hyperlink{reading__files_8c_add60d03567b1582a35deeb2c42a5843b}{delete\_index\_in\_question}}(buffor);}
+\DoxyCodeLine{122             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < 256;i++) \{}
+\DoxyCodeLine{123                 buffor1[i] = tab[i];}
+\DoxyCodeLine{124             \}}
+\DoxyCodeLine{125             \textcolor{keywordtype}{char}* tab1 = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor1);}
+\DoxyCodeLine{126             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 256; i++)}
+\DoxyCodeLine{127                 nowy-\/>\mbox{\hyperlink{structquestions_a2dcb6c81bb4bb106eac7e23cb9b2635a}{C}}[i] = tab1[i];}
+\DoxyCodeLine{128         \}}
+\DoxyCodeLine{129         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (linenumber == 5) \{}
+\DoxyCodeLine{130             \textcolor{keywordtype}{char} buffor1[256];}
+\DoxyCodeLine{131             \textcolor{keywordtype}{char}* tab = \mbox{\hyperlink{reading__files_8c_add60d03567b1582a35deeb2c42a5843b}{delete\_index\_in\_question}}(buffor);}
+\DoxyCodeLine{132             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < 256;i++) \{}
+\DoxyCodeLine{133                 buffor1[i] = tab[i];}
+\DoxyCodeLine{134             \}}
+\DoxyCodeLine{135             \textcolor{keywordtype}{char}* tab1 = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor1);}
+\DoxyCodeLine{136             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 256; i++)}
+\DoxyCodeLine{137                 nowy-\/>\mbox{\hyperlink{structquestions_a0c27d7d2863f6b8908d2f248296ddab2}{D}}[i] = tab1[i];}
+\DoxyCodeLine{138         \}}
+\DoxyCodeLine{139         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (linenumber == 6) \{}
+\DoxyCodeLine{140             \textcolor{keywordtype}{char}* tab = \mbox{\hyperlink{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}{delete\_new\_line\_sign}}(buffor);}
+\DoxyCodeLine{141             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 256; i++)}
+\DoxyCodeLine{142                 nowy-\/>\mbox{\hyperlink{structquestions_a3d793096e62d32f4eec7f70224af9f09}{coorectAnswear}}[i] = tab[i];}
+\DoxyCodeLine{143             \mbox{\hyperlink{question__functions_8c_a745d316a00f5ad87ab76a779e585e473}{create\_and\_add\_question}}(lista\_pointer, nowy);}
+\DoxyCodeLine{144             linenumber = 0;}
+\DoxyCodeLine{145         \}}
+\DoxyCodeLine{146     \}}
+\DoxyCodeLine{147     fclose(plik);}
+\DoxyCodeLine{148 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{reading__files_8c_add60d03567b1582a35deeb2c42a5843b}\label{reading__files_8c_add60d03567b1582a35deeb2c42a5843b}} 
+\index{reading\_files.c@{reading\_files.c}!delete\_index\_in\_question@{delete\_index\_in\_question}}
+\index{delete\_index\_in\_question@{delete\_index\_in\_question}!reading\_files.c@{reading\_files.c}}
+\doxysubsubsection{\texorpdfstring{delete\_index\_in\_question()}{delete\_index\_in\_question()}}
+{\footnotesize\ttfamily char$\ast$ delete\+\_\+index\+\_\+in\+\_\+question (\begin{DoxyParamCaption}\item[{char $\ast$}]{this\+\_\+string }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35                                                   \{}
+\DoxyCodeLine{36     \textcolor{keywordtype}{int} lenth = strlen(this\_string);}
+\DoxyCodeLine{37     \textcolor{keywordtype}{int} flag = 0;}
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} index1 = 0;}
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} index = 0;}
+\DoxyCodeLine{40     \textcolor{keywordtype}{char} buffor[256];}
+\DoxyCodeLine{41     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < lenth+1;i++) \{}
+\DoxyCodeLine{42         \textcolor{keywordtype}{char} c = this\_string[i];}
+\DoxyCodeLine{43         \textcolor{keywordflow}{if} (flag == 0) \{}
+\DoxyCodeLine{44             \textcolor{keywordflow}{if} (isspace(c))}
+\DoxyCodeLine{45                 flag++;}
+\DoxyCodeLine{46             index++;}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0;i < lenth+1;i++) \{}
+\DoxyCodeLine{50         \textcolor{keywordflow}{if} (i >= index) \{}
+\DoxyCodeLine{51             buffor[index1] = this\_string[index];}
+\DoxyCodeLine{52             index++;}
+\DoxyCodeLine{53             index1++;}
+\DoxyCodeLine{54         \}}
+\DoxyCodeLine{55     \}}
+\DoxyCodeLine{56     \textcolor{keywordflow}{return} buffor;}
+\DoxyCodeLine{57 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}\label{reading__files_8c_aaa612777c252ca71ace4287e1f8c1d16}} 
+\index{reading\_files.c@{reading\_files.c}!delete\_new\_line\_sign@{delete\_new\_line\_sign}}
+\index{delete\_new\_line\_sign@{delete\_new\_line\_sign}!reading\_files.c@{reading\_files.c}}
+\doxysubsubsection{\texorpdfstring{delete\_new\_line\_sign()}{delete\_new\_line\_sign()}}
+{\footnotesize\ttfamily char$\ast$ delete\+\_\+new\+\_\+line\+\_\+sign (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16                                          \{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} lenth = strlen(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{18     \textcolor{keywordtype}{char} buffor[256];}
+\DoxyCodeLine{19     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lenth + 1; i++) \{}
+\DoxyCodeLine{20         \textcolor{keywordtype}{char} c = \textcolor{keywordtype}{string}[i];}
+\DoxyCodeLine{21         \textcolor{keywordflow}{if} (c != \textcolor{charliteral}{'\(\backslash\)n'}) \{}
+\DoxyCodeLine{22             \textcolor{keywordflow}{if} (c == \textcolor{charliteral}{'\(\backslash\)0'}) \{}
+\DoxyCodeLine{23                 buffor[i] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{24                 \textcolor{keywordflow}{return} buffor;}
+\DoxyCodeLine{25             \}}
+\DoxyCodeLine{26             buffor[i] = c;}
+\DoxyCodeLine{27         \}}
+\DoxyCodeLine{28         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{29             buffor[i] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{30             \textcolor{keywordflow}{return} buffor;}
+\DoxyCodeLine{31         \}}
+\DoxyCodeLine{32     \}}
+\DoxyCodeLine{33 \}}
+
+\end{DoxyCode}

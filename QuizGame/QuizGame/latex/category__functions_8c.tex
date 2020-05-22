@@ -1,0 +1,350 @@
+\hypertarget{category__functions_8c}{}\doxysection{category\+\_\+functions.\+c File Reference}
+\label{category__functions_8c}\index{category\_functions.c@{category\_functions.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$Windows.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}category\+\_\+structure.\+h\char`\"{}}\newline
+Include dependency graph for category\+\_\+functions.\+c\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{category__functions_8c_af08ec37a8c99d747fb60fa15bc28678b}{\+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{category__functions_8c_a48b7556eaada65f73699b9d315f94fd6}{count\+\_\+categories}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer)
+\item 
+void \mbox{\hyperlink{category__functions_8c_afc8acd3a0b1d067e6754b1c1f75adcd2}{create\+\_\+and\+\_\+add\+\_\+category}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer, char $\ast$data, struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$head)
+\item 
+struct \mbox{\hyperlink{structcategories}{categories}} $\ast$ \mbox{\hyperlink{category__functions_8c_a5fddee2cfca7a510bb7372e645fbb8ec}{create\+\_\+category\+\_\+list}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$list\+\_\+pointer, char $\ast$data)
+\item 
+void \mbox{\hyperlink{category__functions_8c_a83fdf3b84d1599eb72be1b405812a240}{delete\+\_\+cycle\+\_\+category}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$head)
+\item 
+void \mbox{\hyperlink{category__functions_8c_abd1390458f93dac50cbecafdefc13b49}{delete\+\_\+list\+\_\+of\+\_\+category}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer, int data)
+\item 
+bool \mbox{\hyperlink{category__functions_8c_a782eac13fe56a8f47e7669a4a9b6e497}{find\+\_\+category}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer, int number, struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$head)
+\item 
+char $\ast$ \mbox{\hyperlink{category__functions_8c_a6153bd3eaddda059796faa9c53b9de5d}{name\+\_\+category}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer, int id)
+\item 
+int \mbox{\hyperlink{category__functions_8c_a93d97ac822a6f4097a484cb4282a3c3f}{number\+\_\+of\+\_\+categories}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$head, int counter)
+\item 
+void \mbox{\hyperlink{category__functions_8c_af14c4a332da973c79710c073a8c0db20}{print\+\_\+categories}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structcategories}{categories}} $\ast$head)
+\item 
+struct \mbox{\hyperlink{structcategories}{categories}} $\ast$ \mbox{\hyperlink{category__functions_8c_af43c6229550e6e516f450b4c02159b4c}{return\+\_\+category}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$lista\+\_\+pointer, int number)
+\item 
+char $\ast$ \mbox{\hyperlink{category__functions_8c_ab385affb02dae381129385bef7e829c6}{return\+\_\+name\+\_\+category}} (struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$lista\+\_\+pointer, int id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{category__functions_8c_af08ec37a8c99d747fb60fa15bc28678b}\label{category__functions_8c_af08ec37a8c99d747fb60fa15bc28678b}} 
+\index{category\_functions.c@{category\_functions.c}!\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}}
+\index{\_CRT\_SECURE\_NO\_WARNINGS@{\_CRT\_SECURE\_NO\_WARNINGS}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{\_CRT\_SECURE\_NO\_WARNINGS}{\_CRT\_SECURE\_NO\_WARNINGS}}
+{\footnotesize\ttfamily \#define \+\_\+\+C\+R\+T\+\_\+\+S\+E\+C\+U\+R\+E\+\_\+\+N\+O\+\_\+\+W\+A\+R\+N\+I\+N\+GS}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{category__functions_8c_a48b7556eaada65f73699b9d315f94fd6}\label{category__functions_8c_a48b7556eaada65f73699b9d315f94fd6}} 
+\index{category\_functions.c@{category\_functions.c}!count\_categories@{count\_categories}}
+\index{count\_categories@{count\_categories}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{count\_categories()}{count\_categories()}}
+{\footnotesize\ttfamily int count\+\_\+categories (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca liczbe kategorii w liscie 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na poczatek listy kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{90                                                         \{}
+\DoxyCodeLine{91     \textcolor{keywordtype}{int} counter = 0;}
+\DoxyCodeLine{92     \textcolor{keywordflow}{return} \mbox{\hyperlink{category__functions_8c_a93d97ac822a6f4097a484cb4282a3c3f}{number\_of\_categories}}(lista\_pointer, lista\_pointer, counter);}
+\DoxyCodeLine{93 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_afc8acd3a0b1d067e6754b1c1f75adcd2}\label{category__functions_8c_afc8acd3a0b1d067e6754b1c1f75adcd2}} 
+\index{category\_functions.c@{category\_functions.c}!create\_and\_add\_category@{create\_and\_add\_category}}
+\index{create\_and\_add\_category@{create\_and\_add\_category}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{create\_and\_add\_category()}{create\_and\_add\_category()}}
+{\footnotesize\ttfamily void create\+\_\+and\+\_\+add\+\_\+category (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{char $\ast$}]{data,  }\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+Ta funkcja dodaje nowy element do listy jesli jest pysta to ja tworzy 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em data} & nazwa nowej kategorii \\
+\hline
+{\em head} & wskaønik na poczatek listy kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21                                                                                                       \{}
+\DoxyCodeLine{22     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{23         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head)}
+\DoxyCodeLine{24             \mbox{\hyperlink{category__functions_8c_afc8acd3a0b1d067e6754b1c1f75adcd2}{create\_and\_add\_category}}(\&(*lista\_pointer)-\/>pNext, data, head);}
+\DoxyCodeLine{25         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{26             \textcolor{keyword}{struct }\mbox{\hyperlink{structcategories}{categories}}* nowy = (\textcolor{keyword}{struct }\mbox{\hyperlink{structcategories}{categories}}*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structcategories}{categories}}));}
+\DoxyCodeLine{27             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 128; i++)}
+\DoxyCodeLine{28                 nowy-\/>\mbox{\hyperlink{structcategories_aa035ea916002026f47aaf9f04a04896e}{NameCategory}}[i] = data[i];}
+\DoxyCodeLine{29             nowy-\/>\mbox{\hyperlink{structcategories_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} = (*lista\_pointer)-\/>id + 1;}
+\DoxyCodeLine{30             (*lista\_pointer)-\/>pNext = nowy;}
+\DoxyCodeLine{31             nowy-\/>\mbox{\hyperlink{structcategories_a22a0088ca2ccc08a7db2a0462256148c}{pNext}} = *head;}
+\DoxyCodeLine{32         \}}
+\DoxyCodeLine{33     \}}
+\DoxyCodeLine{34     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{35         \mbox{\hyperlink{category__functions_8c_a5fddee2cfca7a510bb7372e645fbb8ec}{create\_category\_list}}(lista\_pointer, data);}
+\DoxyCodeLine{36 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_a5fddee2cfca7a510bb7372e645fbb8ec}\label{category__functions_8c_a5fddee2cfca7a510bb7372e645fbb8ec}} 
+\index{category\_functions.c@{category\_functions.c}!create\_category\_list@{create\_category\_list}}
+\index{create\_category\_list@{create\_category\_list}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{create\_category\_list()}{create\_category\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structcategories}{categories}}$\ast$ create\+\_\+category\+\_\+list (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{list\+\_\+pointer,  }\item[{char $\ast$}]{data }\end{DoxyParamCaption})}
+
+Ta funkcja dodaje nowa kategorie i zwraca jej poczatek 
+\begin{DoxyParams}{Parameters}
+{\em list\+\_\+pointer} & wskaünik na liste kategorii \\
+\hline
+{\em data} & nazwa nowej kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11                                                                                       \{}
+\DoxyCodeLine{12     \textcolor{keyword}{struct }\mbox{\hyperlink{structcategories}{categories}}* nowy = (\textcolor{keyword}{struct }\mbox{\hyperlink{structcategories}{categories}}*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \mbox{\hyperlink{structcategories}{categories}}));}
+\DoxyCodeLine{13     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 128; i++)}
+\DoxyCodeLine{14         nowy-\/>\mbox{\hyperlink{structcategories_aa035ea916002026f47aaf9f04a04896e}{NameCategory}}[i] = data[i];}
+\DoxyCodeLine{15     nowy-\/>\mbox{\hyperlink{structcategories_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} = 1;}
+\DoxyCodeLine{16     nowy-\/>\mbox{\hyperlink{structcategories_a22a0088ca2ccc08a7db2a0462256148c}{pNext}} = nowy;}
+\DoxyCodeLine{17     *list\_pointer = nowy;}
+\DoxyCodeLine{18     \textcolor{keywordflow}{return} *list\_pointer;}
+\DoxyCodeLine{19 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_a83fdf3b84d1599eb72be1b405812a240}\label{category__functions_8c_a83fdf3b84d1599eb72be1b405812a240}} 
+\index{category\_functions.c@{category\_functions.c}!delete\_cycle\_category@{delete\_cycle\_category}}
+\index{delete\_cycle\_category@{delete\_cycle\_category}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{delete\_cycle\_category()}{delete\_cycle\_category()}}
+{\footnotesize\ttfamily void delete\+\_\+cycle\+\_\+category (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+Ta funkcja usuwa cyklicznosc listy 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em head} & wskaønik na poczatek listy kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{95                                                                                         \{}
+\DoxyCodeLine{96     \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head) \{}
+\DoxyCodeLine{97         \mbox{\hyperlink{category__functions_8c_a83fdf3b84d1599eb72be1b405812a240}{delete\_cycle\_category}}(\&(*lista\_pointer)-\/>pNext, head);}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{100         (*lista\_pointer)-\/>pNext = NULL;}
+\DoxyCodeLine{101 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_abd1390458f93dac50cbecafdefc13b49}\label{category__functions_8c_abd1390458f93dac50cbecafdefc13b49}} 
+\index{category\_functions.c@{category\_functions.c}!delete\_list\_of\_category@{delete\_list\_of\_category}}
+\index{delete\_list\_of\_category@{delete\_list\_of\_category}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{delete\_list\_of\_category()}{delete\_list\_of\_category()}}
+{\footnotesize\ttfamily void delete\+\_\+list\+\_\+of\+\_\+category (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+Ta funkcja usuwa cala liste kategorii 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em data} & informacja dla funkcji o usuwanym elemencie zawsze 0 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{103                                                                           \{}
+\DoxyCodeLine{104     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{105         \textcolor{keywordflow}{if} (data == 0) \{}
+\DoxyCodeLine{106             \mbox{\hyperlink{category__functions_8c_a83fdf3b84d1599eb72be1b405812a240}{delete\_cycle\_category}}(lista\_pointer, lista\_pointer);}
+\DoxyCodeLine{107             data++;}
+\DoxyCodeLine{108         \}}
+\DoxyCodeLine{109         \mbox{\hyperlink{category__functions_8c_abd1390458f93dac50cbecafdefc13b49}{delete\_list\_of\_category}}(\&(*lista\_pointer)-\/>pNext, data);}
+\DoxyCodeLine{110         free(*lista\_pointer);}
+\DoxyCodeLine{111         *lista\_pointer = NULL;}
+\DoxyCodeLine{112     \}}
+\DoxyCodeLine{113 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_a782eac13fe56a8f47e7669a4a9b6e497}\label{category__functions_8c_a782eac13fe56a8f47e7669a4a9b6e497}} 
+\index{category\_functions.c@{category\_functions.c}!find\_category@{find\_category}}
+\index{find\_category@{find\_category}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{find\_category()}{find\_category()}}
+{\footnotesize\ttfamily bool find\+\_\+category (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{int}]{number,  }\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca wartosc true/false jesli zostala lub nie znaleziona kategoria o podanym numerze 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em number} & id kategorii \\
+\hline
+{\em head} & wskaønik na poczatek listy kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49                                                                                             \{}
+\DoxyCodeLine{50     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{51         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head) \{}
+\DoxyCodeLine{52             \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>id == number)}
+\DoxyCodeLine{53                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{54             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{55                 \mbox{\hyperlink{category__functions_8c_a782eac13fe56a8f47e7669a4a9b6e497}{find\_category}}(\&(*lista\_pointer)-\/>pNext, number, head);}
+\DoxyCodeLine{56         \}}
+\DoxyCodeLine{57         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>id == number)}
+\DoxyCodeLine{58             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{59         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{60             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{63 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_a6153bd3eaddda059796faa9c53b9de5d}\label{category__functions_8c_a6153bd3eaddda059796faa9c53b9de5d}} 
+\index{category\_functions.c@{category\_functions.c}!name\_category@{name\_category}}
+\index{name\_category@{name\_category}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{name\_category()}{name\_category()}}
+{\footnotesize\ttfamily char$\ast$ name\+\_\+category (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca nazwe kategorii 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em id} & numer id kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65                                                                \{}
+\DoxyCodeLine{66     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{67         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>id == \textcolor{keywordtype}{id})}
+\DoxyCodeLine{68             \textcolor{keywordflow}{return} (*lista\_pointer)-\/>NameCategory;}
+\DoxyCodeLine{69         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{70             \mbox{\hyperlink{category__functions_8c_a6153bd3eaddda059796faa9c53b9de5d}{name\_category}}(\&(*lista\_pointer)-\/>pNext, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_a93d97ac822a6f4097a484cb4282a3c3f}\label{category__functions_8c_a93d97ac822a6f4097a484cb4282a3c3f}} 
+\index{category\_functions.c@{category\_functions.c}!number\_of\_categories@{number\_of\_categories}}
+\index{number\_of\_categories@{number\_of\_categories}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{number\_of\_categories()}{number\_of\_categories()}}
+{\footnotesize\ttfamily int number\+\_\+of\+\_\+categories (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{head,  }\item[{int}]{counter }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca liczbe kategorii w liscie 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em head} & wskaønik na poczatek listy kategorii \\
+\hline
+{\em counter} & licznik kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78                                                                                                    \{}
+\DoxyCodeLine{79     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{80         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head) \{}
+\DoxyCodeLine{81             \textcolor{keywordflow}{return} counter + 1 + \mbox{\hyperlink{category__functions_8c_a93d97ac822a6f4097a484cb4282a3c3f}{number\_of\_categories}}(\&(*lista\_pointer)-\/>pNext, head, counter);}
+\DoxyCodeLine{82         \}}
+\DoxyCodeLine{83         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{84             \textcolor{keywordflow}{return} counter + 1;}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87     \textcolor{keywordflow}{return} counter;}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_af14c4a332da973c79710c073a8c0db20}\label{category__functions_8c_af14c4a332da973c79710c073a8c0db20}} 
+\index{category\_functions.c@{category\_functions.c}!print\_categories@{print\_categories}}
+\index{print\_categories@{print\_categories}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{print\_categories()}{print\_categories()}}
+{\footnotesize\ttfamily void print\+\_\+categories (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$}]{head }\end{DoxyParamCaption})}
+
+Ta funkcja wypisuje cala liste kategorii 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na poczatek listy kategorii \\
+\hline
+{\em head} & wskaznik na pierwszy element kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38                                                                                  \{}
+\DoxyCodeLine{39     \textcolor{keywordflow}{if} (lista\_pointer) \{}
+\DoxyCodeLine{40         \textcolor{keywordflow}{if} (lista\_pointer-\/>\mbox{\hyperlink{structcategories_a22a0088ca2ccc08a7db2a0462256148c}{pNext}} != head) \{}
+\DoxyCodeLine{41             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| [\%d] \%-\/15s                         |\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structcategories_a7441ef0865bcb3db9b8064dd7375c1ea}{id}}, lista\_pointer-\/>\mbox{\hyperlink{structcategories_aa035ea916002026f47aaf9f04a04896e}{NameCategory}});}
+\DoxyCodeLine{42             \mbox{\hyperlink{category__functions_8c_af14c4a332da973c79710c073a8c0db20}{print\_categories}}(lista\_pointer-\/>\mbox{\hyperlink{structcategories_a22a0088ca2ccc08a7db2a0462256148c}{pNext}}, head);}
+\DoxyCodeLine{43         \}}
+\DoxyCodeLine{44         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{45             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)t| [\%d] \%-\/15s                         |\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structcategories_a7441ef0865bcb3db9b8064dd7375c1ea}{id}}, lista\_pointer-\/>\mbox{\hyperlink{structcategories_aa035ea916002026f47aaf9f04a04896e}{NameCategory}});}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_af43c6229550e6e516f450b4c02159b4c}\label{category__functions_8c_af43c6229550e6e516f450b4c02159b4c}} 
+\index{category\_functions.c@{category\_functions.c}!return\_category@{return\_category}}
+\index{return\_category@{return\_category}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{return\_category()}{return\_category()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structcategories}{categories}}$\ast$ return\+\_\+category (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$}]{lista\+\_\+pointer,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca wskaznik na strukture i podanym id 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em number} & numer id kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{115                                                                                  \{}
+\DoxyCodeLine{116     \textcolor{keyword}{struct }\mbox{\hyperlink{structcategories}{categories}}* start = lista\_pointer;}
+\DoxyCodeLine{117     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{118         \textcolor{keywordflow}{if} (lista\_pointer-\/>\mbox{\hyperlink{structcategories_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} == number)}
+\DoxyCodeLine{119             \textcolor{keywordflow}{return} lista\_pointer;}
+\DoxyCodeLine{120         lista\_pointer = lista\_pointer-\/>\mbox{\hyperlink{structcategories_a22a0088ca2ccc08a7db2a0462256148c}{pNext}};}
+\DoxyCodeLine{121     \} \textcolor{keywordflow}{while} (lista\_pointer != start);}
+\DoxyCodeLine{122     \textcolor{keywordflow}{if} (lista\_pointer-\/>\mbox{\hyperlink{structcategories_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} == number)}
+\DoxyCodeLine{123         \textcolor{keywordflow}{return} lista\_pointer;}
+\DoxyCodeLine{124     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{125 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{category__functions_8c_ab385affb02dae381129385bef7e829c6}\label{category__functions_8c_ab385affb02dae381129385bef7e829c6}} 
+\index{category\_functions.c@{category\_functions.c}!return\_name\_category@{return\_name\_category}}
+\index{return\_name\_category@{return\_name\_category}!category\_functions.c@{category\_functions.c}}
+\doxysubsubsection{\texorpdfstring{return\_name\_category()}{return\_name\_category()}}
+{\footnotesize\ttfamily char$\ast$ return\+\_\+name\+\_\+category (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcategories}{categories}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca nazwe kategorii 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste kategorii \\
+\hline
+{\em id} & numer id kategorii \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{74                                                                       \{}
+\DoxyCodeLine{75     \textcolor{keywordflow}{return} \mbox{\hyperlink{category__functions_8c_a6153bd3eaddda059796faa9c53b9de5d}{name\_category}}(lista\_pointer, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{76 \}}
+
+\end{DoxyCode}

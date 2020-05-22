@@ -1,0 +1,430 @@
+\hypertarget{question__functions_8h}{}\doxysection{question\+\_\+functions.\+h File Reference}
+\label{question__functions_8h}\index{question\_functions.h@{question\_functions.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{question__functions_8h_a1eecbabf3889027221b67942e4bcc442}{add\+\_\+question\+\_\+to\+\_\+list}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$head, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$nowy)
+\item 
+int \mbox{\hyperlink{question__functions_8h_a9750a039284c12828fac0725350c0980}{count\+\_\+questions}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer)
+\item 
+void \mbox{\hyperlink{question__functions_8h_a745d316a00f5ad87ab76a779e585e473}{create\+\_\+and\+\_\+add\+\_\+question}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$nowy)
+\item 
+struct \mbox{\hyperlink{structquestions}{questions}} $\ast$ \mbox{\hyperlink{question__functions_8h_a02b32cf34d594c27f1d45f3ddc238973}{create\+\_\+questons\+\_\+list}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$nowy)
+\item 
+void \mbox{\hyperlink{question__functions_8h_ab6ef51094beae9ab4ab227eace1cf486}{delete\+\_\+cycle\+\_\+questions}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$head)
+\item 
+void \mbox{\hyperlink{question__functions_8h_a6fcf467b725c1509d80259275401f8da}{delete\+\_\+list\+\_\+of\+\_\+questions}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, int data)
+\item 
+struct \mbox{\hyperlink{structquestions}{questions}} $\ast$ \mbox{\hyperlink{question__functions_8h_a325ad2090f5a0b6ab01fc2b9596ff7b1}{node\+\_\+question\+\_\+head}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, int number)
+\item 
+void \mbox{\hyperlink{question__functions_8h_a39d8e5f2bcb9b95fbdace851c44493bd}{print\+\_\+all\+\_\+questions}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer)
+\item 
+void \mbox{\hyperlink{question__functions_8h_abf8f09ed94dba5cb54c19568891eb1af}{print\+\_\+element\+\_\+question}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$head, int number)
+\item 
+void \mbox{\hyperlink{question__functions_8h_af461f8c4dd09275ebc1b9f485db52eca}{print\+\_\+\+Question}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, int number)
+\item 
+void \mbox{\hyperlink{question__functions_8h_a266a6f8800bd0ffd6e4cc748097698d2}{print\+\_\+questions}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$head)
+\item 
+void \mbox{\hyperlink{question__functions_8h_a8449bca30f71139257c585032890fc67}{print\+All\+Que}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$lista\+\_\+pointer)
+\item 
+struct \mbox{\hyperlink{structquestions}{questions}} $\ast$ \mbox{\hyperlink{question__functions_8h_a6b3dccf984be788e61c876c110139af1}{question}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$head, int number)
+\item 
+int \mbox{\hyperlink{question__functions_8h_a14f5181838b27baa180a1a794b5968c3}{questions\+\_\+elements}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$lista\+\_\+pointer, struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$head, int counter)
+\item 
+struct \mbox{\hyperlink{structquestions}{questions}} $\ast$ \mbox{\hyperlink{question__functions_8h_a38c5ae7a39dcf420a3eb42f1382a4817}{return\+\_\+que}} (struct \mbox{\hyperlink{structquestions}{questions}} $\ast$lista\+\_\+pointer, int number)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{question__functions_8h_a1eecbabf3889027221b67942e4bcc442}\label{question__functions_8h_a1eecbabf3889027221b67942e4bcc442}} 
+\index{question\_functions.h@{question\_functions.h}!add\_question\_to\_list@{add\_question\_to\_list}}
+\index{add\_question\_to\_list@{add\_question\_to\_list}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{add\_question\_to\_list()}{add\_question\_to\_list()}}
+{\footnotesize\ttfamily void add\+\_\+question\+\_\+to\+\_\+list (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{head,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$}]{nowy }\end{DoxyParamCaption})}
+
+Ta funkcja dodaje pytanie do istniejacej listy 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em head} & wskaznik na liste pytan \\
+\hline
+{\em nowy} & wskaznik na nowy element do dodania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{19                             \{}
+\DoxyCodeLine{20     \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head)}
+\DoxyCodeLine{21         \mbox{\hyperlink{question__functions_8c_a1eecbabf3889027221b67942e4bcc442}{add\_question\_to\_list}}(\&(*lista\_pointer)-\/>pNext, head, nowy);}
+\DoxyCodeLine{22     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{23         nowy-\/>\mbox{\hyperlink{structquestions_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} = (*lista\_pointer)-\/>id + 1;}
+\DoxyCodeLine{24         (*lista\_pointer)-\/>pNext = nowy;}
+\DoxyCodeLine{25         nowy-\/>\mbox{\hyperlink{structquestions_aacf222553f48a8f0c73499ebb769ac20}{pNext}} = *head;}
+\DoxyCodeLine{26     \}}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a9750a039284c12828fac0725350c0980}\label{question__functions_8h_a9750a039284c12828fac0725350c0980}} 
+\index{question\_functions.h@{question\_functions.h}!count\_questions@{count\_questions}}
+\index{count\_questions@{count\_questions}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{count\_questions()}{count\_questions()}}
+{\footnotesize\ttfamily int count\+\_\+questions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer }\end{DoxyParamCaption})}
+
+Ta funkcja zlicza ilosc pytan 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64                                                       \{}
+\DoxyCodeLine{65     \textcolor{keywordtype}{int} counter = 0;}
+\DoxyCodeLine{66     \textcolor{keywordflow}{return} \mbox{\hyperlink{question__functions_8c_a14f5181838b27baa180a1a794b5968c3}{questions\_elements}}(lista\_pointer, lista\_pointer, counter);}
+\DoxyCodeLine{67 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a745d316a00f5ad87ab76a779e585e473}\label{question__functions_8h_a745d316a00f5ad87ab76a779e585e473}} 
+\index{question\_functions.h@{question\_functions.h}!create\_and\_add\_question@{create\_and\_add\_question}}
+\index{create\_and\_add\_question@{create\_and\_add\_question}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{create\_and\_add\_question()}{create\_and\_add\_question()}}
+{\footnotesize\ttfamily void create\+\_\+and\+\_\+add\+\_\+question (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$}]{nowy }\end{DoxyParamCaption})}
+
+Ta funkcja tworzy nowa liste pytañ lub dodaje pytanie do istnijacej listy 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em nowy} & wskaznik na nowy element do dodania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                                                                        \{}
+\DoxyCodeLine{30     \textcolor{keywordflow}{if} (*lista\_pointer)}
+\DoxyCodeLine{31         \mbox{\hyperlink{question__functions_8c_a1eecbabf3889027221b67942e4bcc442}{add\_question\_to\_list}}(lista\_pointer, lista\_pointer, nowy);}
+\DoxyCodeLine{32     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{33         *lista\_pointer = \mbox{\hyperlink{question__functions_8c_a02b32cf34d594c27f1d45f3ddc238973}{create\_questons\_list}}(lista\_pointer, nowy);}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a02b32cf34d594c27f1d45f3ddc238973}\label{question__functions_8h_a02b32cf34d594c27f1d45f3ddc238973}} 
+\index{question\_functions.h@{question\_functions.h}!create\_questons\_list@{create\_questons\_list}}
+\index{create\_questons\_list@{create\_questons\_list}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{create\_questons\_list()}{create\_questons\_list()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structquestions}{questions}}$\ast$ create\+\_\+questons\+\_\+list (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$}]{nowy }\end{DoxyParamCaption})}
+
+Ta funkcja tworzy nowa liste pytan 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em nowy} & wskaznik na nowy element do dodania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11                                                                                                  \{}
+\DoxyCodeLine{12     nowy-\/>\mbox{\hyperlink{structquestions_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} = 1;}
+\DoxyCodeLine{13     *lista\_pointer = nowy;}
+\DoxyCodeLine{14     (*lista\_pointer)-\/>\mbox{\hyperlink{structquestions_aacf222553f48a8f0c73499ebb769ac20}{pNext}} = nowy;}
+\DoxyCodeLine{15     \textcolor{keywordflow}{return} *lista\_pointer;}
+\DoxyCodeLine{16 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_ab6ef51094beae9ab4ab227eace1cf486}\label{question__functions_8h_ab6ef51094beae9ab4ab227eace1cf486}} 
+\index{question\_functions.h@{question\_functions.h}!delete\_cycle\_questions@{delete\_cycle\_questions}}
+\index{delete\_cycle\_questions@{delete\_cycle\_questions}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{delete\_cycle\_questions()}{delete\_cycle\_questions()}}
+{\footnotesize\ttfamily void delete\+\_\+cycle\+\_\+questions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+Ta funkcja usuwa cyklicznosc listy 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em head} & wskaznik na liste pytan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{111                                                                                        \{}
+\DoxyCodeLine{112     \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head) \{}
+\DoxyCodeLine{113         \mbox{\hyperlink{question__functions_8c_ab6ef51094beae9ab4ab227eace1cf486}{delete\_cycle\_questions}}(\&(*lista\_pointer)-\/>pNext, head);}
+\DoxyCodeLine{114     \}}
+\DoxyCodeLine{115     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{116         (*lista\_pointer)-\/>pNext = NULL;}
+\DoxyCodeLine{117 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a6fcf467b725c1509d80259275401f8da}\label{question__functions_8h_a6fcf467b725c1509d80259275401f8da}} 
+\index{question\_functions.h@{question\_functions.h}!delete\_list\_of\_questions@{delete\_list\_of\_questions}}
+\index{delete\_list\_of\_questions@{delete\_list\_of\_questions}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{delete\_list\_of\_questions()}{delete\_list\_of\_questions()}}
+{\footnotesize\ttfamily void delete\+\_\+list\+\_\+of\+\_\+questions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+Ta funkcja usuwa liste pytan 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em data} & informacja dla funkcji zawsze na 0 \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{119                                                                           \{}
+\DoxyCodeLine{120     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{121         \textcolor{keywordflow}{if} (data == 0) \{}
+\DoxyCodeLine{122             \mbox{\hyperlink{question__functions_8c_ab6ef51094beae9ab4ab227eace1cf486}{delete\_cycle\_questions}}(lista\_pointer, lista\_pointer);}
+\DoxyCodeLine{123             data++;}
+\DoxyCodeLine{124         \}}
+\DoxyCodeLine{125         \mbox{\hyperlink{question__functions_8c_a6fcf467b725c1509d80259275401f8da}{delete\_list\_of\_questions}}(\&(*lista\_pointer)-\/>pNext, data);}
+\DoxyCodeLine{126         free(*lista\_pointer);}
+\DoxyCodeLine{127         *lista\_pointer = NULL;}
+\DoxyCodeLine{128     \}}
+\DoxyCodeLine{129 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a325ad2090f5a0b6ab01fc2b9596ff7b1}\label{question__functions_8h_a325ad2090f5a0b6ab01fc2b9596ff7b1}} 
+\index{question\_functions.h@{question\_functions.h}!node\_question\_head@{node\_question\_head}}
+\index{node\_question\_head@{node\_question\_head}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{node\_question\_head()}{node\_question\_head()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structquestions}{questions}}$\ast$ node\+\_\+question\+\_\+head (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca wskaznik na konkretne pytanie o podanym id 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em number} & numer id pytania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107                                                                                    \{}
+\DoxyCodeLine{108     \textcolor{keywordflow}{return} \mbox{\hyperlink{question__functions_8c_a6b3dccf984be788e61c876c110139af1}{question}}(lista\_pointer, lista\_pointer, number);}
+\DoxyCodeLine{109 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a39d8e5f2bcb9b95fbdace851c44493bd}\label{question__functions_8h_a39d8e5f2bcb9b95fbdace851c44493bd}} 
+\index{question\_functions.h@{question\_functions.h}!print\_all\_questions@{print\_all\_questions}}
+\index{print\_all\_questions@{print\_all\_questions}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{print\_all\_questions()}{print\_all\_questions()}}
+{\footnotesize\ttfamily void print\+\_\+all\+\_\+questions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer }\end{DoxyParamCaption})}
+
+Ta funkcja wypisuje pytania 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48                                                            \{}
+\DoxyCodeLine{49     \mbox{\hyperlink{question__functions_8c_a266a6f8800bd0ffd6e4cc748097698d2}{print\_questions}}(lista\_pointer, lista\_pointer);}
+\DoxyCodeLine{50 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_abf8f09ed94dba5cb54c19568891eb1af}\label{question__functions_8h_abf8f09ed94dba5cb54c19568891eb1af}} 
+\index{question\_functions.h@{question\_functions.h}!print\_element\_question@{print\_element\_question}}
+\index{print\_element\_question@{print\_element\_question}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{print\_element\_question()}{print\_element\_question()}}
+{\footnotesize\ttfamily void print\+\_\+element\+\_\+question (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{head,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+Ta funkcja wypisuje pytanie o konkretnym id 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em head} & wskaznik na liste pytan \\
+\hline
+{\em number} & numer id pytania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69                                                                                                    \{}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{71         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head) \{}
+\DoxyCodeLine{72             \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>id == number) \{}
+\DoxyCodeLine{73                 printf(\textcolor{stringliteral}{"\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n"}, (*lista\_pointer)-\/>sentense, (*lista\_pointer)-\/>A, (*lista\_pointer)-\/>B, (*lista\_pointer)-\/>C,}
+\DoxyCodeLine{74                     (*lista\_pointer)-\/>D);}
+\DoxyCodeLine{75                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{76             \}}
+\DoxyCodeLine{77             \mbox{\hyperlink{question__functions_8c_abf8f09ed94dba5cb54c19568891eb1af}{print\_element\_question}}(\&(*lista\_pointer)-\/>pNext, head, number);}
+\DoxyCodeLine{78         \}}
+\DoxyCodeLine{79         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{80             \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>id == number)}
+\DoxyCodeLine{81                 printf(\textcolor{stringliteral}{"\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n"}, (*lista\_pointer)-\/>sentense, (*lista\_pointer)-\/>A, (*lista\_pointer)-\/>B, (*lista\_pointer)-\/>C,}
+\DoxyCodeLine{82                     (*lista\_pointer)-\/>D);}
+\DoxyCodeLine{83             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{84         \}}
+\DoxyCodeLine{85     \}}
+\DoxyCodeLine{86 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_af461f8c4dd09275ebc1b9f485db52eca}\label{question__functions_8h_af461f8c4dd09275ebc1b9f485db52eca}} 
+\index{question\_functions.h@{question\_functions.h}!print\_Question@{print\_Question}}
+\index{print\_Question@{print\_Question}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{print\_Question()}{print\_Question()}}
+{\footnotesize\ttfamily void print\+\_\+\+Question (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+Ta funkcja wypisuje pytanie o konkretnym id 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em number} & numer id pytania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{88                                                                   \{}
+\DoxyCodeLine{89     \mbox{\hyperlink{question__functions_8c_abf8f09ed94dba5cb54c19568891eb1af}{print\_element\_question}}(lista\_pointer, lista\_pointer, number);}
+\DoxyCodeLine{90 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a266a6f8800bd0ffd6e4cc748097698d2}\label{question__functions_8h_a266a6f8800bd0ffd6e4cc748097698d2}} 
+\index{question\_functions.h@{question\_functions.h}!print\_questions@{print\_questions}}
+\index{print\_questions@{print\_questions}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{print\_questions()}{print\_questions()}}
+{\footnotesize\ttfamily void print\+\_\+questions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{head }\end{DoxyParamCaption})}
+
+Ta funkcja wypisuje pytania 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em head} & wskaznik na liste pytan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36                                                                                 \{}
+\DoxyCodeLine{37     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head) \{}
+\DoxyCodeLine{39             printf(\textcolor{stringliteral}{"Pytanie nr[\%d].\(\backslash\)n Treœæ pytania: \%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)nPoprawna odpowiedz to: \%s"}, (*lista\_pointer)-\/>id, (*lista\_pointer)-\/>sentense}
+\DoxyCodeLine{40                 , (*lista\_pointer)-\/>A, (*lista\_pointer)-\/>B, (*lista\_pointer)-\/>C, (*lista\_pointer)-\/>D, (*lista\_pointer)-\/>coorectAnswear);}
+\DoxyCodeLine{41             \mbox{\hyperlink{question__functions_8c_a266a6f8800bd0ffd6e4cc748097698d2}{print\_questions}}(\&(*lista\_pointer)-\/>pNext, head);}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43         \textcolor{keywordflow}{else} printf(\textcolor{stringliteral}{"Pytanie nr[\%d].\(\backslash\)n Treœæ pytania: \%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)n\%s\(\backslash\)nPoprawna odpowiedz to: \%s"}, (*lista\_pointer)-\/>id, (*lista\_pointer)-\/>sentense}
+\DoxyCodeLine{44             , (*lista\_pointer)-\/>A, (*lista\_pointer)-\/>B, (*lista\_pointer)-\/>C, (*lista\_pointer)-\/>D, (*lista\_pointer)-\/>coorectAnswear);}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a8449bca30f71139257c585032890fc67}\label{question__functions_8h_a8449bca30f71139257c585032890fc67}} 
+\index{question\_functions.h@{question\_functions.h}!printAllQue@{printAllQue}}
+\index{printAllQue@{printAllQue}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{printAllQue()}{printAllQue()}}
+{\footnotesize\ttfamily void print\+All\+Que (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$}]{lista\+\_\+pointer }\end{DoxyParamCaption})}
+
+Ta funkcja wypisuje wszystkie pytania z listy 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik napierwszy element listy pytan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{131                                                   \{}
+\DoxyCodeLine{132     \textcolor{keywordflow}{if} (lista\_pointer) \{}
+\DoxyCodeLine{133         \textcolor{keyword}{struct }\mbox{\hyperlink{structquestions}{questions}}* start = lista\_pointer;}
+\DoxyCodeLine{134         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{135             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tNumer pytania: \%d\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structquestions_a7441ef0865bcb3db9b8064dd7375c1ea}{id}});}
+\DoxyCodeLine{136             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tTreœæ pytania: \%s\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structquestions_a83ea84b8111ab940a5a33fb65f1a7323}{sentense}});}
+\DoxyCodeLine{137             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tODP A: \%s\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structquestions_a7ed7649224c88e7289c250f33c5763eb}{A}});}
+\DoxyCodeLine{138             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tODP B: \%s\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structquestions_aeecdb1d00bcba8ad5e8062726545227e}{B}});}
+\DoxyCodeLine{139             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tODP C: \%s\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structquestions_a2dcb6c81bb4bb106eac7e23cb9b2635a}{C}});}
+\DoxyCodeLine{140             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tODP D: \%s\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structquestions_a0c27d7d2863f6b8908d2f248296ddab2}{D}});}
+\DoxyCodeLine{141             printf(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tPoprawna odpowiedz: \%s\(\backslash\)n"}, lista\_pointer-\/>\mbox{\hyperlink{structquestions_a3d793096e62d32f4eec7f70224af9f09}{coorectAnswear}});}
+\DoxyCodeLine{142             puts(\textcolor{stringliteral}{""});}
+\DoxyCodeLine{143             lista\_pointer = lista\_pointer-\/>\mbox{\hyperlink{structquestions_aacf222553f48a8f0c73499ebb769ac20}{pNext}};}
+\DoxyCodeLine{144         \} \textcolor{keywordflow}{while} (lista\_pointer != start);}
+\DoxyCodeLine{145     \}}
+\DoxyCodeLine{146 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a6b3dccf984be788e61c876c110139af1}\label{question__functions_8h_a6b3dccf984be788e61c876c110139af1}} 
+\index{question\_functions.h@{question\_functions.h}!question@{question}}
+\index{question@{question}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{question()}{question()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structquestions}{questions}}$\ast$ question (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{head,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca wskaznik na konkretne pytanie o podanym id 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em head} & wskaznik na liste pytan \\
+\hline
+{\em number} & numer id pytania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92                                                                                                   \{}
+\DoxyCodeLine{93     \textcolor{keyword}{struct }\mbox{\hyperlink{structquestions}{questions}}* start = *lista\_pointer;}
+\DoxyCodeLine{94     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{95         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{96             \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>id == number)}
+\DoxyCodeLine{97                 \textcolor{keywordflow}{return} *lista\_pointer;}
+\DoxyCodeLine{98             *lista\_pointer = (*lista\_pointer)-\/>\mbox{\hyperlink{structquestions_aacf222553f48a8f0c73499ebb769ac20}{pNext}};}
+\DoxyCodeLine{99         \} \textcolor{keywordflow}{while} (*lista\_pointer != start);}
+\DoxyCodeLine{100         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>id == number)}
+\DoxyCodeLine{101             \textcolor{keywordflow}{return} *lista\_pointer;}
+\DoxyCodeLine{102         \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} *lista\_pointer;}
+\DoxyCodeLine{103     \}}
+\DoxyCodeLine{104     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} *lista\_pointer;}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a14f5181838b27baa180a1a794b5968c3}\label{question__functions_8h_a14f5181838b27baa180a1a794b5968c3}} 
+\index{question\_functions.h@{question\_functions.h}!questions\_elements@{questions\_elements}}
+\index{questions\_elements@{questions\_elements}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{questions\_elements()}{questions\_elements()}}
+{\footnotesize\ttfamily int questions\+\_\+elements (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{lista\+\_\+pointer,  }\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$$\ast$}]{head,  }\item[{int}]{counter }\end{DoxyParamCaption})}
+
+Ta funkcja zlicza ilosc pytan 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em head} & wskaznik na liste pytan \\
+\hline
+{\em counter} & licznik pytan \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52                                                                                                \{}
+\DoxyCodeLine{53     \textcolor{keywordflow}{if} (*lista\_pointer) \{}
+\DoxyCodeLine{54         \textcolor{keywordflow}{if} ((*lista\_pointer)-\/>pNext != *head) \{}
+\DoxyCodeLine{55             \textcolor{keywordflow}{return} 1 + \mbox{\hyperlink{question__functions_8c_a14f5181838b27baa180a1a794b5968c3}{questions\_elements}}(\&(*lista\_pointer)-\/>pNext, head, counter);}
+\DoxyCodeLine{56         \}}
+\DoxyCodeLine{57         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{58             \textcolor{keywordflow}{return} counter + 1;}
+\DoxyCodeLine{59         \}}
+\DoxyCodeLine{60     \}}
+\DoxyCodeLine{61     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} counter;}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{question__functions_8h_a38c5ae7a39dcf420a3eb42f1382a4817}\label{question__functions_8h_a38c5ae7a39dcf420a3eb42f1382a4817}} 
+\index{question\_functions.h@{question\_functions.h}!return\_que@{return\_que}}
+\index{return\_que@{return\_que}!question\_functions.h@{question\_functions.h}}
+\doxysubsubsection{\texorpdfstring{return\_que()}{return\_que()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structquestions}{questions}}$\ast$ return\+\_\+que (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structquestions}{questions}} $\ast$}]{lista\+\_\+pointer,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+Ta funkcja zwraca wskaznik na pytanie o podanum id 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+pointer} & wskaznik na liste pytan \\
+\hline
+{\em number} & id pytania \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{222                                                                           \{}
+\DoxyCodeLine{223     \textcolor{keyword}{struct }\mbox{\hyperlink{structquestions}{questions}}* start = lista\_pointer;}
+\DoxyCodeLine{224     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{225         \textcolor{keywordflow}{if} (lista\_pointer-\/>\mbox{\hyperlink{structquestions_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} == number)}
+\DoxyCodeLine{226             \textcolor{keywordflow}{return} lista\_pointer;}
+\DoxyCodeLine{227         lista\_pointer = lista\_pointer-\/>\mbox{\hyperlink{structquestions_aacf222553f48a8f0c73499ebb769ac20}{pNext}};}
+\DoxyCodeLine{228     \} \textcolor{keywordflow}{while} (lista\_pointer != start);}
+\DoxyCodeLine{229     \textcolor{keywordflow}{if} (lista\_pointer-\/>\mbox{\hyperlink{structquestions_a7441ef0865bcb3db9b8064dd7375c1ea}{id}} == number)}
+\DoxyCodeLine{230         \textcolor{keywordflow}{return} lista\_pointer;}
+\DoxyCodeLine{231     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{232 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,30 @@
+Stolica Niemiec jest...
+[A] Sosno
+[B] Stuttgart
+[C] Hamburg
+[D] Berlin
+D
+Z iloma krajami granicza Niemcy?
+[A] Z 5
+[B] Z 6
+[C] Z 9
+[D] Z 10
+C
+Powierzchnia Niemiec wynosi...
+[A] Ok. 345.800 km2
+[B] Ok. 357.000 km2
+[C] Ok. 455.000 km2
+[D] Ok. 515.000 km2
+B
+Wskaz zdanie prawdziwe: Niemcy....
+[A] ...sa biedne
+[B] ..granicza z Czarnogora
+[C] ...maja dobrze wyposazona armie
+[D] --
+C
+Wskaz nazwe Hymnu Niemieckiego:
+[A] ,,Marsylianka''
+[B] ,Piesn Niemcow''
+[C] ,,Och, kochana ojczyzno!''
+[D] ,,Mazurek Mozarta''
+B

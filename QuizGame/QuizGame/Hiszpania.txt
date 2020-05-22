@@ -1,0 +1,30 @@
+Jaka jest stolica Hiszpanii?
+[A] Barcelona
+[B] Ayamonte
+[C] Madryt
+[D] --
+C
+Ile ludzi zyje w hiszpanii?
+[A] 52,23 miliona
+[B] 46,56 miliona 
+[C] 27,57 miliona
+[D] --
+B
+Kto jest obecnie krolowa Hispanii?
+[A] Letizia Ortiz
+[B] Elizabeth  II
+[C] Malgorzata II
+[D] --
+A
+Czy gibraltar nalezy do hiszpanii?
+[A] Tak 
+[B] Nie
+[C] --
+[D] --
+
+Jak nazywal sie Hiszpanski artysta pochodzacy z Malagi?
+[A] Pablo Picasso
+[B] Vasco da Gama
+[C] --
+[D] --
+A
